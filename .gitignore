@@ -50,3 +50,19 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Binaries Folder
+[Bb]in/
+[Oo]bj/
+
+# IDE Configuration folders
+.vs/
+.idea/
+
+# User files
+.user
+.suo
+
+# Logging,Cache files
+.log
+.cache
