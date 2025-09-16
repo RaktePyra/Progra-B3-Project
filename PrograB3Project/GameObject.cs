@@ -8,5 +8,7 @@ namespace PrograB3Project
 {
     internal class GameObject
     {
+        public void Update(float delta_time)
+        { }
     }
 }

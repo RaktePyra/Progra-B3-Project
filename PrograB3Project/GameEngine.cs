@@ -15,6 +15,7 @@ namespace PrograB3Project
         private float _elapsedTime = 0;
         private float _lag = 0;
         private const float MS_PER_FRAME = 16;
+        private List<GameObject> _gameObjectTable = new List<GameObject>();
         public void Run()
         {
             _stopwatch.Start();
@@ -40,7 +41,10 @@ namespace PrograB3Project
         }
         private void Update(float delta_time)
         {
-
+            foreach (GameObject gameObject in _gameObjectTable)
+            {
+                gameObject.Update(delta_time);
+            }
         }
         private void Render()
         {
