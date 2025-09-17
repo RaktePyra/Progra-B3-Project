@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project
+namespace PrograB3Project.Components
 {
     public abstract class Component
     {

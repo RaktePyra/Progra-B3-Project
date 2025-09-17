@@ -8,5 +8,11 @@ namespace PrograB3Project
 {
     internal class Game
     {
+        public void Run()
+        {
+
+        }
+        public void OnExit()
+        { }
     }
 }
