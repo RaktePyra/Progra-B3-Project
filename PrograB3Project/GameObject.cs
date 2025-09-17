@@ -20,12 +20,11 @@ namespace PrograB3Project
         }
         public void AddComponent(Component component)
         {
-            if( _componentsTable.Contains(component))
+            if( !_componentsTable.Contains(component))
             {
-                return;
+              _componentsTable.Add(component);
             }
-            
-            _componentsTable.Add(component);
+            return;
         }
     }
 }
