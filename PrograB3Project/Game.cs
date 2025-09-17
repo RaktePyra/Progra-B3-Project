@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
-    internal class World
+    internal class Game
     {
-
     }
 }
