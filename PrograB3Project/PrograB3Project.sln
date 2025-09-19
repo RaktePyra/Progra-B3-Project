@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrograB3Project", "PrograB3Project.csproj", "{A2221B70-6DA9-4BCC-B758-0A6D57C1331C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrograB3ProjectTest", "..\PrograB3ProjectTest\PrograB3ProjectTest.csproj", "{3CFA57B1-93E6-469F-BF16-D4FA78D83072}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A2221B70-6DA9-4BCC-B758-0A6D57C1331C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2221B70-6DA9-4BCC-B758-0A6D57C1331C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2221B70-6DA9-4BCC-B758-0A6D57C1331C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CFA57B1-93E6-469F-BF16-D4FA78D83072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CFA57B1-93E6-469F-BF16-D4FA78D83072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CFA57B1-93E6-469F-BF16-D4FA78D83072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CFA57B1-93E6-469F-BF16-D4FA78D83072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

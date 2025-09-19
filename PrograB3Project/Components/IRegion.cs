@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    internal class IRegion
+    public interface IRegion
     {
+        public void Enter();
     }
 }

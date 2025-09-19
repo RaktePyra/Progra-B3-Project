@@ -17,5 +17,10 @@ namespace PrograB3Project
                 _cityTable.Add(new City());
             }
         }
+
+        public void Enter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

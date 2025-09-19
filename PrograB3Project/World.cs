@@ -25,7 +25,7 @@ namespace PrograB3Project
         //OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
         //Ressources : https://stackoverflow.com/questions/56134343/c-sharp-create-an-instance-of-a-class-from-a-type-fullname
         //             https://learn.microsoft.com/fr-fr/dotnet/api/system.activator.createinstance?view=net-8.0
-        private World(IRegion region_type_to_create)
+        public World(IRegion region_type_to_create)
         {
             Random random = new Random();
             int random_regions_number = random.Next() % MAX_REGION_RANDOM_NUMBER;
@@ -35,6 +35,15 @@ namespace PrograB3Project
                 _IregionTable.Add((IRegion)Activator.CreateInstance(type));
             }
         }
-        
+        public void EnterRegion(IRegion region_to_enter)
+        {
+            foreach (IRegion region in _IregionTable)
+            {
+                if(region == region_to_enter)
+                {
+                    region.Enter();
+                }
+            }
+        }
     }
 }
