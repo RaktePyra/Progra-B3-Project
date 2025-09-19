@@ -39,7 +39,7 @@ namespace PrograB3Project
         {
             foreach (IRegion region in _IregionTable)
             {
-                if(region == region_to_enter)
+                if(region.GetType()==region_to_enter.GetType())
                 {
                     region.Enter();
                 }
