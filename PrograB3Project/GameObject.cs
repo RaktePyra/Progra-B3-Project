@@ -18,7 +18,7 @@ namespace PrograB3Project
         { 
 
         }
-        public void AddComponent(Component component)
+        public void AddComponent<TYPE>(Component component) where TYPE : Component
         {
             if( !_componentsTable.Contains(component))
             {
