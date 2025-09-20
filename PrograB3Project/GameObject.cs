@@ -8,7 +8,7 @@ namespace PrograB3Project
 {
     internal class GameObject
     {
-        List<Component> _componentsTable= new List<Component>();
+        List<Component> _componentsTable = new List<Component>();
         public GameObject() { }
         public GameObject(Component component) 
         {

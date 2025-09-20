@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrograB3Project;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace PrograB3ProjectTest.Exploration_System_Tests
         }
     }
 
-    internal class MockRegion : PrograB3Project.Components.IRegion
+    internal class MockRegion : IRegion
     {
         public void Enter()
         {

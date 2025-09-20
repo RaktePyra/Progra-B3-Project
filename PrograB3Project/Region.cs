@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
-    internal class Region : Components.IRegion
+    internal class Region : IRegion
     {
-        private List<City> _cityTable=new List<City>();
+        private List<City> _cityTable = new List<City>();
         private const int MAX_CITY_RANDOM_NUMBER = 3;
         public Region() 
         {
@@ -16,6 +16,10 @@ namespace PrograB3Project
             {
                 _cityTable.Add(new City());
             }
+        }
+        public Region(Type city_type_to_create)
+        {
+
         }
 
         public void Enter()
