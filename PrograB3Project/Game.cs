@@ -9,7 +9,7 @@ namespace PrograB3Project
 {
     internal class Game
     {
-        private World World = new World(3);
+        private World _world = new World(3);
         public void Run()
         {
      
