@@ -14,9 +14,10 @@ namespace PrograB3ProjectTest
         [Test]
         public void DependancyInversionTest()
         {
+            
             MockRegion mock_region = new MockRegion();
-            World test_world = new World(mock_region);
-            Assert.Throws<EnterException>(() => test_world.EnterRegion(mock_region));
+            World test_world = new World(mock_region.GetType());
+            Assert.Throws<EnterException>(() => test_world.EnterRegion(0));
            
         }
     }
