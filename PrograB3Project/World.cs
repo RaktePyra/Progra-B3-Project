@@ -19,7 +19,8 @@ namespace PrograB3Project
                 _iRegionTable.Add(new Region());
             }
         }
-        //OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
+        //1.0:OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
+        ////1.1: Testing succeeded but needs for research on Activator Class and absolute Type Checking before Creating the instance
         //Ressources : https://stackoverflow.com/questions/56134343/c-sharp-create-an-instance-of-a-class-from-a-type-fullname
         //             https://learn.microsoft.com/fr-fr/dotnet/api/system.activator.createinstance?view=net-8.0
         public World(Type region_type_to_create)
