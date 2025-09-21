@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
-    internal interface ICity
+    internal interface IKeyLocation
     {
         public void Enter();
     }

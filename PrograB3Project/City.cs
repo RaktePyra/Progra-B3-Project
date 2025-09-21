@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
-    internal class City : ICity
+    internal class City : IKeyLocation
     {
+        public void Enter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
