@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +41,9 @@ namespace PrograB3Project
             {
                 _iRegionTable.ElementAt(region_index).Enter();
             }
+
+            Item item = new("test", 10, 500);
+            Item test = item.AddQuantity(4999);
         }
     }
 }
