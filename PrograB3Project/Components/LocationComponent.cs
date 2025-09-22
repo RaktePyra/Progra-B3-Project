@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    internal class LocationComponent
+    public class LocationComponent
     {
         public virtual void Enter()
         {
