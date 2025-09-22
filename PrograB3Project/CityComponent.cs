@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
-    internal class City : IKeyLocation
+    internal class CityComponent : IKeyLocation
     {
         public void Enter()
         {

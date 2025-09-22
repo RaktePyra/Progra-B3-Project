@@ -16,7 +16,7 @@ namespace PrograB3ProjectTest
         {
             
             MockRegion mock_region = new MockRegion();
-            World test_world = new World(mock_region.GetType());
+            WorldComponent test_world = new WorldComponent(mock_region.GetType());
             Assert.Throws<EnterException>(() => test_world.EnterRegion(0));
            
         }
