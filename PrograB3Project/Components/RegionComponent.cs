@@ -8,7 +8,7 @@ namespace PrograB3Project.Components
 {
     internal class RegionComponent : LocationComponent
     {
-        private List<IKeyLocation> _cityTable = new List<IKeyLocation>();
+        private List<LocationComponent> _cityTable = new List<LocationComponent>();
         private const int MAX_CITY_RANDOM_NUMBER = 3;
 
         public RegionComponent() 
@@ -21,13 +21,13 @@ namespace PrograB3Project.Components
 
         public RegionComponent(Type city_type_to_create)
         {
-            if(city_type_to_create is IKeyLocation)
+            if(city_type_to_create is LocationComponent)
             {
                 Random rand = new Random();
                 int region_count = rand.Next(1, MAX_CITY_RANDOM_NUMBER+1);
                 for (int city_index = 0; city_index < region_count; city_index++)
                 {
-                    _cityTable.Add((IKeyLocation)Activator.CreateInstance(city_type_to_create));
+                    _cityTable.Add((LocationComponent)Activator.CreateInstance(city_type_to_create));
                 }
             }
             else
