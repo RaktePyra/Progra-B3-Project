@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project
+namespace PrograB3Project.Components
 {
-    internal class CityComponent : IKeyLocation
+    internal class CityComponent : LocationComponent
     {
-        public void Enter()
+        public override void Enter()
         {
             throw new NotImplementedException();
         }
