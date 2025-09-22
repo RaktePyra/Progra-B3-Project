@@ -11,6 +11,8 @@ namespace PrograB3Project.States
         public void Enter();
 
         public void Update(float delta_time);
+
+        public void ProcessInput(ConsoleKeyInfo key_info);
         public void Exit();
     }
 }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PrograB3Project.States;
 
 namespace PrograB3Project
 {
@@ -16,7 +17,7 @@ namespace PrograB3Project
         private float _lag = 0;
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
-
+        private StateMachine _gameStateMachine;
         public void Run()
         {
             _stopwatch.Start();
@@ -57,7 +58,13 @@ namespace PrograB3Project
 
         private void ProcessInput()
         {
-
+            if(Console.KeyAvailable)
+            {
+                foreach(GameObject gameObject in _gameObjectTable)
+                {
+                    
+                }
+            }
         }
     }
 }

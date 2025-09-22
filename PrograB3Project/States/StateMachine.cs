@@ -30,5 +30,10 @@ namespace PrograB3Project.States
             _currentState = new_state;
             _currentState.Enter();
         }
+
+        public void ProcessInput(ConsoleKeyInfo key_info)
+        {
+            _currentState.ProcessInput(key_info);
+        }
     }
 }
