@@ -10,11 +10,11 @@ namespace PrograB3Project
 {
     internal class Game
     {
-       
+        private GameObject _world = new GameObject("World");
 
         public void Run()
         {
-          
+          _world
 
         }
 

@@ -8,12 +8,12 @@ namespace PrograB3Project
 {
     public class GameObject
     {
-        List<Component> _componentsTable = new List<Component>();
-        public GameObject() { }
+        private string _name;
+        private List<Component> _componentsTable = new List<Component>();
 
-        public GameObject(Component component) 
-        {
-            _componentsTable.Add(component);
+        public GameObject(string name) 
+        { 
+            _name = name;
         }
 
         public void Update(float delta_time)
