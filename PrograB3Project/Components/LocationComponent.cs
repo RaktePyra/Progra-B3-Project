@@ -8,5 +8,9 @@ namespace PrograB3Project.Components
 {
     internal class LocationComponent
     {
+        public virtual void Enter()
+        {
+            Console.WriteLine("You entered a Location Component");
+        }
     }
 }
