@@ -30,12 +30,16 @@ namespace PrograB3Project.States
             //Exiting is treated inside the Engine
         }
 
+        public void Render()
+        {
+            Console.WriteLine("Been Playing for " + _updateCount + " frames");
+            Console.WriteLine("Press Escape to quit");
+        }
+
         public void Update(float delta_time)
         {
            _updateCount++;
-            Console.WriteLine("Been Playing for " + _updateCount + " frames");
-            Console.WriteLine("Press Escape to quit");
-            Console.Clear();
+            
         }
     }
 }

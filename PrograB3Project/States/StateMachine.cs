@@ -35,5 +35,9 @@ namespace PrograB3Project.States
         {
             _currentState.ProcessInput(key_info);
         }
+        public void Render()
+        {
+            _currentState.Render();
+        }
     }
 }

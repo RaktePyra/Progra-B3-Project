@@ -18,6 +18,7 @@ namespace PrograB3Project
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         private StateMachine _gameStateMachine;
+
         public void Run()
         {
             _stopwatch.Start();
@@ -55,7 +56,8 @@ namespace PrograB3Project
 
         private void Render()
         {
-
+            _gameStateMachine.Render();
+            Console.Clear();
         }
 
         private void ProcessInput()
@@ -70,5 +72,6 @@ namespace PrograB3Project
                 _gameStateMachine.ProcessInput(key);
             }
         }
+
     }
 }
