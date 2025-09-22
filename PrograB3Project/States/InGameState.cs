@@ -8,6 +8,7 @@ namespace PrograB3Project.States
 {
     internal class InGameState : IState
     {
+        private int _updateCount = 0;
         public InGameState() { }
         public void Enter()
         {
@@ -21,7 +22,10 @@ namespace PrograB3Project.States
 
         public void Update(float delta_time)
         {
-            throw new NotImplementedException();
+           _updateCount++;
+            Console.WriteLine("Been Playing for " + _updateCount + " frames");
+            Console.WriteLine("Press Escape to quit");
+            Console.Clear();
         }
     }
 }
