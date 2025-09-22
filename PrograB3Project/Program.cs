@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            GameEngine game_engine = new GameEngine();
+            game_engine.Run();
         }
     }
 }

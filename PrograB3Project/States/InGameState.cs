@@ -27,7 +27,7 @@ namespace PrograB3Project.States
 
         public void ProcessInput(ConsoleKeyInfo key_info)
         {
-           
+            //Exiting is treated inside the Engine
         }
 
         public void Update(float delta_time)

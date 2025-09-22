@@ -50,6 +50,7 @@ namespace PrograB3Project
             {
                 gameObject.Update(delta_time);
             }
+            _gameStateMachine.Update(delta_time);
         }
 
         private void Render()
@@ -61,7 +62,12 @@ namespace PrograB3Project
         {
             if(Console.KeyAvailable)
             {
-                _gameStateMachine.ProcessInput(Console.ReadKey(true));
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    _shouldExit = true;
+                }
+                _gameStateMachine.ProcessInput(key);
             }
         }
     }

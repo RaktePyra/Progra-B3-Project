@@ -37,12 +37,7 @@ namespace PrograB3Project.States
                         _stateMachine.ChangeState(new InGameState(_stateMachine));
                         break;
                     }
-                case ConsoleKey.NumPad2:
-                    {
-                        //To replace with an event later 
-                        Environment.Exit(0);
-                        break;
-                    }
+                //Exiting is treated inside the Engine
             }
         }
 
