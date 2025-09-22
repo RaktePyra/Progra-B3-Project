@@ -9,13 +9,23 @@ namespace PrograB3Project.States
     internal class InGameState : IState
     {
         private int _updateCount = 0;
-        public InGameState() { }
+        private StateMachine _stateMachine;
+        public InGameState(StateMachine state_machine) 
+        {
+            _stateMachine = state_machine;
+        }
+
         public void Enter()
         {
            
         }
 
         public void Exit()
+        {
+           
+        }
+
+        public void ProcessInput(ConsoleKeyInfo key_info)
         {
            
         }

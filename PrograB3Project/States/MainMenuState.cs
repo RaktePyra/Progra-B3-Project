@@ -28,9 +28,27 @@ namespace PrograB3Project.States
             Thread.Sleep(1000);
         }
 
+        public void ProcessInput(ConsoleKeyInfo key_info)
+        {
+            switch (key_info.Key)
+            {
+                case ConsoleKey.NumPad1:
+                    {
+                        _stateMachine.ChangeState(new InGameState(_stateMachine));
+                        break;
+                    }
+                case ConsoleKey.NumPad2:
+                    {
+                        //To replace with an event later 
+                        Environment.Exit(0);
+                        break;
+                    }
+            }
+        }
+
         public void Update(float delta_time)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -21,7 +21,8 @@ namespace PrograB3Project
         public void Run()
         {
             _stopwatch.Start();
-
+            _gameStateMachine = new StateMachine();
+            _gameStateMachine.SetInitialState(new MainMenuState(_gameStateMachine));
             while (!_shouldExit)
             {
                 _loopStartTime = _stopwatch.ElapsedMilliseconds;
@@ -60,10 +61,7 @@ namespace PrograB3Project
         {
             if(Console.KeyAvailable)
             {
-                foreach(GameObject gameObject in _gameObjectTable)
-                {
-                    
-                }
+                _gameStateMachine.ProcessInput(Console.ReadKey(true));
             }
         }
     }
