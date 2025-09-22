@@ -24,7 +24,7 @@ namespace PrograB3Project.Components
         {
             return _name;
         }
-        public virtual void AddLocation()
+        public virtual void AddLocation(LocationComponent location)
         {
 
         }

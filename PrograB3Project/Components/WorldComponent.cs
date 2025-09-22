@@ -64,5 +64,13 @@ namespace PrograB3Project.Components
                 Console.WriteLine((region_index + 1) + "." + _regionTable[region_index].GetName());
             }
         }
+
+        public override void AddLocation(LocationComponent location)
+        {
+           if(!_regionTable.Contains(location))
+            {
+                _regionTable.Add(location);
+            }
+        }
     }
 }

@@ -11,15 +11,12 @@ namespace PrograB3Project.Components
         private List<LocationComponent> _cityTable = new List<LocationComponent>();
         private const int MAX_CITY_RANDOM_NUMBER = 3;
 
-        public RegionComponent() 
+        public RegionComponent(string name) : base(name)
         {
-            for (int city_index = 0; city_index < MAX_CITY_RANDOM_NUMBER; city_index++)
-            {
-                _cityTable.Add(new CityComponent());
-            }
+           
         }
 
-        public RegionComponent(Type city_type_to_create)
+        public RegionComponent(Type city_type_to_create,string name) : base(name)
         {
             if(city_type_to_create is LocationComponent)
             {
