@@ -9,16 +9,20 @@ namespace PrograB3Project.Components
 {
     public class WorldComponent : LocationComponent
     {
-        private List<IRegion> _iRegionTable = new List<IRegion>();
+        private List<LocationComponent> _regionTable = new List<LocationComponent>();
         private const int MAX_REGION_RANDOM_NUMBER = 3;
         //Idea : Create a vector class that can be used as a parameter to this World to specify inside the vector
         //how many cities would be in a region and using the size of the vector as the number of regions inside the world
-       
-        public WorldComponent(int desired_regions_number)
+
+        public WorldComponent(string name) : base(name)
+        { 
+        }
+
+        public WorldComponent(int desired_regions_number,string name) : base(name)
         {
             for (int region_index = 0; region_index < desired_regions_number; region_index++)
             {
-                _iRegionTable.Add(new RegionComponent());
+                _regionTable.Add(new RegionComponent());
             }
         }
         //1.0:OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
@@ -26,7 +30,7 @@ namespace PrograB3Project.Components
         //Ressources : https://stackoverflow.com/questions/56134343/c-sharp-create-an-instance-of-a-class-from-a-type-fullname
         //             https://learn.microsoft.com/fr-fr/dotnet/api/system.activator.createinstance?view=net-8.0
         
-        public WorldComponent(Type region_type_to_create)
+        public WorldComponent(Type region_type_to_create,string name) : base(name)
         {
             Random random = new Random();
             int random_regions_number = Math.Clamp(random.Next(),1, MAX_REGION_RANDOM_NUMBER);
@@ -34,18 +38,30 @@ namespace PrograB3Project.Components
             for (int region_index = 0; region_index < random_regions_number; region_index++)
             {
                 //TO DO : Type Check to see if region_type_to_create possess the IRegion interface
-                _iRegionTable.Add((IRegion)Activator.CreateInstance(region_type_to_create));
+                _regionTable.Add((LocationComponent)Activator.CreateInstance(region_type_to_create));
             }
+            
         }
 
         public void EnterRegion(int region_index)
         {
-            if(_iRegionTable.ElementAt(region_index) != null)
+            if(_regionTable.ElementAt(region_index) != null)
             {
-                _iRegionTable.ElementAt(region_index).Enter();
+                _regionTable.ElementAt(region_index).Enter();
             }
 
          
+        }
+
+        public override void Enter()
+        {
+            Console.WriteLine("Welcome to " + GetName());
+            Console.WriteLine("Where do you want to go");
+
+            for( int region_index = 0; region_index < _regionTable.Count; region_index ++ )
+            {
+                Console.WriteLine((region_index + 1) + "." + _regionTable[region_index].GetName());
+            }
         }
     }
 }

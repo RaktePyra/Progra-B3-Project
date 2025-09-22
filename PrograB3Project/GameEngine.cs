@@ -56,8 +56,8 @@ namespace PrograB3Project
 
         private void Render()
         {
-            _gameStateMachine.Render();
-            Console.Clear();
+            //_gameStateMachine.Render();
+            //Console.Clear();
         }
 
         private void ProcessInput()

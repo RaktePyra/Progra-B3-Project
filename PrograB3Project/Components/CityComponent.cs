@@ -10,7 +10,7 @@ namespace PrograB3Project.Components
     {
         public override void Enter()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
