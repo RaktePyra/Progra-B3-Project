@@ -18,30 +18,30 @@ namespace PrograB3Project.Components
         { 
         }
 
-        public WorldComponent(int desired_regions_number, GameObject owner) : base(owner)
-        {
-            for (int region_index = 0; region_index < desired_regions_number; region_index++)
-            {
-                _regionTable.Add(new RegionComponent());
-            }
-        }
+        //public WorldComponent(int desired_regions_number, GameObject owner) : base(owner)
+        //{
+        //    for (int region_index = 0; region_index < desired_regions_number; region_index++)
+        //    {
+        //        _regionTable.Add(new RegionComponent());
+        //    }
+        //}
         //1.0:OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
         ////1.1: Testing succeeded but needs for research on Activator Class and absolute Type Checking before Creating the instance
         //Ressources : https://stackoverflow.com/questions/56134343/c-sharp-create-an-instance-of-a-class-from-a-type-fullname
         //             https://learn.microsoft.com/fr-fr/dotnet/api/system.activator.createinstance?view=net-8.0
         
-        public WorldComponent(Type region_type_to_create,GameObject owner) : base(owner) 
-        {
-            Random random = new Random();
-            int random_regions_number = Math.Clamp(random.Next(),1, MAX_REGION_RANDOM_NUMBER);
+        //public WorldComponent(Type region_type_to_create,GameObject owner) : base(owner) 
+        //{
+        //    Random random = new Random();
+        //    int random_regions_number = Math.Clamp(random.Next(),1, MAX_REGION_RANDOM_NUMBER);
 
-            for (int region_index = 0; region_index < random_regions_number; region_index++)
-            {
-                //TO DO : Type Check to see if region_type_to_create possess the IRegion interface
-                _regionTable.Add((LocationComponent)Activator.CreateInstance(region_type_to_create));
-            }
+        //    for (int region_index = 0; region_index < random_regions_number; region_index++)
+        //    {
+        //        //TO DO : Type Check to see if region_type_to_create possess the IRegion interface
+        //        _regionTable.Add((LocationComponent)Activator.CreateInstance(region_type_to_create));
+        //    }
             
-        }
+        //}
 
         public void EnterRegion(int region_index)
         {

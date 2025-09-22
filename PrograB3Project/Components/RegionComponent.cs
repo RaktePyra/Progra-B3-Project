@@ -17,22 +17,22 @@ namespace PrograB3Project.Components
         }
 
         
-        public RegionComponent(Type city_type_to_create, GameObject owner) : base(owner)
-        {
-            if(city_type_to_create is LocationComponent)
-            {
-                Random rand = new Random();
-                int region_count = rand.Next(1, MAX_CITY_RANDOM_NUMBER+1);
-                for (int city_index = 0; city_index < region_count; city_index++)
-                {
-                    _cityTable.Add((LocationComponent)Activator.CreateInstance(city_type_to_create));
-                }
-            }
-            else
-            {
-                throw new Exception("Invalid city type provided");
-            }
-        }
+        //public RegionComponent(Type city_type_to_create, GameObject owner) : base(owner)
+        //{
+        //    if(city_type_to_create is LocationComponent)
+        //    {
+        //        Random rand = new Random();
+        //        int region_count = rand.Next(1, MAX_CITY_RANDOM_NUMBER+1);
+        //        for (int city_index = 0; city_index < region_count; city_index++)
+        //        {
+        //            _cityTable.Add((LocationComponent)Activator.CreateInstance(city_type_to_create));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Invalid city type provided");
+        //    }
+        //}
 
         public override void Enter()
         {
