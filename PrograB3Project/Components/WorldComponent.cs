@@ -53,6 +53,7 @@ namespace PrograB3Project.Components
          
         }
 
+        
         public override void Enter()
         {
             Console.WriteLine("Welcome to " + GetName());
