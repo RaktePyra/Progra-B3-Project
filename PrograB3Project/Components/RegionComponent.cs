@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project
+namespace PrograB3Project.Components
 {
-    internal class Region : IRegion
+    internal class RegionComponent : LocationComponent
     {
         private List<IKeyLocation> _cityTable = new List<IKeyLocation>();
         private const int MAX_CITY_RANDOM_NUMBER = 3;
 
-        public Region() 
+        public RegionComponent() 
         {
             for (int city_index = 0; city_index < MAX_CITY_RANDOM_NUMBER; city_index++)
             {
-                _cityTable.Add(new City());
+                _cityTable.Add(new CityComponent());
             }
         }
 
-        public Region(Type city_type_to_create)
+        public RegionComponent(Type city_type_to_create)
         {
             if(city_type_to_create is IKeyLocation)
             {
@@ -36,7 +36,7 @@ namespace PrograB3Project
             }
         }
 
-        public void Enter()
+        public override void Enter()
         {
            
         }
