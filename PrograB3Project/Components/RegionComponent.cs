@@ -45,5 +45,13 @@ namespace PrograB3Project.Components
                 _cityTable[location_index].Enter();
             }
         }
+
+        public override void AddLocation(LocationComponent location)
+        {
+            if (!_cityTable.Contains(location))
+            {
+                _cityTable.Add(location);
+            }
+        }
     }
 }
