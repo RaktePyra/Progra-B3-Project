@@ -29,5 +29,20 @@ namespace PrograB3Project
             }
             return;
         }
+
+        public TYPE GetComponent<TYPE>() where TYPE : Component
+        {
+            TYPE component_to_return = null;
+            foreach (Component component in _componentsTable)
+            {
+                if(component.GetType() == typeof(TYPE))
+                {
+                    component_to_return =(TYPE)component;
+                }
+            }
+            return component_to_return;
+            
+        }
+            
     }
 }
