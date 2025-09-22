@@ -12,12 +12,12 @@ namespace PrograB3Project.States
         public InGameState() { }
         public void Enter()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void Exit()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void Update(float delta_time)
