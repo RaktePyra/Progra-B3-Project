@@ -22,7 +22,7 @@ namespace PrograB3Project.Components
         {
             for (int region_index = 0; region_index < desired_regions_number; region_index++)
             {
-                _regionTable.Add(new RegionComponent());
+                _regionTable.Add(new RegionComponent(""));
             }
         }
         //1.0:OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
