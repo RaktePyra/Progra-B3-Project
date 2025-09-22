@@ -10,8 +10,8 @@ namespace PrograB3ProjectTest
         [SetUp]
         public void Setup()
         {
-            _world = new GameObject();
-            WorldComponent world_component = new WorldComponent("Tamriel");
+            _world = new GameObject("World");
+            WorldComponent world_component = new WorldComponent(_world);
         }
 
         [Test]

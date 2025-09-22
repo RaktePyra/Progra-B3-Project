@@ -18,7 +18,7 @@ namespace PrograB3ProjectTest.Exploration_System_Tests
 
     internal class MockRegion : LocationComponent
     {
-        public MockRegion() : base("Mock")
+        public MockRegion(GameObject owner) : base(owner)
         {
         }
 

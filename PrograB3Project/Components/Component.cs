@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    public abstract class Component
+    public class Component
     {
+        private GameObject _ownerGameObject;
+        public Component(GameObject owner)
+        {
+            _ownerGameObject = owner;
+        }
+        public void Update(float delta_time)
+        {
+
+        }
+
+        public GameObject GetOwnerGameObject()
+        {
+            return _ownerGameObject;
+        }
     }
 }

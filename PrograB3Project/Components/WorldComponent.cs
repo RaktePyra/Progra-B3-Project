@@ -14,15 +14,15 @@ namespace PrograB3Project.Components
         //Idea : Create a vector class that can be used as a parameter to this World to specify inside the vector
         //how many cities would be in a region and using the size of the vector as the number of regions inside the world
 
-        public WorldComponent(string name) : base(name)
+        public WorldComponent(GameObject owner) : base(owner)
         { 
         }
 
-        public WorldComponent(int desired_regions_number,string name) : base(name)
+        public WorldComponent(int desired_regions_number, GameObject owner) : base(owner)
         {
             for (int region_index = 0; region_index < desired_regions_number; region_index++)
             {
-                _regionTable.Add(new RegionComponent(""));
+                _regionTable.Add(new RegionComponent());
             }
         }
         //1.0:OOOF, Black Magic incoming to apply Dependy inversion Principle, private till it hasn't been tested thoroughly
@@ -30,7 +30,7 @@ namespace PrograB3Project.Components
         //Ressources : https://stackoverflow.com/questions/56134343/c-sharp-create-an-instance-of-a-class-from-a-type-fullname
         //             https://learn.microsoft.com/fr-fr/dotnet/api/system.activator.createinstance?view=net-8.0
         
-        public WorldComponent(Type region_type_to_create,string name) : base(name)
+        public WorldComponent(Type region_type_to_create,GameObject owner) : base(owner) 
         {
             Random random = new Random();
             int random_regions_number = Math.Clamp(random.Next(),1, MAX_REGION_RANDOM_NUMBER);
@@ -54,12 +54,12 @@ namespace PrograB3Project.Components
         
         public override void Enter()
         {
-            Console.WriteLine("Welcome to " + GetName());
+            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName());
             Console.WriteLine("Where do you want to go");
 
             for( int region_index = 0; region_index < _regionTable.Count; region_index ++ )
             {
-                Console.WriteLine((region_index + 1) + "." + _regionTable[region_index].GetName());
+                Console.WriteLine((region_index + 1) + "." + _regionTable[region_index].GetOwnerGameObject().GetName());
             }
         }
 

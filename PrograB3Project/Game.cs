@@ -14,7 +14,7 @@ namespace PrograB3Project
 
         public void Run()
         {
-          _world
+         
 
         }
 

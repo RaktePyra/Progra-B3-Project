@@ -6,24 +6,17 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    public class LocationComponent
+    public class LocationComponent : Component
     {
-        private string _name;
+        public LocationComponent(GameObject owner) : base(owner)
+        {
+        }
 
         public virtual void Enter()
         {
             Console.WriteLine("You entered a Location Component");
         }
 
-        public LocationComponent(string name)
-        {
-            _name = name;
-        }
-
-        public string GetName()
-        {
-            return _name;
-        }
         public virtual void AddLocation(LocationComponent location)
         {
 

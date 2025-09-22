@@ -8,6 +8,10 @@ namespace PrograB3Project.Components
 {
     internal class CityComponent : LocationComponent
     {
+        public CityComponent(GameObject owner) : base(owner)
+        {
+        }
+
         public override void Enter()
         {
             

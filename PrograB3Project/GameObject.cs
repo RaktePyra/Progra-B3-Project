@@ -43,6 +43,10 @@ namespace PrograB3Project
             return component_to_return;
             
         }
-            
+
+        public string GetName()
+        {
+            return _name;
+        }
     }
 }
