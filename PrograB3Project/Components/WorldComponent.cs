@@ -49,8 +49,6 @@ namespace PrograB3Project.Components
             {
                 _regionTable.ElementAt(region_index).Enter();
             }
-
-         
         }
 
         
@@ -70,6 +68,10 @@ namespace PrograB3Project.Components
            if(!_regionTable.Contains(location))
             {
                 _regionTable.Add(location);
+            }
+           else
+            {
+                throw new Exception("location already inside world");
             }
         }
     }

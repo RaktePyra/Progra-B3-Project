@@ -1,3 +1,4 @@
+using PrograB3Project;
 using PrograB3Project.Components;
 using PrograB3ProjectTest.Exploration_System_Tests;
 
@@ -5,19 +6,17 @@ namespace PrograB3ProjectTest
 {
     public class Tests
     {
+        private GameObject _world;
         [SetUp]
         public void Setup()
         {
-
+            _world = new GameObject();
+            WorldComponent world_component = new WorldComponent("Tamriel");
         }
 
         [Test]
-        public void DependancyInversionTest()
+        public void AddLocationTest()
         {
-            
-            MockRegion mock_region = new MockRegion();
-            WorldComponent test_world = new WorldComponent(mock_region.GetType());
-            Assert.Throws<EnterException>(() => test_world.EnterRegion(0));
            
         }
     }

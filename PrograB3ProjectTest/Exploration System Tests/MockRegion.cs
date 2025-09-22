@@ -1,4 +1,5 @@
 ﻿using PrograB3Project;
+using PrograB3Project.Components;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,13 @@ namespace PrograB3ProjectTest.Exploration_System_Tests
         }
     }
 
-    internal class MockRegion : IRegion
+    internal class MockRegion : LocationComponent
     {
-        public void Enter()
+        public MockRegion() : base("Mock")
+        {
+        }
+
+        public override void Enter()
         {
             throw new EnterException();
         }

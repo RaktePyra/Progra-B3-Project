@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using PrograB3Project.Components;
 namespace PrograB3Project
 {
-    internal class GameObject
+    public class GameObject
     {
         List<Component> _componentsTable = new List<Component>();
         public GameObject() { }
