@@ -13,9 +13,10 @@ namespace PrograB3Project
         private const int MAX_REGION_RANDOM_NUMBER = 3;
         //Idea : Create a vector class that can be used as a parameter to this World to specify inside the vector
         //how many cities would be in a region and using the size of the vector as the number of regions inside the world
+       
         public World(int desired_regions_number)
         {
-            for (int i = 0; i < desired_regions_number; i++)
+            for (int region_index = 0; region_index < desired_regions_number; region_index++)
             {
                 _iRegionTable.Add(new Region());
             }
@@ -24,17 +25,19 @@ namespace PrograB3Project
         ////1.1: Testing succeeded but needs for research on Activator Class and absolute Type Checking before Creating the instance
         //Ressources : https://stackoverflow.com/questions/56134343/c-sharp-create-an-instance-of-a-class-from-a-type-fullname
         //             https://learn.microsoft.com/fr-fr/dotnet/api/system.activator.createinstance?view=net-8.0
+        
         public World(Type region_type_to_create)
         {
             Random random = new Random();
             int random_regions_number = Math.Clamp(random.Next(),1, MAX_REGION_RANDOM_NUMBER);
 
-            for (int i = 0; i < random_regions_number; i++)
+            for (int region_index = 0; region_index < random_regions_number; region_index++)
             {
                 //TO DO : Type Check to see if region_type_to_create possess the IRegion interface
                 _iRegionTable.Add((IRegion)Activator.CreateInstance(region_type_to_create));
             }
         }
+
         public void EnterRegion(int region_index)
         {
             if(_iRegionTable.ElementAt(region_index) != null)
@@ -42,8 +45,7 @@ namespace PrograB3Project
                 _iRegionTable.ElementAt(region_index).Enter();
             }
 
-            Item item = new("test", 10, 500);
-            Item test = item.AddQuantity(4999);
+         
         }
     }
 }

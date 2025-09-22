@@ -10,14 +10,17 @@ namespace PrograB3Project
     {
         List<Component> _componentsTable = new List<Component>();
         public GameObject() { }
+
         public GameObject(Component component) 
         {
             _componentsTable.Add(component);
         }
+
         public void Update(float delta_time)
         { 
 
         }
+
         public void AddComponent<TYPE>(Component component) where TYPE : Component
         {
             if( !_componentsTable.Contains(component))
