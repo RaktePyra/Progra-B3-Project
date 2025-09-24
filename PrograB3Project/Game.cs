@@ -43,6 +43,10 @@ namespace PrograB3Project
 
             world_component.AddLocation(region_a_comp);
             world_component.AddLocation (region_b_comp);
+
+            GameObject player = new GameObject("player", _engine);
+            player.AddComponent(new InputComponent(player,_engine));
+            world_component.Enter(player);
         }
 
         public void OnExit()

@@ -17,7 +17,7 @@ namespace PrograB3Project
         private float _lag = 0;
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
-        private StateMachine _gameStateMachine;
+        //private StateMachine _gameStateMachine;
         private Game _game;
         public void Run()
         {
@@ -53,7 +53,7 @@ namespace PrograB3Project
             {
                 gameObject.Update(delta_time);
             }
-            _gameStateMachine.Update(delta_time);
+            //_gameStateMachine.Update(delta_time);
         }
 
         private void Render()
@@ -66,13 +66,13 @@ namespace PrograB3Project
         {
             if(Console.KeyAvailable)
             {
-                ConsoleKeyInfo key = Console.ReadKey();
+                ConsoleKeyInfo key = Console.ReadKey(true);
 
                 if (key.Key == ConsoleKey.Escape)
                 {
                     _shouldExit = true;
                 }
-                _gameStateMachine.ProcessInput(key);
+               // _gameStateMachine.ProcessInput(key);
             }
         }
 
