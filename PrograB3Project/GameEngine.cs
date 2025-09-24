@@ -24,10 +24,12 @@ namespace PrograB3Project
             _game = new Game(this);
             _game.Run();
             _stopwatch.Start();
+
             while (!_shouldExit)
             {
                 _loopStartTime = _stopwatch.ElapsedMilliseconds;
                 ProcessInput();
+
                 while (_lag >= MS_PER_FRAME)
                 {
                     FixedUpdate(MS_PER_FRAME);
@@ -65,6 +67,7 @@ namespace PrograB3Project
             if(Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey();
+
                 if (key.Key == ConsoleKey.Escape)
                 {
                     _shouldExit = true;
@@ -73,5 +76,19 @@ namespace PrograB3Project
             }
         }
 
+        public void RegisterGameObject(GameObject game_object)
+        {
+           if(!_gameObjectTable.Contains(game_object))
+            {
+                _gameObjectTable.Add(game_object);
+            }
+        }
+        public void UnregisterGameObject(GameObject game_object)
+        {
+            if (_gameObjectTable.Contains(game_object))
+            {
+                _gameObjectTable.Remove(game_object);
+            }
+        }
     }
 }
