@@ -8,7 +8,7 @@ using PrograB3Project.States;
 
 namespace PrograB3Project
 {
-    internal class GameEngine
+    public class GameEngine
     {
         private bool _shouldExit = false;
         private Stopwatch _stopwatch = new Stopwatch();
@@ -18,12 +18,12 @@ namespace PrograB3Project
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         private StateMachine _gameStateMachine;
-
+        private Game _game;
         public void Run()
         {
+            _game = new Game(this);
+            _game.Run();
             _stopwatch.Start();
-            _gameStateMachine = new StateMachine();
-            _gameStateMachine.SetInitialState(new MainMenuState(_gameStateMachine));
             while (!_shouldExit)
             {
                 _loopStartTime = _stopwatch.ElapsedMilliseconds;

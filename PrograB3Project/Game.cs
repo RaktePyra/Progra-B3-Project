@@ -10,7 +10,11 @@ namespace PrograB3Project
 {
     internal class Game
     {
-        
+        private GameEngine _engine;
+        public Game(GameEngine engine)
+        {
+            _engine = engine;
+        }
 
         public void Run()
         {
@@ -39,6 +43,8 @@ namespace PrograB3Project
 
             world_component.AddLocation(region_a_comp);
             world_component.AddLocation (region_b_comp);
+
+
            
 
 

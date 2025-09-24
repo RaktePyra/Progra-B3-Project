@@ -10,15 +10,20 @@ namespace PrograB3Project
     {
         private string _name;
         private List<Component> _componentsTable = new List<Component>();
+        private GameEngine _engine;
 
-        public GameObject(string name) 
+        public GameObject(string name,GameEngine gameEngine) 
         { 
             _name = name;
+            _engine = gameEngine;
         }
 
         public void Update(float delta_time)
-        { 
-
+        {
+            foreach (Component component in _componentsTable)
+            {
+                component.Update(delta_time);
+            }
         }
 
         public void AddComponent<TYPE>(Component component) where TYPE : Component
