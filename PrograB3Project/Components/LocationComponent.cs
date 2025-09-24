@@ -21,5 +21,10 @@ namespace PrograB3Project.Components
         {
 
         }
+
+        public virtual void ProcessInput(ConsoleKeyInfo key)
+        {
+
+        }
     }
 }
