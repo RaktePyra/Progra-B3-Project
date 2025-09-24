@@ -34,16 +34,16 @@ namespace PrograB3Project.Components
         //    }
         //}
 
-        public override void Enter()
+        public override void Enter(GameObject player) 
         {
-           
+           base.Enter(player);
         }
 
         public void EnterLocation(int location_index)
         {
             if(0 <= location_index && location_index < _cityTable.Count())
             {
-                _cityTable[location_index].Enter();
+                _cityTable[location_index].Enter(GetPlayer());
             }
         }
 

@@ -47,13 +47,14 @@ namespace PrograB3Project.Components
         {
             if(_regionTable.ElementAt(region_index) != null)
             {
-                _regionTable.ElementAt(region_index).Enter();
+                _regionTable.ElementAt(region_index).Enter(GetPlayer());
             }
         }
 
         
-        public override void Enter()
+        public override void Enter(GameObject player)
         {
+            base.Enter(player);
             Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName());
             Console.WriteLine("Where do you want to go");
 
@@ -72,6 +73,20 @@ namespace PrograB3Project.Components
            else
             {
                 throw new Exception("location already inside world");
+            }
+        }
+
+        public override void ProcessInput(ConsoleKeyInfo key)
+        {
+            if (key.Key > ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
+            {
+                int user_choice = (int)char.GetNumericValue(key.KeyChar) - 1;
+
+                if (_regionTable[user_choice] != null)
+                {
+                    _regionTable[user_choice].Enter(GetPlayer());
+                }
+
             }
         }
     }

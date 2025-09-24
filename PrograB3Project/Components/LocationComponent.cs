@@ -8,13 +8,14 @@ namespace PrograB3Project.Components
 {
     public class LocationComponent : Component
     {
+        private GameObject _player;
         public LocationComponent(GameObject owner) : base(owner)
         {
         }
 
-        public virtual void Enter()
+        public virtual void Enter(GameObject player)
         {
-            Console.WriteLine("You entered a Location Component");
+            _player = player;
         }
 
         public virtual void AddLocation(LocationComponent location)
@@ -25,6 +26,11 @@ namespace PrograB3Project.Components
         public virtual void ProcessInput(ConsoleKeyInfo key)
         {
 
+        }
+
+        public GameObject GetPlayer()
+        {
+            return _player;
         }
     }
 }
