@@ -49,6 +49,7 @@ namespace PrograB3Project.Components
 
         public override void AddLocation(LocationComponent location)
         {
+            base.AddLocation(location);
             if (!_cityTable.Contains(location))
             {
                 _cityTable.Add(location);

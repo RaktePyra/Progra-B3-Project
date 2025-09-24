@@ -22,5 +22,10 @@ namespace PrograB3Project.Components
         {
             return _ownerGameObject;
         }
+
+        public virtual void ProcessInput(ConsoleKeyInfo key)
+        {
+
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace PrograB3Project.Components
     public class LocationComponent : Component
     {
         private GameObject _player;
+        private LocationComponent _parentLocation;
         public LocationComponent(GameObject owner) : base(owner)
         {
         }
@@ -20,7 +21,7 @@ namespace PrograB3Project.Components
 
         public virtual void AddLocation(LocationComponent location)
         {
-
+            location._parentLocation = this;
         }
 
         public virtual void ProcessInput(ConsoleKeyInfo key)
@@ -31,6 +32,10 @@ namespace PrograB3Project.Components
         public GameObject GetPlayer()
         {
             return _player;
+        }
+
+        public virtual void Exit()
+        {
         }
     }
 }

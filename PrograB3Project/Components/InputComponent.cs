@@ -8,13 +8,20 @@ namespace PrograB3Project.Components
 {
     class InputComponent : Component
     {
-        public InputComponent(GameObject owner) : base(owner)
+        private Component _componentBeingInteractedWith;
+
+        public InputComponent(GameObject owner, GameEngine engine) : base(owner)
         {
+        }
+
+        public void BeginInteraction(Component component_to_interact_with)
+        {
+            _componentBeingInteractedWith = component_to_interact_with;
         }
 
         public void ProcessInput(ConsoleKeyInfo key)
         {
-
+            _componentBeingInteractedWith.ProcessInput(key);
         }
     }
 }
