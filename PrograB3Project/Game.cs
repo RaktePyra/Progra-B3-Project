@@ -18,21 +18,21 @@ namespace PrograB3Project
 
         public void Run()
         {
-            GameObject world = new GameObject("World");
+            GameObject world = new GameObject("World", _engine);
             WorldComponent world_component = new WorldComponent(world);
 
-            GameObject region_a = new GameObject("region a");
+            GameObject region_a = new GameObject("region a", _engine);
             RegionComponent region_a_comp = new RegionComponent(region_a);
-            GameObject city_a = new GameObject("city a");
+            GameObject city_a = new GameObject("city a", _engine);
             CityComponent city_a_comp=new CityComponent(city_a);
-            GameObject city_b = new GameObject("city b");
+            GameObject city_b = new GameObject("city b", _engine);
             CityComponent city_b_comp = new CityComponent(city_b);
 
-            GameObject region_b = new GameObject("region_b");
+            GameObject region_b = new GameObject("region_b", _engine);
             RegionComponent region_b_comp = new RegionComponent(region_b);
-            GameObject city_c = new GameObject("city c");
+            GameObject city_c = new GameObject("city c", _engine);
             CityComponent city_c_comp = new CityComponent(city_c);
-            GameObject city_d = new GameObject("city d");
+            GameObject city_d = new GameObject("city d", _engine);
             CityComponent city_d_comp = new CityComponent(city_d);
 
             region_a_comp.AddLocation(city_a_comp);
@@ -43,11 +43,6 @@ namespace PrograB3Project
 
             world_component.AddLocation(region_a_comp);
             world_component.AddLocation (region_b_comp);
-
-
-           
-
-
         }
 
         public void OnExit()
