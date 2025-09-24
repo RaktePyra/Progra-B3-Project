@@ -19,7 +19,7 @@ namespace PrograB3Project.Components
             _componentBeingInteractedWith = component_to_interact_with;
         }
 
-        public void ProcessInput(ConsoleKeyInfo key)
+        public override void ProcessInput(ConsoleKeyInfo key)
         {
             _componentBeingInteractedWith.ProcessInput(key);
         }

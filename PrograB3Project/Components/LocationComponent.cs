@@ -17,16 +17,17 @@ namespace PrograB3Project.Components
         public virtual void Enter(GameObject player)
         {
             _player = player;
+            InputComponent player_input_comp = _player.GetComponent<InputComponent>();
+
+            if (player_input_comp != null)
+            {
+                player_input_comp.BeginInteraction(this);
+            }
         }
 
         public virtual void AddLocation(LocationComponent location)
         {
             location._parentLocation = this;
-        }
-
-        public virtual void ProcessInput(ConsoleKeyInfo key)
-        {
-
         }
 
         public GameObject GetPlayer()

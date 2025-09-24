@@ -11,10 +11,5 @@ namespace PrograB3Project.Components
         public CityComponent(GameObject owner) : base(owner)
         {
         }
-
-        public override void Enter()
-        {
-            
-        }
     }
 }
