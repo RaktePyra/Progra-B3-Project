@@ -26,6 +26,7 @@ namespace PrograB3Project.States
             _player = player;
             _shop = shop;
         }
+
         public void Enter()
         {
             Console.Clear();
@@ -48,10 +49,12 @@ namespace PrograB3Project.States
         public void ProcessInput(ConsoleKeyInfo key_info)
         {
             int user_choice = (int) key_info.Key - (int)ConsoleKey.NumPad1;
+
             if (user_choice > 0 && user_choice <= _shop.GetComponent<InventoryComponent>().GetNumberOfItems())
             {
                 _shopTradingComponent.SellItemToVendor(user_choice,_player.GetComponent<InventoryComponent>());
             }
+
             else if(user_choice == -1)
             {
                 _shopStateMachine.ChangeState(_shopMainState);

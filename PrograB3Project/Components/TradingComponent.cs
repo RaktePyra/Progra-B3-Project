@@ -18,6 +18,7 @@ namespace PrograB3Project.Components
         {
             if (_vendorInventory.GetItem(item_index) != null && buyer_inventory.GetMoney() >= _vendorInventory.GetItem(item_index).GetPrice())
             {
+                Console.WriteLine("You bought " + _vendorInventory.GetItem(item_index).GetName() + " for " + _vendorInventory.GetItem(item_index).GetPrice() + " gold");
                 int item_price = _vendorInventory.GetItem(item_index).GetPrice();
                 _vendorInventory.AddMoney(item_price);
                 buyer_inventory.RemoveMoney(item_price);
@@ -30,6 +31,7 @@ namespace PrograB3Project.Components
         {
             if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice())
             {
+                Console.WriteLine("You sold " + seller_inventory.GetItem(item_index) + " for " + seller_inventory.GetItem(item_index).GetPrice() + " gold");
                 int item_price = _vendorInventory.GetItem(item_index).GetPrice();
                 _vendorInventory.RemoveMoney(item_price);
                 seller_inventory.AddMoney(item_price);

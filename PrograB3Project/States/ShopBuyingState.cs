@@ -33,6 +33,8 @@ namespace PrograB3Project.States
             Console.Clear();
             Console.WriteLine("Press 0 to quit");
             Console.WriteLine();
+            Console.WriteLine("Your Gold : " + _player.GetComponent<InventoryComponent>().GetMoney());
+            Console.WriteLine();
             Console.WriteLine("The shop's Inventory");
             Console.WriteLine();
             _shop.GetComponent<InventoryComponent>().Display();
@@ -47,9 +49,11 @@ namespace PrograB3Project.States
         public void ProcessInput(ConsoleKeyInfo key_info)
         {
             int user_choice = (int)key_info.Key - (int)ConsoleKey.NumPad1;
-            if (user_choice > 0 && user_choice <= _shop.GetComponent<InventoryComponent>().GetNumberOfItems())
+            if (user_choice >= 0 && user_choice < _shop.GetComponent<InventoryComponent>().GetNumberOfItems())
             {
                 _shopTradingComponent.BuyItemFromVendor(user_choice, _player.GetComponent<InventoryComponent>());
+                Thread.Sleep(1000);
+                Enter();
             }
             else if (user_choice == -1)
             {
