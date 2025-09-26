@@ -11,7 +11,7 @@ namespace PrograB3Project.Events
 
         private Dictionary<Type, List<Action<Event>>> _eventTable;
 
-        public EventManager() 
+        public EventManager()
         {
             _eventTable = new Dictionary<Type, List<Action<Event>>>();
         }
@@ -23,6 +23,18 @@ namespace PrograB3Project.Events
                 _eventTable.Add(type, new List<Action<Event>>());
             }
             _eventTable[type].Add(action);
+        }
+
+        public void TriggerEvent(Event event_object)
+        {
+            Type event_type = event_object.GetType();
+            if (_eventTable.ContainsKey(event_type))
+            {
+                foreach (Action<Event> action in _eventTable[event_type])
+                {
+                    action(event_object);
+                }
+            }
         }
     }
 }

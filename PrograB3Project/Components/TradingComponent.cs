@@ -8,5 +8,11 @@ namespace PrograB3Project.Components
 {
     internal class TradingComponent : Component
     {
+        public TradingComponent(GameObject owner) : base(owner)
+        {
+
+        }
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
+    //To delete
     internal interface IKeyLocation
     {
         public void Enter();
