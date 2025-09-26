@@ -10,7 +10,7 @@ namespace PrograB3Project.States
     {
         private StateMachine _stateMachine;
         private GameObject _player;
-        public ShopMainState(StateMachine state_machine, GameObject player) 
+        public ShopMainState(StateMachine state_machine, GameObject player, GameObject shop) 
         {
             _stateMachine = state_machine;
             _player = player;

@@ -13,8 +13,12 @@ namespace PrograB3Project.Components
         {
             GameObject shop = new GameObject("Shop",game_context);
             InventoryComponent shop_inventory = new InventoryComponent(shop, game_context);
+            GameObject sword = new GameObject("Sword", game_context);
+            ItemComponent sword_comp = new ItemComponent(sword, game_context,"sword",1,10);
+            shop_inventory.AddItem(sword_comp);
             TradingComponent shop_trading_comp = new TradingComponent(shop, game_context);
-
+            ShopComponent shop_component = new(shop, game_context,this,shop_trading_comp,shop_inventory);
+            AddLocation(shop_component);
            
         }
 
@@ -28,7 +32,7 @@ namespace PrograB3Project.Components
 
             for (int location_index = 0; location_index < _locationTable.Count; location_index++)
             {
-                Console.WriteLine(location_index + ". " + _locationTable[location_index].GetOwnerGameObject().GetName());
+                Console.WriteLine(location_index + 1 + ". " + _locationTable[location_index].GetOwnerGameObject().GetName());
             }
             Console.WriteLine(_locationTable.Count + 1 + ". Go back to " + _parentLocation.GetOwnerGameObject().GetName());
         }
@@ -47,6 +51,14 @@ namespace PrograB3Project.Components
                 _parentLocation.Enter(GetPlayer());
             }
 
+        }
+
+        public void AddLocation(KeyLocationComponent location)
+        {
+            if(!_locationTable.Contains(location))
+            {
+                _locationTable.Add(location);
+            }
         }
     }
 }
