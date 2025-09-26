@@ -64,5 +64,10 @@ namespace PrograB3Project
         {
             return _name;
         }
+
+        public Context GetContext()
+        {
+            return _gameContext;
+        }
     }
 }
