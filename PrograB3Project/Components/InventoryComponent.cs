@@ -35,5 +35,15 @@ namespace PrograB3Project.Components
         {
             return _itemTable[index];
         }
+
+        public void Display()
+        {
+            Console.WriteLine("---------------------------------");
+
+            for (int item_index = 0; item_index < _itemTable.Count; item_index++)
+            {
+                Console.WriteLine(item_index + 1 + "." + _itemTable[item_index].GetName() + " |Quantity : " + _itemTable[item_index].GetQuantity() + " |Price : " + _itemTable[item_index].GetPrice());
+            }
+        }
     }
 }

@@ -34,5 +34,20 @@ namespace PrograB3Project.Components
         {
             _quantity += quantity_to_add;
         }
+
+        public int GetQuantity()
+        {
+            return _quantity;
+        }
+
+        public int GetPrice()
+        {
+            return _price;
+        }
+
+        public string GetName()
+        {
+            return _name;
+        }
     }
 }
