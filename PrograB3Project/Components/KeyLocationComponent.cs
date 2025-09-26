@@ -8,8 +8,10 @@ namespace PrograB3Project.Components
 {
     public class KeyLocationComponent : Component
     {
-        public KeyLocationComponent(GameObject owner,Context game_context) : base(owner, game_context)
+        protected LocationComponent _parentLocation;
+        public KeyLocationComponent(GameObject owner,Context game_context, LocationComponent parentLocation) : base(owner, game_context)
         {
+            _parentLocation = parentLocation;
         }
 
         public virtual void Enter(GameObject player)
@@ -18,7 +20,7 @@ namespace PrograB3Project.Components
         }
         public virtual void Exit(GameObject player) 
         {
-
+            
         }
     }
 }

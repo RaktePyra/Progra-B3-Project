@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrograB3Project.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace PrograB3Project.States
     {
         private StateMachine _stateMachine;
         private GameObject _player;
+        private GameObject _shopGameObject;
         public ShopMainState(StateMachine state_machine, GameObject player, GameObject shop) 
         {
             _stateMachine = state_machine;
@@ -28,7 +30,7 @@ namespace PrograB3Project.States
 
         public void Exit()
         {
-          
+            _shopGameObject.GetComponent<ShopComponent>().Exit(_player);
         }
 
         public void ProcessInput(ConsoleKeyInfo key_info)
@@ -48,6 +50,7 @@ namespace PrograB3Project.States
                         }
                     case 3:
                         {
+                            Exit();
                             break;
                         }
                 }
