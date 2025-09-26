@@ -27,6 +27,7 @@ namespace PrograB3Project.Components
             {
                 throw new Exception("A Player was not provided to " + this.ToString());
             }
+
         }
 
         public virtual void AddLocation(LocationComponent location)

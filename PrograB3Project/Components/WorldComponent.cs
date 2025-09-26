@@ -79,11 +79,11 @@ namespace PrograB3Project.Components
 
         public override void ProcessInput(ConsoleKeyInfo key)
         {
-            if (key.Key > ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
+            if (key.Key >= ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
             {
-                int user_choice = (int)char.GetNumericValue(key.KeyChar) - (int)ConsoleKey.NumPad1;
+                int user_choice = (int)key.Key - (int)ConsoleKey.NumPad1;
 
-                if (_regionTable[user_choice] != null)
+                if (user_choice < _regionTable.Count && user_choice >= 0 && _regionTable[user_choice] != null) //Dereferencing one of the invalid array cells automatically crashes
                 {
                     _regionTable[user_choice].Enter(GetPlayer());
                 }
