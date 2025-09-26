@@ -35,7 +35,7 @@ namespace PrograB3Project.Components
                     }
                 case false:
                     {
-                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player));
+                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player,GetOwnerGameObject()));
                         break;
                     }
             }
