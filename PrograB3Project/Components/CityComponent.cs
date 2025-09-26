@@ -19,7 +19,7 @@ namespace PrograB3Project.Components
             base.Enter(player);
            
             Console.Clear();
-            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName() + " Region.");
+            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName() + " City.");
             Console.WriteLine("Where do you wanna go?");
 
             for (int location_index = 0; location_index < _locationTable.Count; location_index++)

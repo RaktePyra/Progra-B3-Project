@@ -32,14 +32,7 @@ namespace PrograB3Project
         //Adds the quantity to the item and returns a valid item if quantity has exceeded max Stack Amount. Otherwise, returns a default item
         public void AddQuantity(int quantity_to_add)
         {
-            ItemComponent item_to_return = new ItemComponent("", 0, 0);
             _quantity += quantity_to_add;
-
-            if (_quantity > _maxStackAmount)
-            {
-                item_to_return = new ItemComponent(_name,_quantity-_maxStackAmount, _maxStackAmount);
-            }
-            return item_to_return;
         }
     }
 }
