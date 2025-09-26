@@ -62,6 +62,7 @@ namespace PrograB3Project.Components
             {
                 Console.WriteLine((region_index + 1) + "." + _regionTable[region_index].GetOwnerGameObject().GetName());
             }
+            Console.WriteLine(_regionTable.Count+1 + ".Quit the game");
         }
 
         public override void AddLocation(LocationComponent location)
@@ -81,17 +82,17 @@ namespace PrograB3Project.Components
         {
             if (key.Key >= ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
             {
-                int user_choice = (int)key.Key - (int)ConsoleKey.NumPad1;
+                int user_choice = (int)key.Key - (int)ConsoleKey.NumPad1; // Numpad 1 because - Numpad 1 = -Numpad 0 -1 where -1 is to account for the user input being shifted by 1
 
                 if (user_choice < _regionTable.Count && user_choice >= 0 && _regionTable[user_choice] != null) //Dereferencing one of the invalid array cells automatically crashes
                 {
                     _regionTable[user_choice].Enter(GetPlayer());
                 }
+
                 else if(user_choice == _regionTable.Count)
                 {
                     _gameContext.GetEventManager().TriggerEvent(new Events.QuitGameEvent());
                 }
-
             }
         }
     }

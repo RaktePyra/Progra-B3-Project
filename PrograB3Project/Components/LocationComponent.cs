@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace PrograB3Project.Components
 {
     public class LocationComponent : Component
-    {
+    { 
+        protected LocationComponent _parentLocation;
         private GameObject _player;
-        private LocationComponent _parentLocation;
+       
         public LocationComponent(GameObject owner,Context game_context) : base(owner,game_context)
         {
         }

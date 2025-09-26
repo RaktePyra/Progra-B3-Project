@@ -43,8 +43,9 @@ namespace PrograB3Project.Components
 
             for (int city_index = 0; city_index < _cityTable.Count; city_index++)
             {
-                Console.WriteLine(city_index + ". " + _cityTable[city_index].GetOwnerGameObject().GetName());
+                Console.WriteLine(city_index +1 + ". " + _cityTable[city_index].GetOwnerGameObject().GetName());
             }
+            Console.WriteLine(_cityTable.Count + 1 + ". Quit to " + _parentLocation.GetOwnerGameObject().GetName());
         }
 
         public void EnterLocation(int location_index) //Obsolete
@@ -73,6 +74,12 @@ namespace PrograB3Project.Components
                 if (user_choice < _cityTable.Count && user_choice >= 0 && _cityTable[user_choice] != null) //Dereferencing one of the invalid array cells automatically crashes
                 {
                     _cityTable[user_choice].Enter(GetPlayer());
+                }
+
+                else if (user_choice==_cityTable.Count)
+                {
+                    Console.Clear();
+                    _parentLocation.Enter(GetPlayer());
                 }
 
             }
