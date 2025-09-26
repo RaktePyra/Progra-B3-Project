@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.States
 {
-    internal class ShopMainState : IState
+    public class ShopMainState : IState
     {
         private StateMachine _stateMachine;
         private ShopBuyingState _shopBuyingState;

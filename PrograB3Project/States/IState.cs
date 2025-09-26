@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.States
 {
-    internal interface IState
+    public interface IState
     {
         public void Enter();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.States
 {
-    internal class StateMachine
+    public class StateMachine
     {
         private IState _currentState;
         private IState _initialState;

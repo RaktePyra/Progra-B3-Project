@@ -2,52 +2,56 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PrograB3Project.States
 {
-    public class ShopBuyingState : IState
+    public class ShopSellingState : IState
     {
         private StateMachine _shopStateMachine;
         private ShopMainState _shopMainState;
+        private TradingComponent _shopTradingComponent;
         private Context _gameContext;
         private GameObject _player;
         private GameObject _shop;
 
-        public ShopBuyingState(StateMachine state_machine, Context game_context, ShopMainState shop_main_state, GameObject shop, GameObject player) 
+        public ShopSellingState(StateMachine state_machine, Context game_context, ShopMainState shop_main_state, GameObject shop, GameObject player)
         {
             _shopStateMachine = state_machine;
             _gameContext = game_context;
             _shopMainState = shop_main_state;
             _gameContext = shop.GetContext();
+            _shopTradingComponent = shop.GetComponent<TradingComponent>();
             _player = player;
             _shop = shop;
         }
-
         public void Enter()
         {
             Console.Clear();
-            Console.WriteLine("The shop's Inventory");
+            Console.WriteLine("Your Inventory");
             Console.WriteLine();
-            _shop.GetComponent<InventoryComponent>().Display();
+            _player.GetComponent<InventoryComponent>().Display();
+            Console.WriteLine();
+            Console.WriteLine("The Shop money : " + _shop.GetComponent<InventoryComponent>().GetMoney());
 
         }
 
         public void Exit()
         {
-         _shopStateMachine.ChangeState(_shopMainState);
+         
         }
 
         public void ProcessInput(ConsoleKeyInfo key_info)
         {
-            int user_choice = (int)key_info.Key - (int)ConsoleKey.NumPad1;
-
+            int user_choice = (int) key_info.Key - (int)ConsoleKey.NumPad1;
+            if (user_choice > 0 && user_choice <= _shop.GetComponent<InventoryComponent>().GetNumberOfItems())
+            {
+                _shopTradingComponent.SellItemToVendor(user_choice,)
+            }
         }
 
         public void Render()
-        {
           
         }
 

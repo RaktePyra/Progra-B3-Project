@@ -26,5 +26,17 @@ namespace PrograB3Project.Components
             }
         }
 
+        public void SellItemToVendor(int item_index,InventoryComponent seller_inventory)
+        {
+            if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice())
+            {
+                int item_price = _vendorInventory.GetItem(item_index).GetPrice();
+                _vendorInventory.RemoveMoney(item_price);
+                seller_inventory.AddMoney(item_price);
+                seller_inventory.RemoveItem(_vendorInventory.GetItem(item_index));
+                _vendorInventory.AddItem(_vendorInventory.GetItem(item_index));
+            }
+        }
+        
     }
 }

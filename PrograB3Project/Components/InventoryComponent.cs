@@ -61,5 +61,10 @@ namespace PrograB3Project.Components
         {
             _money -= money;
         }
+
+        public int GetNumberOfItems()
+        {
+            return (_itemTable.Count);
+        }
     }
 }
