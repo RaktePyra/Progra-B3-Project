@@ -46,6 +46,7 @@ namespace PrograB3Project
 
             GameObject player = new GameObject("player", _engine);
             player.AddComponent(new InputComponent(player,_engine));
+            _engine.SetPlayer(player);
             world_component.Enter(player);
         }
 

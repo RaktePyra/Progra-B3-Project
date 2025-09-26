@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PrograB3Project.Components;
 using PrograB3Project.States;
 
 namespace PrograB3Project
@@ -19,6 +20,9 @@ namespace PrograB3Project
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         //private StateMachine _gameStateMachine;
         private Game _game;
+        //To refactor later
+        private InputComponent _player_input_comp;
+        
         public void Run()
         {
             _game = new Game(this);
@@ -72,6 +76,10 @@ namespace PrograB3Project
                 {
                     _shouldExit = true;
                 }
+                else
+                {
+                    _player_input_comp.ProcessInput(key);
+                }
                // _gameStateMachine.ProcessInput(key);
             }
         }
@@ -89,6 +97,11 @@ namespace PrograB3Project
             {
                 _gameObjectTable.Remove(game_object);
             }
+        }
+
+        public void SetPlayer(GameObject player)
+        {
+            _player_input_comp = player.GetComponent<InputComponent>();
         }
     }
 }

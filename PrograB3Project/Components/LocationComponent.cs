@@ -23,6 +23,10 @@ namespace PrograB3Project.Components
             {
                 player_input_comp.BeginInteraction(this);
             }
+            else
+            {
+                throw new Exception("A Player was not provided to " + this.ToString());
+            }
         }
 
         public virtual void AddLocation(LocationComponent location)

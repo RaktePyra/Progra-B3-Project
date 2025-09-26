@@ -81,7 +81,7 @@ namespace PrograB3Project.Components
         {
             if (key.Key > ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
             {
-                int user_choice = (int)char.GetNumericValue(key.KeyChar) - 1;
+                int user_choice = (int)char.GetNumericValue(key.KeyChar) - (int)ConsoleKey.NumPad1;
 
                 if (_regionTable[user_choice] != null)
                 {
