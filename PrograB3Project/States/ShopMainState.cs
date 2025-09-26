@@ -32,13 +32,14 @@ namespace PrograB3Project.States
 
         public void Exit()
         {
-            _shopGameObject.GetComponent<ShopComponent>().Exit(_player);
+            
         }
 
         public void ProcessInput(ConsoleKeyInfo key_info)
         {
             int user_choice = (int)key_info.Key - (int)ConsoleKey.NumPad0;
-            if (user_choice > 0 && user_choice < 3)
+
+            if (user_choice > 0 && user_choice <= 3)
             {
                 switch(user_choice)
                 {
@@ -54,7 +55,7 @@ namespace PrograB3Project.States
                         }
                     case 3:
                         {
-                            Exit();
+                            _shopGameObject.GetComponent<ShopComponent>().Exit(_player);
                             break;
                         }
                 }
