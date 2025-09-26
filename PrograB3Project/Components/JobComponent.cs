@@ -19,10 +19,13 @@ namespace PrograB3Project.Components
 
         public override void Enter(GameObject player)
         {
+            base.Enter(player);
+            Console.Clear();
             _playerGameObject = player;
             _playerInventoryComponent = player.GetComponent<InventoryComponent>();
             Console.WriteLine("You entered the Grind Shrine");
             Console.WriteLine("Press [E] to commit to the grind");
+            Console.WriteLine("Press [0] to go back to the city");
         }
 
         public override void ProcessInput(ConsoleKeyInfo key)
@@ -32,7 +35,8 @@ namespace PrograB3Project.Components
                 case ConsoleKey.E:
                     {
                         _playerInventoryComponent.AddMoney(69);
-                        Console.WriteLine("Committing to the grind grants you the power to generate " + _randomGenerator.Next()%100 +" money");
+                        Console.WriteLine("Committing to the grind grants you the power to generate " + _randomGenerator.Next() % 100 + " money");
+                        Console.WriteLine("Your gold : " + _playerInventoryComponent.GetMoney());
                         break;
                     }
                 case ConsoleKey.NumPad0:

@@ -9,6 +9,7 @@ namespace PrograB3Project.Components
     internal class CityComponent : LocationComponent
     {
         private List<KeyLocationComponent> _locationTable = new List<KeyLocationComponent>();
+
         public CityComponent(GameObject owner, Context game_context) : base(owner, game_context)
         {
             GameObject shop = new GameObject("Shop",game_context);
@@ -19,6 +20,10 @@ namespace PrograB3Project.Components
             TradingComponent shop_trading_comp = new TradingComponent(shop, game_context);
             ShopComponent shop_component = new(shop, game_context,this,shop_trading_comp,shop_inventory);
             AddLocation(shop_component);
+            GameObject job = new GameObject("Grind Shrine", game_context);
+            JobComponent grind_shrine = new JobComponent(job,game_context,this);
+            AddLocation(grind_shrine);
+           
            
         }
 
@@ -32,9 +37,9 @@ namespace PrograB3Project.Components
 
             for (int location_index = 0; location_index < _locationTable.Count; location_index++)
             {
-                Console.WriteLine(location_index + 1 + ". " + _locationTable[location_index].GetOwnerGameObject().GetName());
+                Console.WriteLine(location_index + 1 + "." + _locationTable[location_index].GetOwnerGameObject().GetName());
             }
-            Console.WriteLine(_locationTable.Count + 1 + ". Go back to " + _parentLocation.GetOwnerGameObject().GetName());
+            Console.WriteLine(_locationTable.Count + 1 + ".Go back to " + _parentLocation.GetOwnerGameObject().GetName());
         }
 
         public override void ProcessInput(ConsoleKeyInfo key)
@@ -45,6 +50,7 @@ namespace PrograB3Project.Components
             {
                 _locationTable[user_choice].Enter(GetPlayer());
             }
+
             else if (user_choice == _locationTable.Count)
             {
                 Console.Clear();
