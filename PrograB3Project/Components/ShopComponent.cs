@@ -19,16 +19,31 @@ namespace PrograB3Project.Components
             _ownerLocation = owner_location;
             _shopTradingComponent = trading_comp;
             _shopInventoryComponent = shop_inventory_comp;
+            _shopStateMachine = new StateMachine(game_context);
         }
 
         public override void Enter(GameObject player)
         {
             player.GetComponent<InputComponent>().BeginInteraction(this);
+            switch (_shopStateMachine.IsInitialized())
+            {
+                case true:
+                    {
+                        //Problem : Player reference will not be refreshed so there cannot be two players for the moment
+                        _shopStateMachine.Refresh();
+                        break;
+                    }
+                case false:
+                    {
+                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player));
+                        break;
+                    }
+            }
         }
 
         public override void ProcessInput(ConsoleKeyInfo key)
         {
-            
+            _shopStateMachine.ProcessInput(key);
         }
     }
 }

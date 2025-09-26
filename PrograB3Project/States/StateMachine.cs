@@ -9,9 +9,13 @@ namespace PrograB3Project.States
     internal class StateMachine
     {
         private IState _currentState;
+        private IState _initialState;
+        private Context _gameContext;
+        private bool _hasBeenInitialized = false;
 
-        public StateMachine() 
+        public StateMachine(Context game_context) 
         { 
+            _gameContext = game_context;
         }
 
         public void Update(float delta_time)
@@ -21,7 +25,9 @@ namespace PrograB3Project.States
         public void SetInitialState(IState initial_state)
         {
             _currentState = initial_state;
-            _currentState.Enter();
+            _initialState = initial_state;
+            _hasBeenInitialized = true;
+            //_currentState.Enter();
         }
 
         public void ChangeState(IState new_state)
@@ -39,5 +45,17 @@ namespace PrograB3Project.States
         {
             _currentState.Render();
         }
+
+        public void Refresh()//This method's only purpose is to refresh the render of the state machine upon reentry while staying in the same state
+        {
+            _currentState = _initialState;
+            _initialState.Enter();
+        }
+
+        public bool IsInitialized()
+        {
+            return _hasBeenInitialized;
+        }
+
     }
 }

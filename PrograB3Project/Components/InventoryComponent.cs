@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
 
         public InventoryComponent(GameObject owner,Context game_context) : base(owner, game_context) 
         {
-
+           
         }
 
         public void AddItem(ItemComponent item)

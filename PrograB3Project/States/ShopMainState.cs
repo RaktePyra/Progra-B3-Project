@@ -9,9 +9,11 @@ namespace PrograB3Project.States
     internal class ShopMainState : IState
     {
         private StateMachine _stateMachine;
-        public ShopMainState(StateMachine state_machine) 
+        private GameObject _player;
+        public ShopMainState(StateMachine state_machine, GameObject player) 
         {
             _stateMachine = state_machine;
+            _player = player;
         }
 
         public void Enter()
