@@ -50,6 +50,11 @@ namespace PrograB3Project
 
             GameObject player = new GameObject("player", _context);
             player.AddComponent(new InputComponent(player, _context));
+            InventoryComponent player_inventory = new InventoryComponent(player, _context);
+            GameObject apple = new GameObject("Apple", _context);
+            apple.AddComponent(new ItemComponent(apple, _context,"Apple",10,5));
+            GameObject water = new GameObject("Water", _context);
+            water.AddComponent(new ItemComponent(water, _context, "Water", 100, 1));
             _engine.SetPlayer(player);
             world_component.Enter(player);
         }
