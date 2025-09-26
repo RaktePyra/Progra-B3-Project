@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project
+namespace PrograB3Project.Components
 {
     //Can i use a non predetermined type if i create it myself?
     //Ressource : https://stackoverflow.com/questions/48926915/whats-the-point-of-having-methods-in-structs
@@ -16,17 +16,17 @@ namespace PrograB3Project
     //    public readonly int _quantity;
     //    public readonly int _maxStackAmount;
     //}
-    public class ItemComponent : Components.Component
+    public class ItemComponent : Component
     {
         private string _name;
         private int _quantity;
-        private int _maxStackAmount;
+        private int _price;
 
-        public ItemComponent(GameObject owner, Context game_context,string name, int quantity, int maxStackAmount) : base(owner,game_context)
+        public ItemComponent(GameObject owner, Context game_context,string name, int quantity, int price) : base(owner,game_context)
         {
             _name = name;
             _quantity = quantity;
-            _maxStackAmount = maxStackAmount;
+            _price = price;
         }
 
         //Adds the quantity to the item and returns a valid item if quantity has exceeded max Stack Amount. Otherwise, returns a default item
