@@ -51,5 +51,15 @@ namespace PrograB3Project.Components
         {
             return _money;
         }
+
+        public void AddMoney(int money)
+        {
+            _money += money;
+        }
+
+        public void RemoveMoney(int money)
+        {
+            _money -= money;
+        }
     }
 }
