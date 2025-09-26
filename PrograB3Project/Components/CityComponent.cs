@@ -11,7 +11,11 @@ namespace PrograB3Project.Components
         private List<KeyLocationComponent> _locationTable = new List<KeyLocationComponent>();
         public CityComponent(GameObject owner, Context game_context) : base(owner, game_context)
         {
+            GameObject shop = new GameObject("Shop",game_context);
+            InventoryComponent shop_inventory = new InventoryComponent(shop, game_context);
+            TradingComponent shop_trading_comp = new TradingComponent(shop, game_context);
 
+           
         }
 
         public override void Enter(GameObject player)

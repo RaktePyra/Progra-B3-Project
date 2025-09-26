@@ -8,12 +8,14 @@ namespace PrograB3Project.Components
 {
     public class Component
     {
-        private GameObject _ownerGameObject;
         protected Context _gameContext;
+        private GameObject _ownerGameObject;
+        
         public Component(GameObject owner, Context gameContext)
         {
             _ownerGameObject = owner;
             _gameContext = gameContext;
+            _ownerGameObject.AddComponent(this);
         }
         public void Update(float delta_time)
         {
