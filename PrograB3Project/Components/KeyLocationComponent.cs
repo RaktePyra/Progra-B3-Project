@@ -9,18 +9,20 @@ namespace PrograB3Project.Components
     public class KeyLocationComponent : Component
     {
         protected LocationComponent _parentLocation;
-        public KeyLocationComponent(GameObject owner,Context game_context, LocationComponent parentLocation) : base(owner, game_context)
+
+        public KeyLocationComponent(GameObject owner,Context game_context, LocationComponent parent_location) : base(owner, game_context)
         {
-            _parentLocation = parentLocation;
+            _parentLocation = parent_location;
         }
 
         public virtual void Enter(GameObject player)
         {
 
         }
+
         public virtual void Exit(GameObject player) 
         {
-            
+            _parentLocation.Enter(player);
         }
     }
 }
