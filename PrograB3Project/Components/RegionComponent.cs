@@ -43,9 +43,9 @@ namespace PrograB3Project.Components
 
             for (int city_index = 0; city_index < _cityTable.Count; city_index++)
             {
-                Console.WriteLine(city_index +1 + ". " + _cityTable[city_index].GetOwnerGameObject().GetName());
+                Console.WriteLine(city_index +1 + "." + _cityTable[city_index].GetOwnerGameObject().GetName());
             }
-            Console.WriteLine(_cityTable.Count + 1 + ". Quit to " + _parentLocation.GetOwnerGameObject().GetName());
+            Console.WriteLine(_cityTable.Count + 1 + ".Quit to " + _parentLocation.GetOwnerGameObject().GetName());
         }
 
         public void EnterLocation(int location_index) //Obsolete
