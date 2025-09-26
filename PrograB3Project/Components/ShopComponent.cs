@@ -24,7 +24,7 @@ namespace PrograB3Project.Components
 
         public override void Enter(GameObject player)
         {
-            player.GetComponent<InputComponent>().BeginInteraction(this);
+            base.Enter(player);
             switch (_shopStateMachine.IsInitialized())
             {
                 case true:
