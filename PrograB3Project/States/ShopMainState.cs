@@ -49,6 +49,7 @@ namespace PrograB3Project.States
                         }
                     case 2:
                         {
+                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, _shopGameObject.GetContext(), this, _shopGameObject, _player));
                             break;
                         }
                     case 3:

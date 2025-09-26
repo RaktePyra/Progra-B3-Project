@@ -29,11 +29,14 @@ namespace PrograB3Project.States
         public void Enter()
         {
             Console.Clear();
+            Console.WriteLine("Press 0 to quit");
+            Console.WriteLine();
             Console.WriteLine("Your Inventory");
             Console.WriteLine();
             _player.GetComponent<InventoryComponent>().Display();
             Console.WriteLine();
             Console.WriteLine("The Shop money : " + _shop.GetComponent<InventoryComponent>().GetMoney());
+
 
         }
 
@@ -47,11 +50,16 @@ namespace PrograB3Project.States
             int user_choice = (int) key_info.Key - (int)ConsoleKey.NumPad1;
             if (user_choice > 0 && user_choice <= _shop.GetComponent<InventoryComponent>().GetNumberOfItems())
             {
-                _shopTradingComponent.SellItemToVendor(user_choice,)
+                _shopTradingComponent.SellItemToVendor(user_choice,_player.GetComponent<InventoryComponent>());
+            }
+            else if(user_choice == -1)
+            {
+                _shopStateMachine.ChangeState(_shopMainState);
             }
         }
 
         public void Render()
+        {
           
         }
 
