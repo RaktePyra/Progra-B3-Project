@@ -10,12 +10,14 @@ namespace PrograB3Project.States
     internal class ShopMainState : IState
     {
         private StateMachine _stateMachine;
+        private ShopBuyingState _shopBuyingState;
         private GameObject _player;
         private GameObject _shopGameObject;
         public ShopMainState(StateMachine state_machine, GameObject player, GameObject shop) 
         {
             _stateMachine = state_machine;
             _player = player;
+            _shopGameObject = shop;
         }
 
         public void Enter()
@@ -42,6 +44,7 @@ namespace PrograB3Project.States
                 {
                     case 1:
                         {
+                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, _shopGameObject.GetContext(), this, _shopGameObject,_player));
                             break;
                         }
                     case 2:

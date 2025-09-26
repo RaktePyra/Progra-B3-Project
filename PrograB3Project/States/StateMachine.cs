@@ -27,7 +27,7 @@ namespace PrograB3Project.States
             _currentState = initial_state;
             _initialState = initial_state;
             _hasBeenInitialized = true;
-            //_currentState.Enter();
+            _currentState.Enter();
         }
 
         public void ChangeState(IState new_state)
