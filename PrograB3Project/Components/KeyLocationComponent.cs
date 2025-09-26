@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    internal class KeyLocationComponent : Component
+    public class KeyLocationComponent : Component
     {
         public KeyLocationComponent(GameObject owner) : base(owner)
         {
+        }
+
+        public virtual void Enter(GameObject player)
+        {
+
+        }
+        public virtual void Exit(GameObject player) 
+        {
+
         }
     }
 }
