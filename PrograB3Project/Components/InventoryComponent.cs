@@ -9,6 +9,7 @@ namespace PrograB3Project.Components
     internal class InventoryComponent : Component
     {
         private List<ItemComponent> _itemTable = new List<ItemComponent>();
+        private int _money = 100;
 
         public InventoryComponent(GameObject owner,Context game_context) : base(owner, game_context) 
         {
@@ -44,6 +45,11 @@ namespace PrograB3Project.Components
             {
                 Console.WriteLine(item_index + 1 + "." + _itemTable[item_index].GetName() + " |Quantity : " + _itemTable[item_index].GetQuantity() + " |Price : " + _itemTable[item_index].GetPrice());
             }
+        }
+
+        public int GetMoney()
+        {
+            return _money;
         }
     }
 }
