@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
         private Component _componentBeingInteractedWith;
         
 
-        public InputComponent(GameObject owner) : base(owner)
+        public InputComponent(GameObject owner,Context game_context) : base(owner, game_context)
         {
            
         }

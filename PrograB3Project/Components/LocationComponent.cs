@@ -10,7 +10,7 @@ namespace PrograB3Project.Components
     {
         private GameObject _player;
         private LocationComponent _parentLocation;
-        public LocationComponent(GameObject owner) : base(owner)
+        public LocationComponent(GameObject owner,Context game_context) : base(owner,game_context)
         {
         }
 
@@ -42,6 +42,7 @@ namespace PrograB3Project.Components
 
         public virtual void Exit()
         {
+            _parentLocation.Enter(_player);
         }
     }
 }

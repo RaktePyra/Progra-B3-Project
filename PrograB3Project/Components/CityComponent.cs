@@ -9,7 +9,7 @@ namespace PrograB3Project.Components
     internal class CityComponent : LocationComponent
     {
         private List<LocationComponent> _locationTable = new List<LocationComponent>();
-        public CityComponent(GameObject owner) : base(owner)
+        public CityComponent(GameObject owner, Context game_context) : base(owner, game_context)
         {
 
         }

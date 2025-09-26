@@ -22,7 +22,7 @@ namespace PrograB3Project
         private int _quantity;
         private int _maxStackAmount;
 
-        public ItemComponent(GameObject owner,string name, int quantity, int maxStackAmount) : base(owner)
+        public ItemComponent(GameObject owner, Context game_context,string name, int quantity, int maxStackAmount) : base(owner,game_context)
         {
             _name = name;
             _quantity = quantity;

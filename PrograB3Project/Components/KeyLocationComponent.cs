@@ -8,7 +8,7 @@ namespace PrograB3Project.Components
 {
     public class KeyLocationComponent : Component
     {
-        public KeyLocationComponent(GameObject owner) : base(owner)
+        public KeyLocationComponent(GameObject owner,Context game_context) : base(owner, game_context)
         {
         }
 

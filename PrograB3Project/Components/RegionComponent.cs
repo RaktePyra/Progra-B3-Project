@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
         private List<LocationComponent> _cityTable = new List<LocationComponent>();
         private const int MAX_CITY_RANDOM_NUMBER = 3;
 
-        public RegionComponent(GameObject owner) : base(owner) 
+        public RegionComponent(GameObject owner,Context game_context) : base(owner, game_context) 
         {
 
         }

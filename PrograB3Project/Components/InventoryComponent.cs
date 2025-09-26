@@ -10,7 +10,7 @@ namespace PrograB3Project.Components
     {
         private List<ItemComponent> _itemTable = new List<ItemComponent>();
 
-        public InventoryComponent(GameObject owner) : base(owner) 
+        public InventoryComponent(GameObject owner,Context game_context) : base(owner, game_context) 
         {
 
         }
