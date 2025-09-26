@@ -10,10 +10,15 @@ namespace PrograB3Project.Components
     {
         private TradingComponent _shopTradingComponent;
         private InventoryComponent _shopInventoryComponent;
+
         public ShopComponent(GameObject owner,TradingComponent trading_comp, InventoryComponent shop_inventory_comp) : base(owner)
         {
             _shopTradingComponent = trading_comp;
             _shopInventoryComponent = shop_inventory_comp;
+        }
+
+        public override void Enter(GameObject player)
+        {
         }
     }
 }
