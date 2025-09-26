@@ -14,7 +14,7 @@ namespace PrograB3Project.Components
         //Idea : Create a vector class that can be used as a parameter to this World to specify inside the vector
         //how many cities would be in a region and using the size of the vector as the number of regions inside the world
 
-        public WorldComponent(GameObject owner) : base(owner)
+        public WorldComponent(GameObject owner,Context game_context) : base(owner, game_context)
         { 
         }
 
@@ -86,6 +86,10 @@ namespace PrograB3Project.Components
                 if (user_choice < _regionTable.Count && user_choice >= 0 && _regionTable[user_choice] != null) //Dereferencing one of the invalid array cells automatically crashes
                 {
                     _regionTable[user_choice].Enter(GetPlayer());
+                }
+                else if(user_choice == _regionTable.Count)
+                {
+                    _gameContext.GetEventManager().TriggerEvent(new Events.QuitGameEvent());
                 }
 
             }
