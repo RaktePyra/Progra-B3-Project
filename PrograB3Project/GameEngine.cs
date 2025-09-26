@@ -25,7 +25,8 @@ namespace PrograB3Project
         
         public void Run()
         {
-            _game = new Game(this);
+            Context main_context = new Context(this, new Events.EventManager());
+            _game = new Game(main_context);
             _game.Run();
             _stopwatch.Start();
 

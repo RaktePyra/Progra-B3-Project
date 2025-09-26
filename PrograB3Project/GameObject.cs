@@ -10,12 +10,14 @@ namespace PrograB3Project
     {
         private string _name;
         private List<Component> _componentsTable = new List<Component>();
+        private Context _gameContext;
         private GameEngine _engine;
 
-        public GameObject(string name,GameEngine gameEngine) 
+        public GameObject(string name,Context game_context) 
         { 
             _name = name;
-            _engine = gameEngine;
+            _gameContext = game_context;
+            _engine = game_context.GetGameEngine();
         }
 
         public void Update(float delta_time)

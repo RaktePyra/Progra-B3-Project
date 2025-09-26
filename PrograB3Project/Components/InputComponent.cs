@@ -9,9 +9,11 @@ namespace PrograB3Project.Components
     class InputComponent : Component
     {
         private Component _componentBeingInteractedWith;
+        
 
-        public InputComponent(GameObject owner, GameEngine engine) : base(owner)
+        public InputComponent(GameObject owner) : base(owner)
         {
+           
         }
 
         public void BeginInteraction(Component component_to_interact_with)
