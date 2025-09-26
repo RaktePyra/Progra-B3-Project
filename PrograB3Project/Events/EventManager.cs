@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    internal class EventManager
+    public class EventManager
     {
 
         private Dictionary<Type, List<Action<Event>>> _eventTable;

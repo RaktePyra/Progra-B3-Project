@@ -43,7 +43,7 @@ namespace PrograB3Project.Components
             
         //}
 
-        public void EnterRegion(int region_index)
+        public void EnterRegion(int region_index) //Obsolete
         {
             if(_regionTable.ElementAt(region_index) != null)
             {
