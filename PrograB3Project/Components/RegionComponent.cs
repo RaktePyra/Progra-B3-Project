@@ -37,9 +37,17 @@ namespace PrograB3Project.Components
         public override void Enter(GameObject player) 
         {
            base.Enter(player);
+            Console.Clear();
+            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName() + " Region.");
+            Console.WriteLine("Where do you wanna go?");
+
+            for (int city_index = 0; city_index < _cityTable.Count; city_index++)
+            {
+                Console.WriteLine(city_index + ". " + _cityTable[city_index].GetOwnerGameObject().GetName());
+            }
         }
 
-        public void EnterLocation(int location_index)
+        public void EnterLocation(int location_index) //Obsolete
         {
             if(0 <= location_index && location_index < _cityTable.Count())
             {
@@ -53,6 +61,20 @@ namespace PrograB3Project.Components
             if (!_cityTable.Contains(location))
             {
                 _cityTable.Add(location);
+            }
+        }
+
+        public override void ProcessInput(ConsoleKeyInfo key)
+        {
+            if (key.Key >= ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
+            {
+                int user_choice = (int)key.Key - (int)ConsoleKey.NumPad1;
+
+                if (user_choice < _cityTable.Count && user_choice >= 0 && _cityTable[user_choice] != null) //Dereferencing one of the invalid array cells automatically crashes
+                {
+                    _cityTable[user_choice].Enter(GetPlayer());
+                }
+
             }
         }
     }
