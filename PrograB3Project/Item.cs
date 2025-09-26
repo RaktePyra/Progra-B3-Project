@@ -16,13 +16,13 @@ namespace PrograB3Project
     //    public readonly int _quantity;
     //    public readonly int _maxStackAmount;
     //}
-    public class Item
+    public class ItemComponent : Components.Component
     {
         private string _name;
         private int _quantity;
         private int _maxStackAmount;
 
-        public Item(string name, int quantity, int maxStackAmount)
+        public ItemComponent(GameObject owner,string name, int quantity, int maxStackAmount) : base(owner)
         {
             _name = name;
             _quantity = quantity;
@@ -30,14 +30,14 @@ namespace PrograB3Project
         }
 
         //Adds the quantity to the item and returns a valid item if quantity has exceeded max Stack Amount. Otherwise, returns a default item
-        public Item AddQuantity(int quantity_to_add)
+        public void AddQuantity(int quantity_to_add)
         {
-            Item item_to_return = new Item("", 0, 0);
+            ItemComponent item_to_return = new ItemComponent("", 0, 0);
             _quantity += quantity_to_add;
 
             if (_quantity > _maxStackAmount)
             {
-                item_to_return = new Item(_name,_quantity-_maxStackAmount, _maxStackAmount);
+                item_to_return = new ItemComponent(_name,_quantity-_maxStackAmount, _maxStackAmount);
             }
             return item_to_return;
         }

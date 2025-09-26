@@ -49,7 +49,7 @@ namespace PrograB3Project
             world_component.AddLocation (region_b_comp);
 
             GameObject player = new GameObject("player", _context);
-            player.AddComponent(new InputComponent(player, _context));
+            player.AddComponent(new InputComponent(player));
             _engine.SetPlayer(player);
             world_component.Enter(player);
         }
