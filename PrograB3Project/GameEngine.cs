@@ -26,6 +26,7 @@ namespace PrograB3Project
         public void Run()
         {
             Context main_context = new Context(this, new Events.EventManager());
+            main_context.GetEventManager().RegisterEvent(typeof(Events.QuitGameEvent), OnQuitGame);
             _game = new Game(main_context);
             _game.Run();
             _stopwatch.Start();
@@ -103,6 +104,11 @@ namespace PrograB3Project
         public void SetPlayer(GameObject player)
         {
             _player_input_comp = player.GetComponent<InputComponent>();
+        }
+
+        public void OnQuitGame(Events.Event quit_game_event)
+        {
+            _shouldExit = true;
         }
     }
 }
