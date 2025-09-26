@@ -22,31 +22,31 @@ namespace PrograB3Project
 
         public void Run()
         {
-            GameObject world = new GameObject("World", _context);
+            GameObject world = new GameObject("Tamriel", _context);
             WorldComponent world_component = new WorldComponent(world,_context);
 
-            GameObject region_a = new GameObject("region a", _context);
-            RegionComponent region_a_comp = new RegionComponent(region_a, _context);
-            GameObject city_a = new GameObject("city a", _context);
-            CityComponent city_a_comp=new CityComponent(city_a, _context);
-            GameObject city_b = new GameObject("city b", _context);
-            CityComponent city_b_comp = new CityComponent(city_b, _context);
+            GameObject skyrim = new GameObject("Skyrim", _context);
+            RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _context);
+            GameObject windhelm = new GameObject("WindHelm", _context);
+            CityComponent city_windhelm_comp=new CityComponent(windhelm, _context);
+            GameObject whiterun = new GameObject("Whiterun", _context);
+            CityComponent city_whiterun_comp = new CityComponent(whiterun, _context);
 
-            GameObject region_b = new GameObject("region_b", _context);
-            RegionComponent region_b_comp = new RegionComponent(region_b, _context);
-            GameObject city_c = new GameObject("city c", _context);
-            CityComponent city_c_comp = new CityComponent(city_c, _context);
-            GameObject city_d = new GameObject("city d", _context);
-            CityComponent city_d_comp = new CityComponent(city_d, _context);
+            GameObject cyrodiil = new GameObject("Cyrodiil", _context);
+            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _context);
+            GameObject imperial_city = new GameObject("Imperial City", _context);
+            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _context);
+            GameObject kvatch = new GameObject("Kvatch", _context);
+            CityComponent city_kvatch_comp = new CityComponent(kvatch, _context);
 
-            region_a_comp.AddLocation(city_a_comp);
-            region_a_comp.AddLocation(city_b_comp);
+            skyrim_region_comp.AddLocation(city_windhelm_comp);
+            skyrim_region_comp.AddLocation(city_whiterun_comp);
 
-            region_b_comp.AddLocation(city_c_comp);
-            region_b_comp.AddLocation (city_d_comp);
+            region_cyrodiil_comp.AddLocation(city_imperial_city_comp);
+            region_cyrodiil_comp.AddLocation (city_kvatch_comp);
 
-            world_component.AddLocation(region_a_comp);
-            world_component.AddLocation (region_b_comp);
+            world_component.AddLocation(skyrim_region_comp);
+            world_component.AddLocation (region_cyrodiil_comp);
 
             GameObject player = new GameObject("player", _context);
             player.AddComponent(new InputComponent(player, _context));
@@ -55,6 +55,9 @@ namespace PrograB3Project
             apple.AddComponent(new ItemComponent(apple, _context,"Apple",10,5));
             GameObject water = new GameObject("Water", _context);
             water.AddComponent(new ItemComponent(water, _context, "Water", 100, 1));
+            player_inventory.AddItem(apple.GetComponent<ItemComponent>());
+            player_inventory.AddItem(water.GetComponent<ItemComponent>());
+
             _engine.SetPlayer(player);
             world_component.Enter(player);
         }
