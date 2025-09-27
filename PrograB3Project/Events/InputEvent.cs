@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    public class InputEvent
+    public class InputEvent : Event
     {
+        private ConsoleKeyInfo _pressedKey;
+
+        public InputEvent(ConsoleKeyInfo input_key) 
+        {
+            _pressedKey = input_key;
+        }
+
+        public ConsoleKeyInfo GetKeyInfo()
+        {
+            return _pressedKey;
+        }
     }
 }
