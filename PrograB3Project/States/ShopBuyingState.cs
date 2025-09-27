@@ -43,7 +43,7 @@ namespace PrograB3Project.States
             int number_of_items_inside_shop = shop_inventory.GetNumberOfItems();
             for (int item_index = 0; item_index < number_of_items_inside_shop; item_index++)
             {
-                Console.WriteLine(item_index + 1 + "." + shop_inventory.GetItem(item_index).GetName() + " |Quantity : " + shop_inventory.GetItem(item_index).GetQuantity() + " |Price : " + shop_inventory.GetItem(item_index).GetPrice()/(_player.GetComponent<CharacterComponent>().GetBargainingStat()+1));
+                Console.WriteLine(item_index + 1 + "." + shop_inventory.GetItem(item_index).GetName() + " |Quantity : " + shop_inventory.GetItem(item_index).GetQuantity() + " |Price : " + shop_inventory.GetItem(item_index).GetPrice()/(_player.GetComponent<CharacterComponent>().GetBargainingStat()));
             }
             
 
@@ -60,7 +60,7 @@ namespace PrograB3Project.States
 
             if (user_choice >= 0 && user_choice < _shop.GetComponent<InventoryComponent>().GetNumberOfItems())
             {
-                _shopTradingComponent.BuyItemFromVendor(user_choice, _player.GetComponent<InventoryComponent>());
+                _shopTradingComponent.BuyItemFromVendor(user_choice, _player.GetComponent<InventoryComponent>(), _player.GetComponent<CharacterComponent>());
                 Thread.Sleep(1000);
                 Enter();
             }

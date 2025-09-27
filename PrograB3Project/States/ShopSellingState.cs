@@ -55,7 +55,7 @@ namespace PrograB3Project.States
 
             if (user_choice >= 0 && user_choice < _player.GetComponent<InventoryComponent>().GetNumberOfItems())
             {
-                _shopTradingComponent.SellItemToVendor(user_choice,_player.GetComponent<InventoryComponent>());
+                _shopTradingComponent.SellItemToVendor(user_choice,_player.GetComponent<InventoryComponent>(),_player.GetComponent<CharacterComponent>());
                 Thread.Sleep(1000);
                 Enter();
             }

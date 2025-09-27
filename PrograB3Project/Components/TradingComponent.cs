@@ -14,12 +14,12 @@ namespace PrograB3Project.Components
             _vendorInventory = owner.GetComponent<InventoryComponent>();
         }
 
-        public void BuyItemFromVendor(int item_index,InventoryComponent buyer_inventory)
+        public void BuyItemFromVendor(int item_index,InventoryComponent buyer_inventory, CharacterComponent buyer_character_stats)
         {
-            if (_vendorInventory.GetItem(item_index) != null && buyer_inventory.GetMoney() >= _vendorInventory.GetItem(item_index).GetPrice())
+            if (_vendorInventory.GetItem(item_index) != null && buyer_inventory.GetMoney() >= _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat())
             {
-                Console.WriteLine("You bought " + _vendorInventory.GetItem(item_index).GetName() + " for " + _vendorInventory.GetItem(item_index).GetPrice() + " gold");
-                int item_price = _vendorInventory.GetItem(item_index).GetPrice();
+                Console.WriteLine("You bought " + _vendorInventory.GetItem(item_index).GetName() + " for " + _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat() + " gold");
+                int item_price = _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat();
                 _vendorInventory.AddMoney(item_price);
                 buyer_inventory.RemoveMoney(item_price);
                 buyer_inventory.AddItem(_vendorInventory.GetItem(item_index));
@@ -27,7 +27,7 @@ namespace PrograB3Project.Components
             }
         }
 
-        public void SellItemToVendor(int item_index,InventoryComponent seller_inventory)
+        public void SellItemToVendor(int item_index,InventoryComponent seller_inventory, CharacterComponent buyer_character_stats)
         {
             if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice())
             {
