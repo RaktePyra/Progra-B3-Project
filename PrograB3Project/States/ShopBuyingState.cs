@@ -32,6 +32,7 @@ namespace PrograB3Project.States
 
         public void Enter()
         {
+            InventoryComponent shop_inventory = _shop.GetComponent<InventoryComponent>();
             Console.Clear();
             Console.WriteLine("Press 0 to quit");
             Console.WriteLine();
@@ -39,7 +40,12 @@ namespace PrograB3Project.States
             Console.WriteLine();
             Console.WriteLine("The shop's Inventory");
             Console.WriteLine();
-            _shop.GetComponent<InventoryComponent>().Display();
+            int number_of_items_inside_shop = shop_inventory.GetNumberOfItems();
+            for (int item_index = 0; item_index < number_of_items_inside_shop; item_index++)
+            {
+                Console.WriteLine(item_index + 1 + "." + shop_inventory.GetItem(item_index).GetName() + " |Quantity : " + shop_inventory.GetItem(item_index).GetQuantity() + " |Price : " + shop_inventory.GetItem(item_index).GetPrice()/(_player.GetComponent<CharacterComponent>().GetBargainingStat()+1));
+            }
+            
 
         }
 
