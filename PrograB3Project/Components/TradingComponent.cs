@@ -36,7 +36,7 @@ namespace PrograB3Project.Components
                 _vendorInventory.RemoveMoney(item_price);
                 seller_inventory.AddMoney(item_price);
                 _vendorInventory.AddItem(seller_inventory.GetItem(item_index));
-                seller_inventory.RemoveItem(_vendorInventory.GetItem(item_index));
+                seller_inventory.RemoveItem(seller_inventory.GetItem(item_index));
                 
             }
         }
