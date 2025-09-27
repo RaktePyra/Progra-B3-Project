@@ -18,9 +18,7 @@ namespace PrograB3Project
         private float _lag = 0;
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
-        //private StateMachine _gameStateMachine;
         private Game _game;
-        //To refactor later
         private Events.EventManager _eventManager = new Events.EventManager();
         
         public void Run()
@@ -58,13 +56,10 @@ namespace PrograB3Project
             {
                 gameObject.Update(delta_time);
             }
-            //_gameStateMachine.Update(delta_time);
         }
 
         private void Render()
         {
-            //_gameStateMachine.Render();
-            //Console.Clear();
         }
 
         private void ProcessInput()
@@ -81,7 +76,6 @@ namespace PrograB3Project
                 {
                     _eventManager.TriggerEvent(new Events.InputEvent(key));
                 }
-               // _gameStateMachine.ProcessInput(key);
             }
         }
 
