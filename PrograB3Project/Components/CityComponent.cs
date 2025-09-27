@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrograB3Project.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,18 +11,18 @@ namespace PrograB3Project.Components
     {
         private List<KeyLocationComponent> _locationTable = new List<KeyLocationComponent>();
 
-        public CityComponent(GameObject owner, Context game_context) : base(owner, game_context)
+        public CityComponent(GameObject owner, GameEngine engine, Events.EventManager event_manager) : base(owner,engine,event_manager)
         {
-            GameObject shop = new GameObject("Shop",game_context);
-            InventoryComponent shop_inventory = new InventoryComponent(shop, game_context);
-            GameObject sword = new GameObject("Sword", game_context);
-            ItemComponent sword_comp = new ItemComponent(sword, game_context,"sword",1,10);
+            GameObject shop = new GameObject("Shop", engine, event_manager);
+            InventoryComponent shop_inventory = new InventoryComponent(shop, engine, event_manager);
+            GameObject sword = new GameObject("Sword", engine, event_manager);
+            ItemComponent sword_comp = new ItemComponent(sword, engine, event_manager, "sword",1,10);
             shop_inventory.AddItem(sword_comp);
-            TradingComponent shop_trading_comp = new TradingComponent(shop, game_context);
-            ShopComponent shop_component = new(shop, game_context,this,shop_trading_comp,shop_inventory);
+            TradingComponent shop_trading_comp = new TradingComponent(shop, engine, event_manager);
+            ShopComponent shop_component = new(shop, engine, event_manager, this,shop_trading_comp,shop_inventory);
             AddLocation(shop_component);
-            GameObject job = new GameObject("Grind Shrine", game_context);
-            JobComponent grind_shrine = new JobComponent(job,game_context,this);
+            GameObject job = new GameObject("Grind Shrine", engine, event_manager);
+            JobComponent grind_shrine = new JobComponent(job, engine, event_manager, this);
             AddLocation(grind_shrine);
            
            

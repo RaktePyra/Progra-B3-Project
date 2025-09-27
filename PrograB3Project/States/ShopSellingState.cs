@@ -12,19 +12,20 @@ namespace PrograB3Project.States
         private StateMachine _shopStateMachine;
         private ShopMainState _shopMainState;
         private TradingComponent _shopTradingComponent;
-        private Context _gameContext;
+        private GameEngine _engine;
+        private Events.EventManager _eventManager;
         private GameObject _player;
         private GameObject _shop;
 
-        public ShopSellingState(StateMachine state_machine, Context game_context, ShopMainState shop_main_state, GameObject shop, GameObject player)
+        public ShopSellingState(StateMachine state_machine,GameEngine engine, Events.EventManager event_manager, ShopMainState shop_main_state, GameObject shop, GameObject player)
         {
             _shopStateMachine = state_machine;
-            _gameContext = game_context;
             _shopMainState = shop_main_state;
-            _gameContext = shop.GetContext();
             _shopTradingComponent = shop.GetComponent<TradingComponent>();
             _player = player;
             _shop = shop;
+            _eventManager = event_manager;
+            _engine = engine;
         }
 
         public void Enter()

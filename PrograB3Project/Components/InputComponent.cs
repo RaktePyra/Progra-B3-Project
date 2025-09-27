@@ -11,9 +11,9 @@ namespace PrograB3Project.Components
         private Component _componentBeingInteractedWith;
         
 
-        public InputComponent(GameObject owner,Context game_context) : base(owner, game_context)
+        public InputComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager)
         {
-            game_context.GetEventManager().RegisterEvent<Events.InputEvent>(OnInput);
+            event_manager.RegisterEvent<Events.InputEvent>(OnInput);
         }
 
         public void BeginInteraction(Component component_to_interact_with)

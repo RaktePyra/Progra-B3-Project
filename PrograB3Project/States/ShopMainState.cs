@@ -45,12 +45,12 @@ namespace PrograB3Project.States
                 {
                     case 1:
                         {
-                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, _shopGameObject.GetContext(), this, _shopGameObject,_player));
+                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, _shopGameObject.GetEngine(),_shopGameObject.GetEventManager(), this, _shopGameObject,_player));
                             break;
                         }
                     case 2:
                         {
-                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, _shopGameObject.GetContext(), this, _shopGameObject, _player));
+                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, _shopGameObject.GetEngine(), _shopGameObject.GetEventManager(), this, _shopGameObject, _player));
                             break;
                         }
                     case 3:

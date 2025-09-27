@@ -14,7 +14,7 @@ namespace PrograB3Project.Components
         //Idea : Create a vector class that can be used as a parameter to this World to specify inside the vector
         //how many cities would be in a region and using the size of the vector as the number of regions inside the world
 
-        public WorldComponent(GameObject owner,Context game_context) : base(owner, game_context)
+        public WorldComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager)
         { 
 
         }

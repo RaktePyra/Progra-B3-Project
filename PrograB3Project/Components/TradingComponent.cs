@@ -9,7 +9,7 @@ namespace PrograB3Project.Components
     internal class TradingComponent : Component
     {
         private InventoryComponent _vendorInventory;
-        public TradingComponent(GameObject owner,Context game_context) : base(owner, game_context)
+        public TradingComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager)
         {
             _vendorInventory = owner.GetComponent<InventoryComponent>();
         }

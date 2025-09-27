@@ -10,14 +10,14 @@ namespace PrograB3Project
     {
         private string _name;
         private List<Component> _componentsTable = new List<Component>();
-        private Context _gameContext;
         private GameEngine _engine;
+        private Events.EventManager _eventManager;
 
-        public GameObject(string name,Context game_context) 
-        { 
+        public GameObject(string name, GameEngine engine, Events.EventManager event_manager)
+        {
             _name = name;
-            _gameContext = game_context;
-            _engine = game_context.GetGameEngine();
+            _engine = engine;
+            _eventManager = event_manager;
         }
 
         //To remove 
@@ -58,9 +58,14 @@ namespace PrograB3Project
             return _name;
         }
 
-        public Context GetContext()
+        public GameEngine GetEngine()
         {
-            return _gameContext;
+            return _engine;
+        }
+
+        public Events.EventManager GetEventManager()
+        {
+            return _eventManager;
         }
     }
 }

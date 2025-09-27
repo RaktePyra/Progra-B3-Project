@@ -12,10 +12,11 @@ namespace PrograB3Project.Components
         private Random _randomGenerator = new Random();
         private GameObject _playerGameObject;
 
-        public JobComponent(GameObject owner, Context game_context, LocationComponent parentLocation) : base(owner, game_context, parentLocation)
+        public JobComponent(GameObject owner, GameEngine engine, Events.EventManager event_manager, LocationComponent parentLocation) : base(owner, engine,event_manager, parentLocation)
         {
 
         }
+
 
         public override void Enter(GameObject player)
         {

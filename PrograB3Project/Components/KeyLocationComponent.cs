@@ -10,7 +10,7 @@ namespace PrograB3Project.Components
     {
         protected LocationComponent _parentLocation;
 
-        public KeyLocationComponent(GameObject owner,Context game_context, LocationComponent parent_location) : base(owner, game_context)
+        public KeyLocationComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager, LocationComponent parent_location) : base(owner, engine, event_manager)
         {
             _parentLocation = parent_location;
             owner.AddComponent(this);

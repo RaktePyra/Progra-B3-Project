@@ -15,6 +15,10 @@ namespace PrograB3Project.Components
         {
         }
 
+        public LocationComponent(GameObject owner, GameEngine game_engine, Events.EventManager event_manager) : base(owner, game_engine,event_manager)
+        {
+        }
+
         public virtual void Enter(GameObject player)
         {
             _player = player;

@@ -10,12 +10,14 @@ namespace PrograB3Project.States
     {
         private IState _currentState;
         private IState _initialState;
-        private Context _gameContext;
+        private GameEngine _engine;
+        private Events.EventManager _eventManager;
         private bool _hasBeenInitialized = false;
 
-        public StateMachine(Context game_context) 
+        public StateMachine(GameEngine engine, Events.EventManager event_manager) 
         { 
-            _gameContext = game_context;
+            _engine = engine;
+            _eventManager = event_manager;
         }
 
         public void Update(float delta_time)

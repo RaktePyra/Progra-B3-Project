@@ -14,12 +14,12 @@ namespace PrograB3Project.Components
         private InventoryComponent _shopInventoryComponent;
         private StateMachine _shopStateMachine;
 
-        public ShopComponent(GameObject owner,Context game_context,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp) : base(owner,game_context,owner_location)
+        public ShopComponent(GameObject owner,GameEngine engine,Events.EventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp) : base(owner,engine, event_manager,owner_location)
         {
             
             _shopTradingComponent = trading_comp;
             _shopInventoryComponent = shop_inventory_comp;
-            _shopStateMachine = new StateMachine(game_context);
+            _shopStateMachine = new StateMachine(engine,event_manager);
         }
 
         public override void Enter(GameObject player)

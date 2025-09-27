@@ -22,7 +22,7 @@ namespace PrograB3Project.Components
         private int _quantity;
         private int _price;
 
-        public ItemComponent(GameObject owner, Context game_context,string name, int quantity, int price) : base(owner,game_context)
+        public ItemComponent(GameObject owner, GameEngine engine, Events.EventManager event_manager,string name, int quantity, int price) : base(owner,engine,event_manager)
         {
             _name = name;
             _quantity = quantity;

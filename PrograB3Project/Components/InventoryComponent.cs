@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
         private List<ItemComponent> _itemTable = new List<ItemComponent>();
         private int _money = 100;
 
-        public InventoryComponent(GameObject owner,Context game_context) : base(owner, game_context) 
+        public InventoryComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager) 
         {
            
         }
