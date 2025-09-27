@@ -8,18 +8,11 @@ namespace PrograB3Project.Components
 {
     public class Component
     {
-        protected Context _gameContext;
+
         protected GameEngine _gameEngine;
         protected Events.EventManager _eventManager;
         private GameObject _ownerGameObject;
         
-        public Component(GameObject owner, Context gameContext)
-        {
-            _ownerGameObject = owner;
-            _gameContext = gameContext;
-            _ownerGameObject.AddComponent(this);
-        }
-
         public Component(GameObject owner, GameEngine engine, Events.EventManager event_manager)
         {
             _ownerGameObject = owner;

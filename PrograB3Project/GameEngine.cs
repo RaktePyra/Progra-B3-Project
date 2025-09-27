@@ -25,7 +25,7 @@ namespace PrograB3Project
         
         public void Run()
         {
-            main_context.GetEventManager().RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
+            _eventManager.RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
             _game = new Game(this, _eventManager);
             _game.Run();
             _stopwatch.Start();

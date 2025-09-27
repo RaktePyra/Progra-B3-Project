@@ -11,10 +11,6 @@ namespace PrograB3Project.Components
         protected LocationComponent _parentLocation;
         private GameObject _player;
        
-        public LocationComponent(GameObject owner,Context game_context) : base(owner,game_context)
-        {
-        }
-
         public LocationComponent(GameObject owner, GameEngine game_engine, Events.EventManager event_manager) : base(owner, game_engine,event_manager)
         {
         }
