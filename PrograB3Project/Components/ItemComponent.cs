@@ -29,7 +29,6 @@ namespace PrograB3Project.Components
             _price = price;
         }
 
-        //Adds the quantity to the item and returns a valid item if quantity has exceeded max Stack Amount. Otherwise, returns a default item
         public void AddQuantity(int quantity_to_add)
         {
             _quantity += quantity_to_add;

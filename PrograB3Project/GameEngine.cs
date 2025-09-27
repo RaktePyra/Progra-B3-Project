@@ -21,7 +21,6 @@ namespace PrograB3Project
         //private StateMachine _gameStateMachine;
         private Game _game;
         //To refactor later
-        private InputComponent _player_input_comp;
         private Events.EventManager _eventManager = new Events.EventManager();
         
         public void Run()
@@ -100,11 +99,6 @@ namespace PrograB3Project
             {
                 _gameObjectTable.Remove(game_object);
             }
-        }
-
-        public void SetPlayer(GameObject player)
-        {
-            _player_input_comp = player.GetComponent<InputComponent>();
         }
 
         public void OnQuitGame(Events.Event quit_game_event)

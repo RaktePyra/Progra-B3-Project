@@ -58,7 +58,6 @@ namespace PrograB3Project
             player_inventory.AddItem(apple.GetComponent<ItemComponent>());
             player_inventory.AddItem(water.GetComponent<ItemComponent>());
 
-            _engine.SetPlayer(player);
             world_component.Enter(player);
         }
 
