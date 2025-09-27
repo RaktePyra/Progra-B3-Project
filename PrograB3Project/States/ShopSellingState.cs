@@ -30,14 +30,19 @@ namespace PrograB3Project.States
 
         public void Enter()
         {
+            InventoryComponent player_inventory = _player.GetComponent<InventoryComponent>();
             Console.Clear();
             Console.WriteLine("Press 0 to quit");
             Console.WriteLine();
-            Console.WriteLine("Your Gold : " + _player.GetComponent<InventoryComponent>().GetMoney());
+            Console.WriteLine("Your Gold : " + player_inventory.GetMoney());
             Console.WriteLine();
             Console.WriteLine("Your Inventory");
             Console.WriteLine();
-            _player.GetComponent<InventoryComponent>().Display();
+            int number_of_items_inside_shop = player_inventory.GetNumberOfItems();
+            for (int item_index = 0; item_index < number_of_items_inside_shop; item_index++)
+            {
+                Console.WriteLine(item_index + 1 + "." + player_inventory.GetItem(item_index).GetName() + " |Quantity : " + player_inventory.GetItem(item_index).GetQuantity() + " |Price : " + player_inventory.GetItem(item_index).GetPrice() * (_player.GetComponent<CharacterComponent>().GetBargainingStat()));
+            }
             Console.WriteLine();
             Console.WriteLine("The Shop money : " + _shop.GetComponent<InventoryComponent>().GetMoney());
 
