@@ -12,7 +12,6 @@ namespace PrograB3Project
         private List<Component> _componentsTable = new List<Component>();
         private Context _gameContext;
         private GameEngine _engine;
-        private bool _isRegisteredInEngine = false;
 
         public GameObject(string name,Context game_context) 
         { 
@@ -32,12 +31,6 @@ namespace PrograB3Project
 
         public void AddComponent(Component component) 
         {
-            if(!_isRegisteredInEngine)
-            {
-                _gameContext.GetGameEngine().RegisterGameObject(this); // To avoid having to manually register GameObjects upon instanciation
-                _isRegisteredInEngine = true;
-            }
-
             if( !_componentsTable.Contains(component))
             {
               _componentsTable.Add(component);

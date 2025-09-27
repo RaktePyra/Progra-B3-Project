@@ -23,20 +23,27 @@ namespace PrograB3Project
         public void Run()
         {
             GameObject world = new GameObject("Tamriel", _context);
+            _engine.RegisterGameObject(world);
             WorldComponent world_component = new WorldComponent(world,_context);
 
             GameObject skyrim = new GameObject("Skyrim", _context);
+            _engine.RegisterGameObject(skyrim);
             RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _context);
             GameObject windhelm = new GameObject("WindHelm", _context);
+            _engine.RegisterGameObject(windhelm);
             CityComponent city_windhelm_comp=new CityComponent(windhelm, _context);
             GameObject whiterun = new GameObject("Whiterun", _context);
+            _engine.RegisterGameObject(whiterun);
             CityComponent city_whiterun_comp = new CityComponent(whiterun, _context);
 
             GameObject cyrodiil = new GameObject("Cyrodiil", _context);
+            _engine.RegisterGameObject(cyrodiil);
             RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _context);
             GameObject imperial_city = new GameObject("Imperial City", _context);
+            _engine.RegisterGameObject(imperial_city);
             CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _context);
             GameObject kvatch = new GameObject("Kvatch", _context);
+            _engine.RegisterGameObject(kvatch);
             CityComponent city_kvatch_comp = new CityComponent(kvatch, _context);
 
             skyrim_region_comp.AddLocation(city_windhelm_comp);
