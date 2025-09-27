@@ -57,6 +57,7 @@ namespace PrograB3Project
             GameObject player = new GameObject("player", _engine, _eventManager);
             _engine.RegisterGameObject(player);
             player.AddComponent(new InputComponent(player, _engine, _eventManager));
+            player.AddComponent(new CharacterComponent(player, _engine, _eventManager));
             InventoryComponent player_inventory = new InventoryComponent(player, _engine, _eventManager);
             GameObject apple = new GameObject("Apple", _engine, _eventManager);
             apple.AddComponent(new ItemComponent(apple, _engine, _eventManager, "Apple",10,5));
