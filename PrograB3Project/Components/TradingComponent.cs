@@ -29,10 +29,10 @@ namespace PrograB3Project.Components
 
         public void SellItemToVendor(int item_index,InventoryComponent seller_inventory, CharacterComponent buyer_character_stats)
         {
-            if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice())
+            if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice() * buyer_character_stats.GetBargainingStat())
             {
-                Console.WriteLine("You sold " + seller_inventory.GetItem(item_index).GetName() + " for " + seller_inventory.GetItem(item_index).GetPrice() + " gold");
-                int item_price = seller_inventory.GetItem(item_index).GetPrice();
+                Console.WriteLine("You sold " + seller_inventory.GetItem(item_index).GetName() + " for " + seller_inventory.GetItem(item_index).GetPrice()*buyer_character_stats.GetBargainingStat() + " gold");
+                int item_price = seller_inventory.GetItem(item_index).GetPrice() * buyer_character_stats.GetBargainingStat();
                 _vendorInventory.RemoveMoney(item_price);
                 seller_inventory.AddMoney(item_price);
                 _vendorInventory.AddItem(seller_inventory.GetItem(item_index));

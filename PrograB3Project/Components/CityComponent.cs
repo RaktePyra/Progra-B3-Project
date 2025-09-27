@@ -15,6 +15,7 @@ namespace PrograB3Project.Components
         {
             GameObject shop = new GameObject("Shop", engine, event_manager);
             InventoryComponent shop_inventory = new InventoryComponent(shop, engine, event_manager);
+            shop_inventory.AddMoney(9900);
             GameObject sword = new GameObject("Sword", engine, event_manager);
             ItemComponent sword_comp = new ItemComponent(sword, engine, event_manager, "sword",1,10);
             shop_inventory.AddItem(sword_comp);
