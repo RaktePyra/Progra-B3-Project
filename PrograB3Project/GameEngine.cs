@@ -22,11 +22,12 @@ namespace PrograB3Project
         private Game _game;
         //To refactor later
         private InputComponent _player_input_comp;
+        private Events.EventManager _eventManager = new Events.EventManager();
         
         public void Run()
         {
-            Context main_context = new Context(this, new Events.EventManager());
-            main_context.GetEventManager().RegisterEvent(typeof(Events.QuitGameEvent), OnQuitGame);
+            Context main_context = new Context(this, _eventManager);
+            main_context.GetEventManager().RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
             _game = new Game(main_context);
             _game.Run();
             _stopwatch.Start();
@@ -80,7 +81,7 @@ namespace PrograB3Project
                 }
                 else
                 {
-                    _player_input_comp.ProcessInput(key);
+                    _eventManager.TriggerEvent(new Events.InputEvent(key));
                 }
                // _gameStateMachine.ProcessInput(key);
             }

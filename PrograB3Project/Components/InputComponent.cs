@@ -13,7 +13,7 @@ namespace PrograB3Project.Components
 
         public InputComponent(GameObject owner,Context game_context) : base(owner, game_context)
         {
-           
+            game_context.GetEventManager().RegisterEvent<Events.InputEvent>(OnInput);
         }
 
         public void BeginInteraction(Component component_to_interact_with)
@@ -24,6 +24,12 @@ namespace PrograB3Project.Components
         public override void ProcessInput(ConsoleKeyInfo key)
         {
             _componentBeingInteractedWith.ProcessInput(key);
+        }
+
+        public void OnInput(Events.Event input_event)
+        {
+            Events.InputEvent real_event = (Events.InputEvent)input_event;
+            ProcessInput(real_event.GetKeyInfo());
         }
     }
 }
