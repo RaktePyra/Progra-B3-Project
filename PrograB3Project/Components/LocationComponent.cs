@@ -9,6 +9,7 @@ namespace PrograB3Project.Components
     public class LocationComponent : Component
     { 
         protected LocationComponent _parentLocation;
+        protected List<LocationComponent> _childLocationTable = new List<LocationComponent>();
         private GameObject _player;
        
         public LocationComponent(GameObject owner, GameEngine game_engine, Events.EventManager event_manager) : base(owner, game_engine,event_manager)
@@ -34,6 +35,11 @@ namespace PrograB3Project.Components
         public virtual void AddLocation(LocationComponent location)
         {
             location._parentLocation = this;
+            
+            if (!_childLocationTable.Contains(location))
+            {
+                _childLocationTable.Add(location);
+            }
         }
 
         public GameObject GetPlayer()
@@ -44,6 +50,23 @@ namespace PrograB3Project.Components
         public virtual void Exit()
         {
             _parentLocation.Enter(_player);
+        }
+
+        public override void ProcessInput(ConsoleKeyInfo key)
+        {
+            int user_choice = (int)key.Key - (int)ConsoleKey.NumPad1;
+
+            if (user_choice >= 0 && user_choice < _childLocationTable.Count)
+            {
+                _childLocationTable[user_choice].Enter(GetPlayer());
+            }
+
+            else if (user_choice == _childLocationTable.Count)
+            {
+                Console.Clear();
+                _parentLocation.Enter(GetPlayer());
+            }
+
         }
     }
 }
