@@ -16,13 +16,14 @@ namespace PrograB3Project.Events
             _eventTable = new Dictionary<Type, List<Action<Event>>>();
         }
 
-        public void RegisterEvent(Type type, Action<Event> action)
+        public void RegisterEvent<TYPE>(Action<Event> action) where TYPE : Event
         {
-            if (!_eventTable.ContainsKey(type))
+            Type event_type = typeof(TYPE);
+            if (!_eventTable.ContainsKey(event_type))
             {
-                _eventTable.Add(type, new List<Action<Event>>());
+                _eventTable.Add(event_type, new List<Action<Event>>());
             }
-            _eventTable[type].Add(action);
+            _eventTable[event_type].Add(action);
         }
 
         public void TriggerEvent(Event event_object)
