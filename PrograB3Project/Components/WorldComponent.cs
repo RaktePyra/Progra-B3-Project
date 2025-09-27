@@ -59,7 +59,7 @@ namespace PrograB3Project.Components
 
                 else if(user_choice == _regionTable.Count)
                 {
-                    _gameContext.GetEventManager().TriggerEvent(new Events.QuitGameEvent());
+                    _eventManager.TriggerEvent(new Events.QuitGameEvent());
                 }
             }
         }
