@@ -25,7 +25,6 @@ namespace PrograB3Project
         
         public void Run()
         {
-            Context main_context = new Context(this, _eventManager);
             main_context.GetEventManager().RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
             _game = new Game(this, _eventManager);
             _game.Run();
