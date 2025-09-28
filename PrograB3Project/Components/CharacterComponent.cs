@@ -10,6 +10,7 @@ namespace PrograB3Project.Components
     internal class CharacterComponent : Component
     {
         private int _bargainingStat = 10;
+
         public CharacterComponent(GameObject owner, GameEngine engine, EventManager event_manager) : base(owner, engine, event_manager)
         {
         }
@@ -18,6 +19,7 @@ namespace PrograB3Project.Components
         {
             _bargainingStat += number_to_increase_stat;
         }
+
         public int GetBargainingStat()
         {
             return _bargainingStat;

@@ -18,8 +18,9 @@ namespace PrograB3Project.Components
         {
             if (_vendorInventory.GetItem(item_index) != null && buyer_inventory.GetMoney() >= _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat())
             {
+                int item_price = _vendorInventory.GetItem(item_index).GetPrice();
+                int item_price_bargained = item_price + (int)(item_price * 0.7) - (buyer_character_stats.GetBargainingStat() / 100)*item_price;
                 Console.WriteLine("You bought " + _vendorInventory.GetItem(item_index).GetName() + " for " + _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat() + " gold");
-                int item_price = _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat();
                 _vendorInventory.AddMoney(item_price);
                 buyer_inventory.RemoveMoney(item_price);
                 buyer_inventory.AddItem(_vendorInventory.GetItem(item_index));
@@ -31,15 +32,15 @@ namespace PrograB3Project.Components
         {
             if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice() * buyer_character_stats.GetBargainingStat())
             {
-                Console.WriteLine("You sold " + seller_inventory.GetItem(item_index).GetName() + " for " + seller_inventory.GetItem(item_index).GetPrice()*buyer_character_stats.GetBargainingStat() + " gold");
-                int item_price = seller_inventory.GetItem(item_index).GetPrice() * buyer_character_stats.GetBargainingStat();
-                _vendorInventory.RemoveMoney(item_price);
-                seller_inventory.AddMoney(item_price);
+                int item_price = seller_inventory.GetItem(item_index).GetPrice();
+                int item_price_bargained = item_price * (buyer_character_stats.GetBargainingStat() / 80)+(item_price/2);
+                Console.WriteLine("You sold " + seller_inventory.GetItem(item_index).GetName() + " for " + item_price_bargained + " gold");
+                _vendorInventory.RemoveMoney(item_price_bargained);
+                seller_inventory.AddMoney(item_price_bargained);
                 _vendorInventory.AddItem(seller_inventory.GetItem(item_index));
                 seller_inventory.RemoveItem(seller_inventory.GetItem(item_index));
                 
             }
-        }
-        
+        } 
     }
 }
