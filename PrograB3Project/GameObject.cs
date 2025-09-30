@@ -4,32 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PrograB3Project.Components;
+using PrograB3Project.Interfaces;
 namespace PrograB3Project
 {
-    public class GameObject
+    public class GameObject : IGameObject
     {
         private string _name;
-        private List<Component> _componentsTable = new List<Component>();
-        private GameEngine _engine;
-        private Events.EventManager _eventManager;
+        private List<Interfaces.IComponent> _componentsTable = new List<Interfaces.IComponent>();
+        private Interfaces.IGameEngine _engine;
+        private Interfaces.IEventManager _eventManager;
 
-        public GameObject(string name, GameEngine engine, Events.EventManager event_manager)
+        public GameObject(string name, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager)
         {
             _name = name;
             _engine = engine;
             _eventManager = event_manager;
         }
 
-        //To remove 
+        
         public void Update(float delta_time)
         {
-            foreach (Component component in _componentsTable)
+            foreach (Interfaces.IComponent component in _componentsTable)
             {
                 component.Update(delta_time);
             }
         }
 
-        public void AddComponent(Component component) 
+        public void AddComponent(Interfaces.IComponent component) 
         {
             if( !_componentsTable.Contains(component))
             {
@@ -38,11 +39,11 @@ namespace PrograB3Project
             return;
         }
 
-        public TYPE GetComponent<TYPE>() where TYPE : Component
+        public TYPE GetComponent<TYPE>() where TYPE : Interfaces.IComponent
         {
-            TYPE component_to_return = null;
+            TYPE component_to_return = default;
 
-            foreach (Component component in _componentsTable)
+            foreach (Interfaces.IComponent component in _componentsTable)
             {
                 if(component.GetType() == typeof(TYPE))
                 {
@@ -58,12 +59,12 @@ namespace PrograB3Project
             return _name;
         }
 
-        public GameEngine GetEngine()
+        public Interfaces.IGameEngine GetEngine()
         {
             return _engine;
         }
 
-        public Events.EventManager GetEventManager()
+        public Interfaces.IEventManager GetEventManager()
         {
             return _eventManager;
         }

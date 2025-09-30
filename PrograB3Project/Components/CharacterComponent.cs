@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
     {
         private int _bargainingStat = 10;
 
-        public CharacterComponent(GameObject owner, GameEngine engine, EventManager event_manager) : base(owner, engine, event_manager)
+        public CharacterComponent(GameObject owner, GameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager)
         {
         }
 

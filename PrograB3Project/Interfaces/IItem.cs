@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Interfaces
 {
-    internal interface IItem
+    public interface IItem
     {
+        public string GetName();
+
+        public int GetQuantity();
+
+        public int GetPrice();
     }
 }

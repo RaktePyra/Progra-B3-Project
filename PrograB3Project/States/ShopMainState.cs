@@ -11,9 +11,9 @@ namespace PrograB3Project.States
     {
         private StateMachine _stateMachine;
         private ShopBuyingState _shopBuyingState;
-        private GameObject _player;
-        private GameObject _shopGameObject;
-        public ShopMainState(StateMachine state_machine, GameObject player, GameObject shop) 
+        private Interfaces.IGameObject _player;
+        private Interfaces.IGameObject _shopGameObject;
+        public ShopMainState(StateMachine state_machine, Interfaces.IGameObject player, Interfaces.IGameObject shop) 
         {
             _stateMachine = state_machine;
             _player = player;

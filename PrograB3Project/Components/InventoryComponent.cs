@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrograB3Project.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,15 @@ namespace PrograB3Project.Components
 {
     public class InventoryComponent : Component
     {
-        private List<ItemComponent> _itemTable = new List<ItemComponent>();
+        private List<IItem> _itemTable = new List<IItem>();
         private int _money = 100;
 
-        public InventoryComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager) 
+        public InventoryComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager) 
         {
            
         }
 
-        public void AddItem(ItemComponent item)
+        public void AddItem(IItem item)
         {
             if(!_itemTable.Contains(item))
             {
@@ -24,7 +25,7 @@ namespace PrograB3Project.Components
             }
         }
 
-        public void RemoveItem(ItemComponent item)
+        public void RemoveItem(IItem item)
         {
             if (_itemTable.Contains(item))
             {
@@ -32,7 +33,7 @@ namespace PrograB3Project.Components
             }
         }
 
-        public ItemComponent GetItem(int index)
+        public IItem GetItem(int index)
         {
             return _itemTable[index];
         }

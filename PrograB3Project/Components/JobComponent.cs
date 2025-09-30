@@ -10,15 +10,15 @@ namespace PrograB3Project.Components
     {
         private InventoryComponent _playerInventoryComponent;
         private Random _randomGenerator = new Random();
-        private GameObject _playerGameObject;
+        private Interfaces.IGameObject _playerGameObject;
 
-        public JobComponent(GameObject owner, GameEngine engine, Events.EventManager event_manager, LocationComponent parentLocation) : base(owner, engine,event_manager, parentLocation)
+        public JobComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parentLocation) : base(owner, engine,event_manager, parentLocation)
         {
 
         }
 
 
-        public override void Enter(GameObject player)
+        public override void Enter(Interfaces.IGameObject player)
         {
             base.Enter(player);
             Console.Clear();

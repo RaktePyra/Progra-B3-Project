@@ -14,7 +14,7 @@ namespace PrograB3Project.Components
         private InventoryComponent _shopInventoryComponent;
         private StateMachine _shopStateMachine;
 
-        public ShopComponent(GameObject owner,GameEngine engine,Events.EventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp) : base(owner,engine, event_manager,owner_location)
+        public ShopComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp) : base(owner,engine, event_manager,owner_location)
         {
             
             _shopTradingComponent = trading_comp;
@@ -22,7 +22,7 @@ namespace PrograB3Project.Components
             _shopStateMachine = new StateMachine(engine,event_manager);
         }
 
-        public override void Enter(GameObject player)
+        public override void Enter(Interfaces.IGameObject player)
         {
             base.Enter(player);
             switch (_shopStateMachine.IsInitialized())
@@ -35,7 +35,7 @@ namespace PrograB3Project.Components
                     }
                 case false:
                     {
-                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player,GetOwnerGameObject()));
+                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player,_shopInventoryComponent.GetOwnerGameObject()));
                         break;
                     }
             }

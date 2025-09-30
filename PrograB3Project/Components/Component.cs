@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrograB3Project.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    public class Component
+    public class Component : IComponent
     {
 
-        protected GameEngine _gameEngine;
-        protected Events.EventManager _eventManager;
-        private GameObject _ownerGameObject;
+        protected Interfaces.IGameEngine _gameEngine;
+        protected Interfaces.IEventManager _eventManager;
+        private IGameObject _ownerGameObject;
         
-        public Component(GameObject owner, GameEngine engine, Events.EventManager event_manager)
+        public Component(IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager)
         {
             _ownerGameObject = owner;
             _ownerGameObject.AddComponent(this);
@@ -26,7 +27,7 @@ namespace PrograB3Project.Components
 
         }
 
-        public GameObject GetOwnerGameObject()
+        public IGameObject GetOwnerGameObject()
         {
             return _ownerGameObject;
         }

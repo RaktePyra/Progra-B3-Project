@@ -11,9 +11,9 @@ namespace PrograB3Project
     internal class Game
     {
         private GameEngine _engine;
-        private Events.EventManager _eventManager;
+        private Interfaces.IEventManager _eventManager;
 
-        public Game(GameEngine engine, Events.EventManager event_manager)
+        public Game(GameEngine engine, Interfaces.IEventManager event_manager)
         {
             _engine = engine;
             _eventManager = event_manager;

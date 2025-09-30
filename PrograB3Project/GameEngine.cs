@@ -9,7 +9,7 @@ using PrograB3Project.States;
 
 namespace PrograB3Project
 {
-    public class GameEngine
+    public class GameEngine : Interfaces.IGameEngine
     {
         private bool _shouldExit = false;
         private Stopwatch _stopwatch = new Stopwatch();
@@ -19,7 +19,7 @@ namespace PrograB3Project
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         private Game _game;
-        private Events.EventManager _eventManager = new Events.EventManager();
+        private Interfaces.IEventManager _eventManager = new Events.EventManager();
         
         public void Run()
         {
@@ -94,7 +94,7 @@ namespace PrograB3Project
             }
         }
 
-        public void OnQuitGame(Events.Event quit_game_event)
+        public void OnQuitGame(Interfaces.IEvent quit_game_event)
         {
             _shouldExit = true;
         }

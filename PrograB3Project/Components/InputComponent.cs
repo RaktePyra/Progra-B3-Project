@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
         private Component _componentBeingInteractedWith;
         
 
-        public InputComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager)
+        public InputComponent(GameObject owner,GameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager)
         {
             event_manager.RegisterEvent<Events.InputEvent>(OnInput);
         }
@@ -26,7 +26,7 @@ namespace PrograB3Project.Components
             _componentBeingInteractedWith.ProcessInput(key);
         }
 
-        public void OnInput(Events.Event input_event)
+        public void OnInput(Interfaces.IEvent input_event)
         {
             Events.InputEvent real_event = (Events.InputEvent)input_event;
             ProcessInput(real_event.GetKeyInfo());

@@ -8,12 +8,12 @@ namespace PrograB3Project.Components
 {
     internal class RegionComponent : LocationComponent
     {
-        public RegionComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager) 
+        public RegionComponent(Interfaces.IGameObject owner,GameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager) 
         {
 
         }
 
-        public override void Enter(GameObject player) 
+        public override void Enter(Interfaces.IGameObject player) 
         {
            base.Enter(player);
             Console.Clear();

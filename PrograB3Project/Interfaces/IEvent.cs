@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project.Events
+namespace PrograB3Project.Interfaces
 {
-    public class Event : Interfaces.IEvent
+    public interface IEvent
     {
     }
 }

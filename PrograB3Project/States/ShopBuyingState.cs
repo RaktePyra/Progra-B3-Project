@@ -12,13 +12,13 @@ namespace PrograB3Project.States
     {
         private StateMachine _shopStateMachine;
         private ShopMainState _shopMainState;
-        private GameEngine _engine;
-        private Events.EventManager _eventManager;
-        private GameObject _player;
-        private GameObject _shop;
+        private Interfaces.IGameEngine _engine;
+        private Interfaces.IEventManager _eventManager;
+        private Interfaces.IGameObject _player;
+        private Interfaces.IGameObject _shop;
         private TradingComponent _shopTradingComponent;
 
-        public ShopBuyingState(StateMachine state_machine, GameEngine engine, Events.EventManager event_manager, ShopMainState shop_main_state, GameObject shop, GameObject player) 
+        public ShopBuyingState(StateMachine state_machine, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, ShopMainState shop_main_state, Interfaces.IGameObject shop, Interfaces.IGameObject player) 
         {
             _shopStateMachine = state_machine;
             

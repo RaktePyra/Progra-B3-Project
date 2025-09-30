@@ -10,13 +10,13 @@ namespace PrograB3Project.Components
     { 
         protected LocationComponent _parentLocation;
         protected List<LocationComponent> _childLocationTable = new List<LocationComponent>();
-        private GameObject _player;
+        private Interfaces.IGameObject _player;
        
-        public LocationComponent(GameObject owner, GameEngine game_engine, Events.EventManager event_manager) : base(owner, game_engine,event_manager)
+        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager) : base(owner, game_engine,event_manager)
         {
         }
 
-        public virtual void Enter(GameObject player)
+        public virtual void Enter(Interfaces.IGameObject player)
         {
             _player = player;
             InputComponent player_input_comp = _player.GetComponent<InputComponent>();
@@ -42,7 +42,7 @@ namespace PrograB3Project.Components
             }
         }
 
-        public GameObject GetPlayer()
+        public Interfaces.IGameObject GetPlayer()
         {
             return _player;
         }

@@ -10,18 +10,18 @@ namespace PrograB3Project.Components
     {
         protected LocationComponent _parentLocation;
 
-        public KeyLocationComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager, LocationComponent parent_location) : base(owner, engine, event_manager)
+        public KeyLocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parent_location) : base(owner, engine, event_manager)
         {
             _parentLocation = parent_location;
             owner.AddComponent(this);
         }
 
-        public virtual void Enter(GameObject player)
+        public virtual void Enter(Interfaces.IGameObject player)
         {
             player.GetComponent<InputComponent>().BeginInteraction(this);
         }
 
-        public virtual void Exit(GameObject player) 
+        public virtual void Exit(Interfaces.IGameObject player) 
         {
             _parentLocation.Enter(player);
         }

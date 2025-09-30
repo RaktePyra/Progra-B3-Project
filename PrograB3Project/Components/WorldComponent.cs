@@ -10,12 +10,12 @@ namespace PrograB3Project.Components
     public class WorldComponent : LocationComponent
     {
 
-        public WorldComponent(GameObject owner,GameEngine engine, Events.EventManager event_manager) : base(owner, engine, event_manager)
+        public WorldComponent(GameObject owner,GameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager)
         { 
 
         }
 
-        public override void Enter(GameObject player)
+        public override void Enter(Interfaces.IGameObject player)
         {
             base.Enter(player);
             Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName());
