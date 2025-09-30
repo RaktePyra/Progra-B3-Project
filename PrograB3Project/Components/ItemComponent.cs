@@ -16,7 +16,7 @@ namespace PrograB3Project.Components
     //    public readonly int _quantity;
     //    public readonly int _maxStackAmount;
     //}
-    public class ItemComponent : Component
+    public class ItemComponent : Component,Interfaces.IItem
     {
         private string _name;
         private int _quantity;
