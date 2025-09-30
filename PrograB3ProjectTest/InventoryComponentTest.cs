@@ -60,7 +60,7 @@ namespace PrograB3ProjectTest
 
             Assert.That(_inventoryToTest.GetItem(0).Equals(apple));
             Assert.That(!_inventoryToTest.GetItem(0).Equals(bread));
-            Assert.That(!_inventoryToTest.GetItem(3).Equals(null));
+            Assert.That(_inventoryToTest.GetItem(3) == null);
 
         }
         }

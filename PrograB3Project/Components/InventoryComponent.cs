@@ -37,7 +37,7 @@ namespace PrograB3Project.Components
         {
             IItem item_to_return = null;
 
-            if(index < _itemTable.Count)
+            if(index < _itemTable.Count && index >= 0)
             {
                 item_to_return = _itemTable[index];
             }
