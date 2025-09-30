@@ -9,11 +9,5 @@ namespace PrograB3ProjectTest
         public void Setup()
         {
         }
-
-        [Test]
-        public void AddLocationTest()
-        {
-           
-        }
     }
 }
