@@ -35,7 +35,13 @@ namespace PrograB3Project.Components
 
         public IItem GetItem(int index)
         {
-            return _itemTable[index];
+            IItem item_to_return = null;
+
+            if(index < _itemTable.Count)
+            {
+                item_to_return = _itemTable[index];
+            }
+            return item_to_return;
         }
 
         public void Display()
