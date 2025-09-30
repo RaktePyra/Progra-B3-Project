@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    internal class InventoryComponent : Component
+    public class InventoryComponent : Component
     {
         private List<ItemComponent> _itemTable = new List<ItemComponent>();
         private int _money = 100;
