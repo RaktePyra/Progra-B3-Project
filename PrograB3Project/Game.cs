@@ -10,10 +10,10 @@ namespace PrograB3Project
 {
     internal class Game
     {
-        private GameEngine _engine;
+        private Interfaces.IGameEngine _engine;
         private Interfaces.IEventManager _eventManager;
 
-        public Game(GameEngine engine, Interfaces.IEventManager event_manager)
+        public Game(Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager)
         {
             _engine = engine;
             _eventManager = event_manager;
