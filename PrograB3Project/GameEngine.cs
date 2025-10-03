@@ -18,6 +18,7 @@ namespace PrograB3Project
         private float _lag = 0;
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
+        private Queue<GameObject> _gameObjectRegisterTable = new Queue<GameObject>();
         private Game _game;
         private Interfaces.IEventManager _eventManager = new Events.EventManager();
         
@@ -40,6 +41,7 @@ namespace PrograB3Project
                 }
                 Update(_elapsedTime);
                 Render();
+                DequeueGameObjects();
                 _elapsedTime = _stopwatch.ElapsedMilliseconds-_loopStartTime;
                 _lag += _elapsedTime;
             }
@@ -83,7 +85,7 @@ namespace PrograB3Project
         {
            if(!_gameObjectTable.Contains(game_object))
             {
-                _gameObjectTable.Add(game_object);
+                _gameObjectRegisterTable.Enqueue(game_object);
             }
         }
         public void UnregisterGameObject(GameObject game_object)
@@ -97,6 +99,14 @@ namespace PrograB3Project
         public void OnQuitGame(Interfaces.IEvent quit_game_event)
         {
             _shouldExit = true;
+        }
+
+        private void DequeueGameObjects()
+        {
+            while (_gameObjectRegisterTable.Count > 0)
+            {
+                _gameObjectTable.Add(_gameObjectRegisterTable.Dequeue());
+            }
         }
     }
 }
