@@ -59,5 +59,14 @@ namespace PrograB3Project.States
             return _hasBeenInitialized;
         }
 
+        public Interfaces.IGameEngine GetGameEngine()
+        {
+            return _engine;
+        }
+
+        public Interfaces.IEventManager GetEventManager()
+        {
+            return _eventManager;
+        }
     }
 }
