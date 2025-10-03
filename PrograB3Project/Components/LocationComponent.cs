@@ -32,7 +32,7 @@ namespace PrograB3Project.Components
 
         }
 
-        public virtual void AddLocation(LocationComponent location)
+        public void AddLocation(LocationComponent location)
         {
             location._parentLocation = this;
             
