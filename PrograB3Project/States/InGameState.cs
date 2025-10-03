@@ -10,14 +10,21 @@ namespace PrograB3Project.States
     {
         private int _updateCount = 0;
         private StateMachine _stateMachine;
+        private Game _game;
+        private bool _isGameRunning = false;
         public InGameState(StateMachine state_machine) 
         {
             _stateMachine = state_machine;
+            _game = new Game(state_machine.GetGameEngine(),state_machine.GetEventManager());
         }
 
         public void Enter()
         {
-           
+            if (!_isGameRunning)
+            {
+                _isGameRunning=true;
+                _game.Run();
+            }
         }
 
         public void Exit()
