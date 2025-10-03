@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    public class Event : Interfaces.IEvent
+    public class Event 
     {
     }
 }

@@ -17,6 +17,6 @@ namespace PrograB3Project.Interfaces
 
         public void UnregisterGameObject(GameObject game_object);
 
-        public void OnQuitGame(Interfaces.IEvent quit_game_event);
+        public void OnQuitGame(Event quit_game_event);
     }
 }

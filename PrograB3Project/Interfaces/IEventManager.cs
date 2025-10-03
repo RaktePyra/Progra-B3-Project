@@ -9,7 +9,7 @@ namespace PrograB3Project.Interfaces
 {
     public interface IEventManager
     {
-        public void RegisterEvent<TYPE>(Action<IEvent> action) where TYPE : IEvent;
-        public void TriggerEvent(IEvent event_object);
+        public void RegisterEvent<TYPE>(Action<Event> action) where TYPE : Event;
+        public void TriggerEvent(Event event_object);
     }
 }

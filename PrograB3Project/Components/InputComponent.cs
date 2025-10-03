@@ -26,7 +26,7 @@ namespace PrograB3Project.Components
             _componentBeingInteractedWith.ProcessInput(key);
         }
 
-        public void OnInput(Interfaces.IEvent input_event)
+        public void OnInput(Events.Event input_event)
         {
             Events.InputEvent real_event = (Events.InputEvent)input_event;
             ProcessInput(real_event.GetKeyInfo());

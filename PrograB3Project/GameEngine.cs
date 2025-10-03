@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PrograB3Project.Components;
+using PrograB3Project.Events;
+using PrograB3Project.States;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PrograB3Project.Components;
-using PrograB3Project.States;
 
 namespace PrograB3Project
 {
@@ -19,14 +20,14 @@ namespace PrograB3Project
         private const float MS_PER_FRAME = 16;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         private Queue<GameObject> _gameObjectRegisterTable = new Queue<GameObject>();
-        private Game _game;
+        private StateMachine _gameMachine;
         private Interfaces.IEventManager _eventManager = new Events.EventManager();
         
         public void Run()
         {
             _eventManager.RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
-            _game = new Game(this, _eventManager);
-            _game.Run();
+            _gameMachine = new StateMachine(this, _eventManager);
+            _gameMachine.SetInitialState(new MainMenuState(_gameMachine));
             _stopwatch.Start();
 
             while (!_shouldExit)
@@ -96,7 +97,7 @@ namespace PrograB3Project
             }
         }
 
-        public void OnQuitGame(Interfaces.IEvent quit_game_event)
+        public void OnQuitGame(Event quit_game_event)
         {
             _shouldExit = true;
         }
