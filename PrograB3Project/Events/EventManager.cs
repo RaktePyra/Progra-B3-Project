@@ -9,33 +9,46 @@ namespace PrograB3Project.Events
     public class EventManager : Interfaces.IEventManager
     {
 
-        private Dictionary<Type, List<Action<Interfaces.IEvent>>> _eventTable;
+        private Dictionary<Type, List<Action<Event>>> _eventTable;
 
         public EventManager()
         {
-            _eventTable = new Dictionary<Type, List<Action<Interfaces.IEvent>>>();
+            _eventTable = new Dictionary<Type, List<Action<Event>>>();
         }
 
-        public void RegisterEvent<TYPE>(Action<Interfaces.IEvent> action) where TYPE : Interfaces.IEvent
+        public void RegisterEvent<TYPE>(Action<Event> action) where TYPE : Event
         {
             Type event_type = typeof(TYPE);
+
             if (!_eventTable.ContainsKey(event_type))
             {
-                _eventTable.Add(event_type, new List<Action<Interfaces.IEvent>>());
+                _eventTable.Add(event_type, new List<Action<Event>>());
             }
             _eventTable[event_type].Add(action);
         }
 
-        public void TriggerEvent(Interfaces.IEvent event_object)
+        public void TriggerEvent(Event event_object)
         {
             Type event_type = event_object.GetType();
+
             if (_eventTable.ContainsKey(event_type))
             {
-                foreach (Action<Interfaces.IEvent> action in _eventTable[event_type])
+                foreach (Action<Event> action in _eventTable[event_type])
                 {
                     action(event_object);
                 }
             }
+        }
+
+        public void UnregisterFromEvent<TYPE>(Action<Event> action) where TYPE : Event
+        {
+            Type event_type = typeof(TYPE);
+
+            if (_eventTable.ContainsKey(event_type))
+            {
+                _eventTable[event_type].Remove(action);
+            }
+            
         }
     }
 }
