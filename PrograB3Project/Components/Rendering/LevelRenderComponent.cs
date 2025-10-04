@@ -13,6 +13,7 @@ namespace PrograB3Project.Components.Rendering
         private int _sizeY = 0;
         private LocationComponent _ownerLocationComponent;
         private List<VisualRenderComponent> _visualRenderComponentTable = new List<VisualRenderComponent>();
+        private VisualRenderComponent _playerRenderComponent;
         private string _levelName;
         public LevelRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager,LocationComponent owner_location_component, int sizeX, int sizeY) : base(owner, engine, event_manager, render_manager)
         {
@@ -26,7 +27,7 @@ namespace PrograB3Project.Components.Rendering
         {
             
             Console.WriteLine("You are in " + _levelName);
-
+            LocationCoordinates player_coordinates = _playerRenderComponent.GetOwnerTransform().GetLocationCoordinates();
             for (int y_index = 0; y_index < _sizeX; y_index++)
             {
                 for (int x_index = 0; x_index < _sizeY; x_index++)
@@ -47,7 +48,12 @@ namespace PrograB3Project.Components.Rendering
                                 break;
                             }
                         }
-                        if (component_at_location != null)
+                        if (player_coordinates._xCoordinate == x_index && player_coordinates._yCoordinate == y_index)
+                        {
+                            Console.Write(_playerRenderComponent.GetCharacter());
+                            
+                        }
+                        else if (component_at_location != null)
                         {
                             Console.Write(component_at_location.GetCharacter());
                         }
@@ -64,6 +70,11 @@ namespace PrograB3Project.Components.Rendering
         public void AddLocationRenderComponent(VisualRenderComponent renderComponent)
         {
             _visualRenderComponentTable.Add(renderComponent);
+        }
+
+        public void SetPlayerVisualRendererComponent(VisualRenderComponent player_comp)
+        {
+            _playerRenderComponent = player_comp;
         }
     }
 }
