@@ -67,11 +67,12 @@ namespace PrograB3Project
             GameObject player = new GameObject("player", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(player);
             player.AddComponent(new TransformComponent(player,_engine,_eventManager,_renderManager));
-            player.AddComponent(new InputComponent(player, _engine, _eventManager, _renderManager));
+            player.AddComponent(new MovementComponent(player,_engine, _eventManager, _renderManager,player.GetComponent<TransformComponent>()));
+            player.AddComponent(new InputComponent(player, _engine, _eventManager, _renderManager,player.GetComponent<MovementComponent>()));
             player.AddComponent(new CharacterComponent(player, _engine, _eventManager, _renderManager));
             player.AddComponent(new VisualRenderComponent(player, _engine, _eventManager, player.GetComponent<TransformComponent>(), "P ", _renderManager));
             player.GetComponent<TransformComponent>().SetPosition(10,10);
-            player.AddComponent(new MovementComponent(player,_engine, _eventManager, _renderManager));
+            
             InventoryComponent player_inventory = new InventoryComponent(player, _engine, _eventManager, _renderManager);
             GameObject apple = new GameObject("Apple", _engine, _eventManager, _renderManager);
             apple.AddComponent(new ItemComponent(apple, _engine, _eventManager, "Apple",10,5, _renderManager));
