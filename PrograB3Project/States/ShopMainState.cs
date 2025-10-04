@@ -13,26 +13,23 @@ namespace PrograB3Project.States
         private ShopBuyingState _shopBuyingState;
         private Interfaces.IGameObject _player;
         private Interfaces.IGameObject _shopGameObject;
+        private TextualRenderComponent _renderComponent;
         public ShopMainState(StateMachine state_machine, Interfaces.IGameObject player, Interfaces.IGameObject shop) 
         {
             _stateMachine = state_machine;
             _player = player;
             _shopGameObject = shop;
+            _renderComponent = new TextualRenderComponent(shop,shop.GetEngine(),shop.GetEventManager(),"Welcome to the shop.What do you wanna do?.1 Buy.2 Sell.3 Quit" ,shop.GetRenderManager());
         }
 
         public void Enter()
         {
-            Console.Clear();
-            Console.WriteLine("Welcome to the shop.");
-            Console.WriteLine("What do you wanna do?");
-            Console.WriteLine("1.Buy");
-            Console.WriteLine("2.Sell");
-            Console.WriteLine("3.Quit");
+            _shopGameObject.GetRenderManager().RegisterRenderComponent(_renderComponent);
         }
 
         public void Exit()
         {
-            
+            _shopGameObject.GetRenderManager().UnregisterRenderComponent(_renderComponent);
         }
 
         public void ProcessInput(ConsoleKeyInfo key_info)
