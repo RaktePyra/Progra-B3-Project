@@ -17,17 +17,19 @@ namespace PrograB3Project
         private float _loopStartTime = 0;
         private float _elapsedTime = 0;
         private float _lag = 0;
-        private const float MS_PER_FRAME = 16;
+        private const float MS_PER_FIXED_UPFATE = 16;
+        private const float MS_PER_FRAME = 100;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         private Queue<GameObject> _gameObjectRegisterTable = new Queue<GameObject>();
         private StateMachine _gameMachine;
         private Interfaces.IEventManager _eventManager = new Events.EventManager();
+        private RenderManager _renderManager = new RenderManager();
         
         public void Run()
         {
             _eventManager.RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
             _gameMachine = new StateMachine(this, _eventManager);
-            _gameMachine.SetInitialState(new MainMenuState(_gameMachine));
+            _gameMachine.SetInitialState(new MainMenuState(_gameMachine, this,_eventManager,_renderManager));
             _stopwatch.Start();
 
             while (!_shouldExit)
@@ -35,15 +37,20 @@ namespace PrograB3Project
                 _loopStartTime = _stopwatch.ElapsedMilliseconds;
                 ProcessInput();
 
-                while (_lag >= MS_PER_FRAME)
+                while (_lag >= MS_PER_FIXED_UPFATE)
                 {
-                    FixedUpdate(MS_PER_FRAME);
-                    _lag-=MS_PER_FRAME;
+                    FixedUpdate(MS_PER_FIXED_UPFATE);
+                    _lag-=MS_PER_FIXED_UPFATE;
                 }
                 Update(_elapsedTime);
                 Render();
                 DequeueGameObjects();
                 _elapsedTime = _stopwatch.ElapsedMilliseconds-_loopStartTime;
+                if( _elapsedTime < MS_PER_FRAME )
+                {
+                    Thread.Sleep((int)(MS_PER_FRAME - _elapsedTime));
+                    _elapsedTime = MS_PER_FRAME;
+                }
                 _lag += _elapsedTime;
             }
         }
@@ -63,6 +70,7 @@ namespace PrograB3Project
 
         private void Render()
         {
+            _renderManager.Render();
         }
 
         private void ProcessInput()
