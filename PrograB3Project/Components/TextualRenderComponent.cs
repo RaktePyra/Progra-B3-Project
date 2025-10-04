@@ -1,12 +1,11 @@
-﻿using PrograB3Project.Components;
-using PrograB3Project.Interfaces;
+﻿using PrograB3Project.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project
+namespace PrograB3Project.Components
 {
     internal class TextualRenderComponent : RenderComponent
     {
