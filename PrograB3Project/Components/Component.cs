@@ -21,6 +21,7 @@ namespace PrograB3Project.Components
             _ownerGameObject.AddComponent(this);
             _eventManager = event_manager;
             _gameEngine = engine;
+            _renderManager = render_manager;
 
         }
 
