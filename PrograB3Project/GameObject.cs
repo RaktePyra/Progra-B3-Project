@@ -70,5 +70,10 @@ namespace PrograB3Project
         {
             return _eventManager;
         }
+
+        public RenderManager GetRenderManager()
+        {
+           return _renderManager;
+        }
     }
 }
