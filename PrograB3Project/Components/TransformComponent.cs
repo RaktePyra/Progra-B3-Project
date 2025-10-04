@@ -32,6 +32,7 @@ namespace PrograB3Project.Components
             _xCoordinate = x_coord;
             _yCoordinate = y_coord;
         }
+
         public readonly int _xCoordinate;
         public readonly int _yCoordinate;
     }

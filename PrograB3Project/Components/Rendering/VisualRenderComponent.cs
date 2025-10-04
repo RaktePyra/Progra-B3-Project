@@ -10,9 +10,9 @@ namespace PrograB3Project.Components.Rendering
     public class VisualRenderComponent : RenderComponent
     {
         private TransformComponent _ownerTransform;
-        private char _character = ' ';
+        private string _character = "  ";
 
-        public VisualRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, TransformComponent transformComponent, char character,RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
+        public VisualRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, TransformComponent transformComponent, string character,RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
         {
             _ownerTransform = transformComponent;
             _character = character;
@@ -20,7 +20,16 @@ namespace PrograB3Project.Components.Rendering
 
         public override void Render()
         {
-         
+        }
+
+        public TransformComponent GetOwnerTransform()
+        {
+            return _ownerTransform;
+        }
+
+        public string GetCharacter()
+        {
+            return _character;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PrograB3Project.Components;
+using PrograB3Project.Components.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,13 @@ namespace PrograB3Project
             _engine.RegisterGameObject(world);
             WorldComponent world_component = new WorldComponent(world, _engine, _eventManager, _renderManager, 20, 20);
 
+
             GameObject skyrim = new GameObject("Skyrim", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(skyrim);
             RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _engine, _eventManager,_renderManager,20,20);
+            TransformComponent skyrim_transform_comp = new TransformComponent(skyrim, _engine,_eventManager, _renderManager);
+            VisualRenderComponent skyrim_visual_render_comp = new VisualRenderComponent(skyrim, _engine, _eventManager, skyrim_transform_comp, "S ", _renderManager);
+            skyrim_transform_comp.SetPosition(1, 6);
             GameObject windhelm = new GameObject("WindHelm", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(windhelm);
             CityComponent city_windhelm_comp=new CityComponent(windhelm, _engine, _eventManager, _renderManager, 20, 20);
@@ -40,6 +45,9 @@ namespace PrograB3Project
             GameObject cyrodiil = new GameObject("Cyrodiil", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(cyrodiil);
             RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager, _renderManager, 20, 20);
+            TransformComponent cyrodiil_transform_comp = new TransformComponent(cyrodiil, _engine, _eventManager, _renderManager);
+            cyrodiil_transform_comp.SetPosition(5, 5);
+            VisualRenderComponent cyrodiil_visual_render_comp = new VisualRenderComponent(cyrodiil, _engine, _eventManager, cyrodiil_transform_comp, "C ", _renderManager);
             GameObject imperial_city = new GameObject("Imperial City", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(imperial_city);
             CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager, _renderManager, 20, 20);

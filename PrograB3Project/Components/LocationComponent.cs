@@ -48,6 +48,7 @@ namespace PrograB3Project.Components
             if (!_childLocationTable.Contains(location))
             {
                 _childLocationTable.Add(location);
+                _levelRenderComponent.AddLocationRenderComponent(location.GetOwnerGameObject().GetComponent<VisualRenderComponent>());
             }
         }
 
