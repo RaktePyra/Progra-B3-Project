@@ -85,7 +85,10 @@ namespace PrograB3Project.Events
                     {
                         _eventTable.Add(entrie.Key, new List<Action<Event>>());
                     }
-                    _eventTable[entrie.Key].Add(action);
+                    if (!_eventTable[entrie.Key].Contains(action))
+                    { 
+                        _eventTable[entrie.Key].Add(action);
+                    }
                 }
             }
             _eventToRegisterTable.Clear();
