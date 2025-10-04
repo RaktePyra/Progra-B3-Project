@@ -1,4 +1,4 @@
-﻿using PrograB3Project.Components;
+﻿using PrograB3Project.Components.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;

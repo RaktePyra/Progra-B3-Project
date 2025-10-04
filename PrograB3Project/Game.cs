@@ -25,27 +25,27 @@ namespace PrograB3Project
         {
             GameObject world = new GameObject("Tamriel", _engine,_eventManager,_renderManager);
             _engine.RegisterGameObject(world);
-            WorldComponent world_component = new WorldComponent(world, _engine, _eventManager,_renderManager);
+            WorldComponent world_component = new WorldComponent(world, _engine, _eventManager, _renderManager, 20, 20);
 
             GameObject skyrim = new GameObject("Skyrim", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(skyrim);
-            RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _engine, _eventManager,_renderManager);
+            RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _engine, _eventManager,_renderManager,20,20);
             GameObject windhelm = new GameObject("WindHelm", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(windhelm);
-            CityComponent city_windhelm_comp=new CityComponent(windhelm, _engine, _eventManager, _renderManager);
+            CityComponent city_windhelm_comp=new CityComponent(windhelm, _engine, _eventManager, _renderManager, 20, 20);
             GameObject whiterun = new GameObject("Whiterun", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(whiterun);
-            CityComponent city_whiterun_comp = new CityComponent(whiterun, _engine, _eventManager, _renderManager);
+            CityComponent city_whiterun_comp = new CityComponent(whiterun, _engine, _eventManager, _renderManager, 20, 20);
 
             GameObject cyrodiil = new GameObject("Cyrodiil", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(cyrodiil);
-            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager, _renderManager);
+            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager, _renderManager, 20, 20);
             GameObject imperial_city = new GameObject("Imperial City", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(imperial_city);
-            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager, _renderManager);
+            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager, _renderManager, 20, 20);
             GameObject kvatch = new GameObject("Kvatch", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(kvatch);
-            CityComponent city_kvatch_comp = new CityComponent(kvatch, _engine, _eventManager, _renderManager);
+            CityComponent city_kvatch_comp = new CityComponent(kvatch, _engine, _eventManager, _renderManager, 20, 20);
 
             skyrim_region_comp.AddLocation(city_windhelm_comp);
             skyrim_region_comp.AddLocation(city_whiterun_comp);
@@ -58,6 +58,7 @@ namespace PrograB3Project
 
             GameObject player = new GameObject("player", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(player);
+            player.AddComponent(new TransformComponent(player,_engine,_eventManager,_renderManager));
             player.AddComponent(new InputComponent(player, _engine, _eventManager, _renderManager));
             player.AddComponent(new CharacterComponent(player, _engine, _eventManager, _renderManager));
             InventoryComponent player_inventory = new InventoryComponent(player, _engine, _eventManager, _renderManager);
@@ -70,10 +71,5 @@ namespace PrograB3Project
 
             world_component.Enter(player);
         }
-
-        public void OnExit()
-        {
-
-        }   
     }
 }

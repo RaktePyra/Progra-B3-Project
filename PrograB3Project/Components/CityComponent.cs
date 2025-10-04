@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
     {
         private List<KeyLocationComponent> _locationTable = new List<KeyLocationComponent>();
 
-        public CityComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager) : base(owner,engine,event_manager,render_manager)
+        public CityComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager, int level_size_x,int level_size_y) : base(owner, engine, event_manager, render_manager, level_size_x, level_size_y)
         {
             Interfaces.IGameObject shop = new GameObject("Shop", engine, event_manager,render_manager);
             InventoryComponent shop_inventory = new InventoryComponent(shop, engine, event_manager, render_manager);
@@ -25,8 +25,6 @@ namespace PrograB3Project.Components
             Interfaces.IGameObject job = new GameObject("Grind Shrine", engine, event_manager, render_manager);
             JobComponent grind_shrine = new JobComponent(job, engine, event_manager, this, render_manager);
             AddLocation(grind_shrine);
-           
-           
         }
 
         public override void Enter(Interfaces.IGameObject player)
