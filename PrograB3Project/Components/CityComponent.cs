@@ -13,17 +13,17 @@ namespace PrograB3Project.Components
 
         public CityComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager) : base(owner,engine,event_manager,render_manager)
         {
-            Interfaces.IGameObject shop = new GameObject("Shop", engine, event_manager,_renderManager);
-            InventoryComponent shop_inventory = new InventoryComponent(shop, engine, event_manager, _renderManager);
+            Interfaces.IGameObject shop = new GameObject("Shop", engine, event_manager,render_manager);
+            InventoryComponent shop_inventory = new InventoryComponent(shop, engine, event_manager, render_manager);
             shop_inventory.AddMoney(9900);
-            Interfaces.IGameObject sword = new GameObject("Sword", engine, event_manager,_renderManager);
-            ItemComponent sword_comp = new ItemComponent(sword, engine, event_manager, "sword",1, 10,_renderManager);
+            Interfaces.IGameObject sword = new GameObject("Sword", engine, event_manager, render_manager);
+            ItemComponent sword_comp = new ItemComponent(sword, engine, event_manager, "sword",1, 10, render_manager);
             shop_inventory.AddItem(sword_comp);
-            TradingComponent shop_trading_comp = new TradingComponent(shop, engine, event_manager, _renderManager);
-            ShopComponent shop_component = new(shop, engine, event_manager, this,shop_trading_comp,shop_inventory, _renderManager);
+            TradingComponent shop_trading_comp = new TradingComponent(shop, engine, event_manager, render_manager);
+            ShopComponent shop_component = new(shop, engine, event_manager, this,shop_trading_comp,shop_inventory, render_manager);
             AddLocation(shop_component);
-            Interfaces.IGameObject job = new GameObject("Grind Shrine", engine, event_manager, _renderManager);
-            JobComponent grind_shrine = new JobComponent(job, engine, event_manager, this, _renderManager);
+            Interfaces.IGameObject job = new GameObject("Grind Shrine", engine, event_manager, render_manager);
+            JobComponent grind_shrine = new JobComponent(job, engine, event_manager, this, render_manager);
             AddLocation(grind_shrine);
            
            
