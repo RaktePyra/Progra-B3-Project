@@ -1,4 +1,4 @@
-﻿using PrograB3Project.Components;
+﻿using PrograB3Project.Components.Rendering;
 using PrograB3Project.Events;
 using PrograB3Project.Interfaces;
 
@@ -33,7 +33,7 @@ namespace PrograB3Project.States
         public void Exit()
         {
             _stateMachine.GetEventManager().UnregisterFromEvent<InputEvent>(ProcessInput);
-            _renderManager.RegisterRenderComponent(_textualRenderComponent);
+            _renderManager.UnregisterRenderComponent(_textualRenderComponent);
         }
 
         public void ProcessInput(Event input_event)
