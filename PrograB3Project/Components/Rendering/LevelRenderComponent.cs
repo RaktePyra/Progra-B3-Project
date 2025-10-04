@@ -12,6 +12,7 @@ namespace PrograB3Project.Components.Rendering
         private int _sizeX = 0;
         private int _sizeY = 0;
         private LocationComponent _ownerLocationComponent;
+        private List<VisualRenderComponent> _visualRenderComponentTable = new List<VisualRenderComponent>();
         private string _levelName;
         public LevelRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager,LocationComponent owner_location_component, int sizeX, int sizeY) : base(owner, engine, event_manager, render_manager)
         {
@@ -23,11 +24,12 @@ namespace PrograB3Project.Components.Rendering
 
         public override void Render()
         {
+            
             Console.WriteLine("You are in " + _levelName);
 
-            for (int x_index = 0; x_index < _sizeX; x_index++)
+            for (int y_index = 0; y_index < _sizeX; y_index++)
             {
-                for (int y_index = 0; y_index < _sizeY; y_index++)
+                for (int x_index = 0; x_index < _sizeY; x_index++)
                 {
                     if (x_index == 0 || y_index == 0 || x_index == _sizeX - 1 || y_index == _sizeY - 1)
                     {
@@ -35,11 +37,33 @@ namespace PrograB3Project.Components.Rendering
                     }
                     else
                     {
-                        Console.Write("  ");
+                        VisualRenderComponent component_at_location = null;
+                        foreach(VisualRenderComponent comp in _visualRenderComponentTable)
+                        {
+                            LocationCoordinates component_location = comp.GetOwnerTransform().GetLocationCoordinates();
+                            if (component_location._xCoordinate == x_index && component_location._yCoordinate == y_index)
+                            {
+                                component_at_location = comp;
+                                break;
+                            }
+                        }
+                        if (component_at_location != null)
+                        {
+                            Console.Write(component_at_location.GetCharacter());
+                        }
+                        else
+                        {
+                            Console.Write("  ");
+                        }
                     }
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void AddLocationRenderComponent(VisualRenderComponent renderComponent)
+        {
+            _visualRenderComponentTable.Add(renderComponent);
         }
     }
 }
