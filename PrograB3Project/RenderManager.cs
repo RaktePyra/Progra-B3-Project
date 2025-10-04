@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
-    internal class RenderManager
+    public class RenderManager
     {
+
     }
 }
