@@ -29,6 +29,8 @@ namespace PrograB3Project.Components
             _renderManager.RegisterRenderComponent(_levelRenderComponent);
             _player = player;
             InputComponent player_input_comp = _player.GetComponent<InputComponent>();
+            VisualRenderComponent player_visual_comp = _player.GetComponent<VisualRenderComponent>();
+            _levelRenderComponent.SetPlayerVisualRendererComponent(player_visual_comp);
 
             if (player_input_comp != null)
             {
