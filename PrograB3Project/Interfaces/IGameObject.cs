@@ -21,5 +21,7 @@ namespace PrograB3Project.Interfaces
         public IGameEngine GetEngine();
 
         public IEventManager GetEventManager();
+
+        public RenderManager GetRenderManager();
     }
 }
