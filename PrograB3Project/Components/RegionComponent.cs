@@ -8,7 +8,7 @@ namespace PrograB3Project.Components
 {
     internal class RegionComponent : LocationComponent
     {
-        public RegionComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager) 
+        public RegionComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager,render_manager) 
         {
 
         }

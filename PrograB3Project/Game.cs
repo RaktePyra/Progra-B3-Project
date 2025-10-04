@@ -12,38 +12,40 @@ namespace PrograB3Project
     {
         private Interfaces.IGameEngine _engine;
         private Interfaces.IEventManager _eventManager;
+        private RenderManager _renderManager;
 
-        public Game(Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager)
+        public Game(Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager renderManager)
         {
             _engine = engine;
             _eventManager = event_manager;
+            _renderManager = renderManager;
         }
 
         public void Run()
         {
-            GameObject world = new GameObject("Tamriel", _engine,_eventManager);
+            GameObject world = new GameObject("Tamriel", _engine,_eventManager,_renderManager);
             _engine.RegisterGameObject(world);
-            WorldComponent world_component = new WorldComponent(world, _engine, _eventManager);
+            WorldComponent world_component = new WorldComponent(world, _engine, _eventManager,_renderManager);
 
-            GameObject skyrim = new GameObject("Skyrim", _engine, _eventManager);
+            GameObject skyrim = new GameObject("Skyrim", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(skyrim);
-            RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _engine, _eventManager);
-            GameObject windhelm = new GameObject("WindHelm", _engine, _eventManager);
+            RegionComponent skyrim_region_comp = new RegionComponent(skyrim, _engine, _eventManager,_renderManager);
+            GameObject windhelm = new GameObject("WindHelm", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(windhelm);
-            CityComponent city_windhelm_comp=new CityComponent(windhelm, _engine, _eventManager);
-            GameObject whiterun = new GameObject("Whiterun", _engine, _eventManager);
+            CityComponent city_windhelm_comp=new CityComponent(windhelm, _engine, _eventManager, _renderManager);
+            GameObject whiterun = new GameObject("Whiterun", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(whiterun);
-            CityComponent city_whiterun_comp = new CityComponent(whiterun, _engine, _eventManager);
+            CityComponent city_whiterun_comp = new CityComponent(whiterun, _engine, _eventManager, _renderManager);
 
-            GameObject cyrodiil = new GameObject("Cyrodiil", _engine, _eventManager);
+            GameObject cyrodiil = new GameObject("Cyrodiil", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(cyrodiil);
-            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager);
-            GameObject imperial_city = new GameObject("Imperial City", _engine, _eventManager);
+            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager, _renderManager);
+            GameObject imperial_city = new GameObject("Imperial City", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(imperial_city);
-            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager);
-            GameObject kvatch = new GameObject("Kvatch", _engine, _eventManager);
+            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager, _renderManager);
+            GameObject kvatch = new GameObject("Kvatch", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(kvatch);
-            CityComponent city_kvatch_comp = new CityComponent(kvatch, _engine, _eventManager);
+            CityComponent city_kvatch_comp = new CityComponent(kvatch, _engine, _eventManager, _renderManager);
 
             skyrim_region_comp.AddLocation(city_windhelm_comp);
             skyrim_region_comp.AddLocation(city_whiterun_comp);
@@ -54,15 +56,15 @@ namespace PrograB3Project
             world_component.AddLocation(skyrim_region_comp);
             world_component.AddLocation (region_cyrodiil_comp);
 
-            GameObject player = new GameObject("player", _engine, _eventManager);
+            GameObject player = new GameObject("player", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(player);
-            player.AddComponent(new InputComponent(player, _engine, _eventManager));
-            player.AddComponent(new CharacterComponent(player, _engine, _eventManager));
-            InventoryComponent player_inventory = new InventoryComponent(player, _engine, _eventManager);
-            GameObject apple = new GameObject("Apple", _engine, _eventManager);
-            apple.AddComponent(new ItemComponent(apple, _engine, _eventManager, "Apple",10,5));
-            GameObject water = new GameObject("Water", _engine, _eventManager);
-            water.AddComponent(new ItemComponent(water, _engine, _eventManager, "Water", 100, 1));
+            player.AddComponent(new InputComponent(player, _engine, _eventManager, _renderManager));
+            player.AddComponent(new CharacterComponent(player, _engine, _eventManager, _renderManager));
+            InventoryComponent player_inventory = new InventoryComponent(player, _engine, _eventManager, _renderManager);
+            GameObject apple = new GameObject("Apple", _engine, _eventManager, _renderManager);
+            apple.AddComponent(new ItemComponent(apple, _engine, _eventManager, "Apple",10,5, _renderManager));
+            GameObject water = new GameObject("Water", _engine, _eventManager, _renderManager);
+            water.AddComponent(new ItemComponent(water, _engine, _eventManager, "Water", 100, 1, _renderManager));
             player_inventory.AddItem(apple.GetComponent<ItemComponent>());
             player_inventory.AddItem(water.GetComponent<ItemComponent>());
 

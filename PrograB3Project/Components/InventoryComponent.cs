@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
         private List<IItem> _itemTable = new List<IItem>();
         private int _money = 100;
 
-        public InventoryComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager) 
+        public InventoryComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager,render_manager) 
         {
            
         }

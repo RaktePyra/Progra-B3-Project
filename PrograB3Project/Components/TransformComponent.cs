@@ -9,7 +9,7 @@ namespace PrograB3Project.Components
 {
     public class TransformComponent : Component
     {
-        public TransformComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager) : base(owner, engine, event_manager)
+        public TransformComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
         {
         }
     }

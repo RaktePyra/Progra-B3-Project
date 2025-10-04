@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
         private Random _randomGenerator = new Random();
         private Interfaces.IGameObject _playerGameObject;
 
-        public JobComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parentLocation) : base(owner, engine,event_manager, parentLocation)
+        public JobComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parentLocation, RenderManager render_manager) : base(owner, engine, event_manager, parentLocation, render_manager)
         {
 
         }

@@ -1,4 +1,5 @@
 ﻿using PrograB3Project.Events;
+using PrograB3Project.Interfaces;
 
 namespace PrograB3Project.States
 {
@@ -6,26 +7,32 @@ namespace PrograB3Project.States
     {
         private StateMachine _stateMachine;
         private InGameState _gameState;
+        private RenderManager _renderManager;
+        private IEventManager _eventManager;
+        private GameEngine _engine;
+        private TextualRenderComponent _textualRenderComponent;
+        private GameObject _mainMenuObject;
 
-        public MainMenuState(StateMachine state_machine)
+        public MainMenuState(StateMachine state_machine,GameEngine engine,IEventManager event_manager, RenderManager render_manager)
         {
             _stateMachine = state_machine;
-            
+            _eventManager = event_manager;
+            _engine = engine;
+            _renderManager = render_manager;
+            _mainMenuObject = new GameObject("Main Menu", _engine, _eventManager, _renderManager);
+            _textualRenderComponent = new TextualRenderComponent(_mainMenuObject, _engine, _eventManager, "Main Menu.Press 1 to play.Press 2 to quit", _renderManager);
+
         }
         public void Enter()
         {
             _stateMachine.GetEventManager().RegisterEvent<InputEvent>(ProcessInput);
-            Console.WriteLine("Main Menu");
-            Console.WriteLine("Press 1 to play");
-            Console.WriteLine("Press 2 to quit");
+            _renderManager.RegisterRenderComponent(_textualRenderComponent);
         }
 
         public void Exit()
         {
             _stateMachine.GetEventManager().UnregisterFromEvent<InputEvent>(ProcessInput);
-            Console.WriteLine("Loading Game");
-            Thread.Sleep(1000);
-            Console.Clear();
+            _renderManager.RegisterRenderComponent(_textualRenderComponent);
         }
 
         public void ProcessInput(Event input_event)
@@ -39,7 +46,7 @@ namespace PrograB3Project.States
 
                         if (_gameState == null)
                         {
-                            _gameState = new InGameState(_stateMachine);
+                            _gameState = new InGameState(_stateMachine,_renderManager);
                         }
                         _stateMachine.ChangeState(_gameState);
 

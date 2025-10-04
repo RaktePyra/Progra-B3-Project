@@ -14,7 +14,7 @@ namespace PrograB3Project.Components
         private InventoryComponent _shopInventoryComponent;
         private StateMachine _shopStateMachine;
 
-        public ShopComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp) : base(owner,engine, event_manager,owner_location)
+        public ShopComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp, RenderManager render_manager) : base(owner,engine, event_manager,owner_location,render_manager)
         {
             
             _shopTradingComponent = trading_comp;

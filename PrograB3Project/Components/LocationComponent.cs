@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
         protected List<LocationComponent> _childLocationTable = new List<LocationComponent>();
         private Interfaces.IGameObject _player;
        
-        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager) : base(owner, game_engine,event_manager)
+        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager) : base(owner, game_engine,event_manager, render_manager)
         {
         }
 

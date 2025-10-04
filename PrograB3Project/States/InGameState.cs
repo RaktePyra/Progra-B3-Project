@@ -12,10 +12,10 @@ namespace PrograB3Project.States
         private StateMachine _stateMachine;
         private Game _game;
         private bool _isGameRunning = false;
-        public InGameState(StateMachine state_machine) 
+        public InGameState(StateMachine state_machine,RenderManager render_manager) 
         {
             _stateMachine = state_machine;
-            _game = new Game(state_machine.GetGameEngine(),state_machine.GetEventManager());
+            _game = new Game(state_machine.GetGameEngine(),state_machine.GetEventManager(), render_manager);
         }
 
         public void Enter()
@@ -39,8 +39,6 @@ namespace PrograB3Project.States
 
         public void Render()
         {
-            Console.WriteLine("Been Playing for " + _updateCount + " frames");
-            Console.WriteLine("Press Escape to quit");
         }
 
         public void Update(float delta_time)

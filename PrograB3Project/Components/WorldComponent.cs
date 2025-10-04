@@ -10,7 +10,7 @@ namespace PrograB3Project.Components
     public class WorldComponent : LocationComponent
     {
 
-        public WorldComponent(GameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager) : base(owner, engine, event_manager)
+        public WorldComponent(GameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
         { 
 
         }
