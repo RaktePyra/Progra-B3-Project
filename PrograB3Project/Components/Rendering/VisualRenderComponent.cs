@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrograB3Project.Components
+namespace PrograB3Project.Components.Rendering
 {
     public class VisualRenderComponent : RenderComponent
     {
