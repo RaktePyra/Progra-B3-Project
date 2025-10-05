@@ -12,15 +12,17 @@ namespace PrograB3Project.Components
         {
             _ownerTransformComponent = owner.GetComponent<TransformComponent>();
             _collisionManager = collision_manager;
-            collision_manager.RegisterCollisionComponent(this);
+            
         }
 
         public bool CanMove(LocationCoordinates location)
         {
             bool result = true;
-            if (_collisionManager.GetCollisionComponentAtLocation(location) != null)
+            CollisionComponent colliding_comp = _collisionManager.GetCollisionComponentAtLocation(location);
+            if (colliding_comp != null)
             {
                 result = false;
+                _eventManager.TriggerEvent(new Events.CollisionEvent(this,colliding_comp));
             }
             return result;
         }

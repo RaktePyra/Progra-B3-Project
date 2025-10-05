@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PrograB3Project.Components.Rendering;
+using PrograB3Project.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +29,9 @@ namespace PrograB3Project.Components
             Console.WriteLine(_childLocationTable.Count + 1 + ".Quit to " + _parentLocation.GetOwnerGameObject().GetName());
         }
 
+        public override void OnCollisionEnter(CollisionComponent collider)
+        {
+            Enter(collider.GetOwnerGameObject());
+        }
     }
 }

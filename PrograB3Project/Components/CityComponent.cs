@@ -1,4 +1,5 @@
-﻿using PrograB3Project.Events;
+﻿using PrograB3Project.Components.Rendering;
+using PrograB3Project.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +66,11 @@ namespace PrograB3Project.Components
             {
                 _locationTable.Add(location);
             }
+        }
+        //Adding Tag would be much more preferable
+        public override void OnCollisionEnter(CollisionComponent collider)
+        {
+            Enter(collider.GetOwnerGameObject());
         }
     }
 }

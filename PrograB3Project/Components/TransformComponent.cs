@@ -12,6 +12,7 @@ namespace PrograB3Project.Components
         private LocationCoordinates _position = new LocationCoordinates();
         public TransformComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
         {
+            _position = new LocationCoordinates(10,10);
         }
 
         public void SetPosition(int x_pos, int y_pos)

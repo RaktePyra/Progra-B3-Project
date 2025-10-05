@@ -23,9 +23,8 @@ namespace PrograB3Project
         {
             GameObject world = new GameObject("Tamriel", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(world);
-            CollisionComponent world_collision_comp = new CollisionComponent(world, _engine, _eventManager, _renderManager,_collisionManager);
-            WorldComponent world_component = new WorldComponent(world, _engine, _eventManager, _renderManager, 20, 20, _collisionManager,world_collision_comp);
-            
+            CollisionComponent world_collision_comp = new CollisionComponent(world, _engine, _eventManager, _renderManager, _collisionManager);
+            WorldComponent world_component = new WorldComponent(world, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, world_collision_comp);
 
             GameObject skyrim = new GameObject("Skyrim", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(skyrim);
@@ -39,31 +38,38 @@ namespace PrograB3Project
             _engine.RegisterGameObject(windhelm);
             TransformComponent windhelm_transform_comp = new TransformComponent(windhelm, _engine, _eventManager, _renderManager);
             CollisionComponent windhelm_collision_comp = new CollisionComponent(windhelm, _engine, _eventManager, _renderManager, _collisionManager);
-            CityComponent city_windhelm_comp = new CityComponent(windhelm, _engine, _eventManager, _renderManager, 20, 20, _collisionManager,windhelm_collision_comp);
+            CityComponent city_windhelm_comp = new CityComponent(windhelm, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, windhelm_collision_comp);
+            VisualRenderComponent windhelm_visual_render_comp = new VisualRenderComponent(windhelm, _engine, _eventManager, windhelm_transform_comp, "WI", _renderManager);
+            windhelm_transform_comp.SetPosition(6, 1);
             GameObject whiterun = new GameObject("Whiterun", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(whiterun);
             TransformComponent whiterun_transform_comp = new TransformComponent(whiterun, _engine, _eventManager, _renderManager);
             CollisionComponent whiterun_collision_comp = new CollisionComponent(whiterun, _engine, _eventManager, _renderManager, _collisionManager);
             CityComponent city_whiterun_comp = new CityComponent(whiterun, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, whiterun_collision_comp);
-
+            VisualRenderComponent whiterun_visual_render_comp = new VisualRenderComponent(whiterun, _engine, _eventManager, whiterun_transform_comp, "WH", _renderManager);
+            whiterun_transform_comp.SetPosition(15, 2);
             GameObject cyrodiil = new GameObject("Cyrodiil", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(cyrodiil);
-            TransformComponent cyrodiil_transform_comp = new TransformComponent(windhelm, _engine, _eventManager, _renderManager);
-            CollisionComponent cyrodiil_collision_comp = new CollisionComponent(windhelm, _engine, _eventManager, _renderManager, _collisionManager);
-            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager, _renderManager, 20, 20, _collisionManager,cyrodiil_collision_comp);
+            TransformComponent cyrodiil_transform_comp = new TransformComponent(cyrodiil, _engine, _eventManager, _renderManager);
+            CollisionComponent cyrodiil_collision_comp = new CollisionComponent(cyrodiil, _engine, _eventManager, _renderManager, _collisionManager);
+            RegionComponent region_cyrodiil_comp = new RegionComponent(cyrodiil, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, cyrodiil_collision_comp);
             cyrodiil_transform_comp.SetPosition(5, 5);
             VisualRenderComponent cyrodiil_visual_render_comp = new VisualRenderComponent(cyrodiil, _engine, _eventManager, cyrodiil_transform_comp, "C ", _renderManager);
+
             GameObject imperial_city = new GameObject("Imperial City", _engine, _eventManager, _renderManager);
             _engine.RegisterGameObject(imperial_city);
             TransformComponent imperial_transform_comp = new TransformComponent(imperial_city, _engine, _eventManager, _renderManager);
             CollisionComponent imperial_collision_comp = new CollisionComponent(imperial_city, _engine, _eventManager, _renderManager, _collisionManager);
-            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager, _renderManager, 20, 20, _collisionManager,imperial_collision_comp);
+            CityComponent city_imperial_city_comp = new CityComponent(imperial_city, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, imperial_collision_comp);
+            VisualRenderComponent imperial_visual_render_comp = new VisualRenderComponent(imperial_city, _engine, _eventManager, imperial_transform_comp, "I ", _renderManager);
             GameObject kvatch = new GameObject("Kvatch", _engine, _eventManager, _renderManager);
+            imperial_transform_comp.SetPosition(16, 5);
             _engine.RegisterGameObject(kvatch);
             TransformComponent kvatch_transform_comp = new TransformComponent(kvatch, _engine, _eventManager, _renderManager);
             CollisionComponent kvatch_collision_comp = new CollisionComponent(kvatch, _engine, _eventManager, _renderManager, _collisionManager);
             CityComponent city_kvatch_comp = new CityComponent(kvatch, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, kvatch_collision_comp);
-
+            VisualRenderComponent kvatch_visual_render_comp = new VisualRenderComponent(kvatch, _engine, _eventManager, kvatch_transform_comp, "K ", _renderManager);
+            kvatch_transform_comp.SetPosition(14, 2);
             skyrim_region_comp.AddLocation(city_windhelm_comp);
             skyrim_region_comp.AddLocation(city_whiterun_comp);
 
@@ -82,7 +88,7 @@ namespace PrograB3Project
             player.AddComponent(new CollisionComponent(player, _engine, _eventManager, _renderManager, _collisionManager));
             player.AddComponent(new MovementComponent(player, _engine, _eventManager, _renderManager, player.GetComponent<TransformComponent>()));
             player.AddComponent(new InputComponent(player, _engine, _eventManager, _renderManager, player.GetComponent<MovementComponent>()));
-
+            _collisionManager.RegisterCollisionComponent(player.GetComponent<CollisionComponent>());
             InventoryComponent player_inventory = new InventoryComponent(player, _engine, _eventManager, _renderManager);
             GameObject apple = new GameObject("Apple", _engine, _eventManager, _renderManager);
             apple.AddComponent(new ItemComponent(apple, _engine, _eventManager, "Apple", 10, 5, _renderManager));
