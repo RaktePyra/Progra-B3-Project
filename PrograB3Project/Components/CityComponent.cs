@@ -11,7 +11,7 @@ namespace PrograB3Project.Components
     {
         private List<KeyLocationComponent> _locationTable = new List<KeyLocationComponent>();
 
-        public CityComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager, int level_size_x,int level_size_y) : base(owner, engine, event_manager, render_manager, level_size_x, level_size_y)
+        public CityComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager, int level_size_x,int level_size_y,CollisionManager collision_manager,CollisionComponent collision_component) : base(owner, engine, event_manager, render_manager, level_size_x, level_size_y,collision_manager,collision_component)
         {
             Interfaces.IGameObject shop = new GameObject("Shop", engine, event_manager,render_manager);
             InventoryComponent shop_inventory = new InventoryComponent(shop, engine, event_manager, render_manager);
