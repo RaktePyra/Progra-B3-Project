@@ -1,4 +1,5 @@
 ﻿using PrograB3Project.Components.Rendering;
+using PrograB3Project.Events;
 
 namespace PrograB3Project.Components
 {
@@ -21,11 +22,15 @@ namespace PrograB3Project.Components
             _levelRenderComponent = new LevelRenderComponent(owner, game_engine, event_manager, render_manager, this, _levelSizeX, _levelSizeY);
             _collisionManager = collision_manager;
             _collisionComponent = collision_component;
-
+            _eventManager.RegisterEvent<CollisionEvent>(OnCollision);
         }
 
         public virtual void Enter(Interfaces.IGameObject player)
         {
+            if (_parentLocation != null)
+            {
+                _parentLocation.Exit();
+            }
             _collisionManager.UnregisterCollisionComponent(_collisionComponent);
             _renderManager.RegisterRenderComponent(_levelRenderComponent);
             _player = player;
@@ -41,7 +46,10 @@ namespace PrograB3Project.Components
             {
                 throw new Exception("A Player was not provided to " + this.ToString());
             }
-
+            foreach (LocationComponent child_location in _childLocationTable)
+            {
+                child_location.OnParentLocationEntered();
+            }
         }
 
         public void AddLocation(LocationComponent location)
@@ -63,8 +71,8 @@ namespace PrograB3Project.Components
         public virtual void Exit()
         {
             _renderManager.UnregisterRenderComponent(_levelRenderComponent);
-            _collisionManager.RegisterCollisionComponent(_collisionComponent);
-            _parentLocation.Enter(_player);
+            _collisionManager.UnregisterCollisionComponent(_collisionComponent);
+            
         }
 
         public override void ProcessInput(ConsoleKeyInfo key)
@@ -82,6 +90,25 @@ namespace PrograB3Project.Components
                 _parentLocation.Enter(GetPlayer());
             }
 
+        }
+
+        public void OnCollision(Events.Event collision_event)
+        {
+            CollisionEvent temp_event = collision_event as CollisionEvent;
+            if (temp_event.IsPartOfCollision(_collisionComponent) == true)
+            {
+                OnCollisionEnter(temp_event.GetOtherCollisionComponent(_collisionComponent));
+            }
+        }
+
+        public virtual void OnCollisionEnter(CollisionComponent collider)
+        {
+
+        }
+
+        public virtual void OnParentLocationEntered()
+        {
+            _collisionManager.RegisterCollisionComponent(_collisionComponent);
         }
     }
 }
