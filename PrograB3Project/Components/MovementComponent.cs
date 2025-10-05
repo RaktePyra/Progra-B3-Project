@@ -10,10 +10,12 @@ namespace PrograB3Project.Components
     internal class MovementComponent : Component
     {
         private TransformComponent _playerTransform;
+        private CollisionComponent _collisionComponent;
 
         public MovementComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager,TransformComponent player_transform) : base(owner, engine, event_manager, render_manager)
         {
             _playerTransform = player_transform;
+            _collisionComponent = owner.GetComponent<CollisionComponent>();
         }
 
 
@@ -46,13 +48,30 @@ namespace PrograB3Project.Components
         private void MoveX(int move_value)
         {
             LocationCoordinates player_coord = _playerTransform.GetLocationCoordinates();
-            _playerTransform.SetPosition(player_coord._xCoordinate + move_value, player_coord._yCoordinate);
+            if (_collisionComponent != null && _collisionComponent.CanMove(new LocationCoordinates(_playerTransform.GetLocationCoordinates()._xCoordinate + move_value, (_playerTransform.GetLocationCoordinates()._yCoordinate))))
+            {
+                _playerTransform.SetPosition(player_coord._xCoordinate + move_value, player_coord._yCoordinate);
+            }
+
+            else
+            {
+                _playerTransform.SetPosition(player_coord._xCoordinate + move_value, player_coord._yCoordinate);
+            }
+            
         }
 
         private void MoveY(int move_value)
         {
             LocationCoordinates player_coord = _playerTransform.GetLocationCoordinates();
-            _playerTransform.SetPosition(player_coord._xCoordinate, player_coord._yCoordinate + move_value);
+            if (_collisionComponent != null && _collisionComponent.CanMove(new LocationCoordinates(_playerTransform.GetLocationCoordinates()._xCoordinate , (_playerTransform.GetLocationCoordinates()._yCoordinate + move_value))))
+            {
+                _playerTransform.SetPosition(player_coord._xCoordinate, player_coord._yCoordinate + move_value);
+            }
+
+            else
+            {
+                _playerTransform.SetPosition(player_coord._xCoordinate, player_coord._yCoordinate + move_value);
+            }
         }
     }
 }

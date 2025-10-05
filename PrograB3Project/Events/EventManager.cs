@@ -79,6 +79,7 @@ namespace PrograB3Project.Events
         {
             foreach (KeyValuePair<Type, List<Action<Event>>> entrie in _eventToRegisterTable)
             {
+               
                 foreach (Action<Event> action in entrie.Value)
                 {
                     if(!_eventTable.ContainsKey(entrie.Key))
