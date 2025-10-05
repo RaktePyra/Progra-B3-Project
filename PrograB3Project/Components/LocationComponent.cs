@@ -12,16 +12,18 @@ namespace PrograB3Project.Components
         protected LocationComponent _parentLocation;
         protected LevelRenderComponent _levelRenderComponent;
         protected TransformComponent _inWorldTransformComponent;
+        protected CollisionManager _collisionManager;
         private int _levelSizeX = 0;
         private int _levelSizeY = 0;
         protected List<LocationComponent> _childLocationTable = new List<LocationComponent>();
         private Interfaces.IGameObject _player;
        
-        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY) : base(owner, game_engine, event_manager, render_manager)
+        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY,CollisionManager collisionManager) : base(owner, game_engine, event_manager, render_manager)
         {
             _levelSizeX = levelSizeX;
             _levelSizeY = levelSizeY;
             _levelRenderComponent = new LevelRenderComponent(owner, game_engine, event_manager, render_manager,this, _levelSizeX, _levelSizeY);
+            _collisionManager = collisionManager;
         }
 
         public virtual void Enter(Interfaces.IGameObject player)
