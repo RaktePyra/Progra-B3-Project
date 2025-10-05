@@ -49,7 +49,8 @@ namespace PrograB3Project
             {
                 if(component.GetType() == typeof(TYPE))
                 {
-                    component_to_return =(TYPE)component;
+                    component_to_return = (TYPE)component;
+                    
                 }
             }
             return component_to_return;

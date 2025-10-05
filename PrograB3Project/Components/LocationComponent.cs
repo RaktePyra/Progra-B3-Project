@@ -13,9 +13,10 @@ namespace PrograB3Project.Components
         private int _levelSizeX = 0;
         private int _levelSizeY = 0;
         protected List<LocationComponent> _childLocationTable = new List<LocationComponent>();
+        protected List<WallComponent> _wallTable = new List<WallComponent>();
         private Interfaces.IGameObject _player;
 
-        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY, CollisionManager collision_manager,CollisionComponent collision_component) : base(owner, game_engine, event_manager, render_manager)
+        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY, CollisionManager collision_manager, CollisionComponent collision_component) : base(owner, game_engine, event_manager, render_manager)
         {
             _levelSizeX = levelSizeX;
             _levelSizeY = levelSizeY;
@@ -23,13 +24,14 @@ namespace PrograB3Project.Components
             _collisionManager = collision_manager;
             _collisionComponent = collision_component;
             _eventManager.RegisterEvent<CollisionEvent>(OnCollision);
+            CreateWalls();
         }
 
         public virtual void Enter(Interfaces.IGameObject player)
         {
             if (_parentLocation != null)
             {
-                _parentLocation.Exit();
+                _parentLocation.EnterChildLocation();
             }
             _collisionManager.UnregisterCollisionComponent(_collisionComponent);
             _renderManager.RegisterRenderComponent(_levelRenderComponent);
@@ -42,13 +44,20 @@ namespace PrograB3Project.Components
             {
                 player_input_comp.BeginInteraction(this);
             }
+
             else
             {
                 throw new Exception("A Player was not provided to " + this.ToString());
             }
+
             foreach (LocationComponent child_location in _childLocationTable)
             {
                 child_location.OnParentLocationEntered();
+            }
+            
+            foreach(WallComponent wall_component in _wallTable)
+            {
+                wall_component.EnableWall();
             }
         }
 
@@ -72,7 +81,12 @@ namespace PrograB3Project.Components
         {
             _renderManager.UnregisterRenderComponent(_levelRenderComponent);
             _collisionManager.UnregisterCollisionComponent(_collisionComponent);
-            
+
+            foreach (WallComponent wall_component in _wallTable)
+            {
+                wall_component.DisableWall();
+            }
+            _parentLocation.Enter(_player);
         }
 
         public override void ProcessInput(ConsoleKeyInfo key)
@@ -109,6 +123,36 @@ namespace PrograB3Project.Components
         public virtual void OnParentLocationEntered()
         {
             _collisionManager.RegisterCollisionComponent(_collisionComponent);
+        }
+
+        public void CreateWalls()
+        {
+            for (int x_index = 0; x_index < _levelSizeX; x_index++)
+            {
+                for (int y_index = 0; y_index < _levelSizeY; y_index++)
+                {
+                    if (x_index == 0 || y_index == 0 || x_index == _levelSizeX - 1 || y_index == _levelSizeY - 1)
+                    {
+                        _wallTable.Add(new WallComponent(GetOwnerGameObject(), _gameEngine, _eventManager, _renderManager, _collisionManager, x_index, y_index,this));
+                    }
+                }
+            }
+        }
+
+        public LocationComponent GetParentLocation()
+        {
+            return _parentLocation;
+        }
+
+        public void EnterChildLocation()
+        {
+            _renderManager.UnregisterRenderComponent(_levelRenderComponent);
+            _collisionManager.UnregisterCollisionComponent(_collisionComponent);
+
+            foreach (WallComponent wall_component in _wallTable)
+            {
+                wall_component.DisableWall();
+            }
         }
     }
 }

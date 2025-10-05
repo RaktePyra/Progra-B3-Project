@@ -48,5 +48,9 @@ namespace PrograB3Project.Components
             }
         }
 
+        public override void Exit()
+        {
+            _eventManager.TriggerEvent(new Events.QuitGameEvent());
+        }
     }
 }
