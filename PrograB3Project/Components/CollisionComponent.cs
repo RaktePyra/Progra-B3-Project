@@ -17,10 +17,10 @@ namespace PrograB3Project.Components
 
         public bool CanMove(LocationCoordinates location)
         {
-            bool result = false;
+            bool result = true;
             if (_collisionManager.GetCollisionComponentAtLocation(location) != null)
             {
-                result = true;
+                result = false;
             }
             return result;
         }
