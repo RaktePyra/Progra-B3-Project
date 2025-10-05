@@ -53,7 +53,7 @@ namespace PrograB3Project.Components
                 _playerTransform.SetPosition(player_coord._xCoordinate + move_value, player_coord._yCoordinate);
             }
 
-            else
+            else if(_collisionComponent == null)
             {
                 _playerTransform.SetPosition(player_coord._xCoordinate + move_value, player_coord._yCoordinate);
             }
@@ -68,7 +68,7 @@ namespace PrograB3Project.Components
                 _playerTransform.SetPosition(player_coord._xCoordinate, player_coord._yCoordinate + move_value);
             }
 
-            else
+            else if (_collisionComponent == null) 
             {
                 _playerTransform.SetPosition(player_coord._xCoordinate, player_coord._yCoordinate + move_value);
             }
