@@ -1,16 +1,33 @@
 ﻿using PrograB3Project.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    internal class CollisionComponent : Component
+    public class CollisionComponent : Component
     {
-        public CollisionComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
+#warning Replace implicit dependency when got time;
+        private TransformComponent _ownerTransformComponent;
+        private CollisionManager _collisionManager;
+
+        public CollisionComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager) : base(owner, engine, event_manager, render_manager)
         {
+            _ownerTransformComponent = owner.GetComponent<TransformComponent>();
+            _collisionManager = collision_manager;
+            collision_manager.RegisterCollisionComponent(this);
+        }
+
+        public bool CanMove(LocationCoordinates location)
+        {
+            bool result = false;
+            if (_collisionManager.GetCollisionComponentAtLocation(location) != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public LocationCoordinates GetTransform()
+        {
+            return _ownerTransformComponent.GetLocationCoordinates();
         }
     }
 }
