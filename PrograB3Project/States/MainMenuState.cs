@@ -13,8 +13,9 @@ namespace PrograB3Project.States
         private GameEngine _engine;
         private TextualRenderComponent _textualRenderComponent;
         private GameObject _mainMenuObject;
+        private CollisionManager _collisionManager;
 
-        public MainMenuState(StateMachine state_machine,GameEngine engine,IEventManager event_manager, RenderManager render_manager)
+        public MainMenuState(StateMachine state_machine,GameEngine engine, IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager)
         {
             _stateMachine = state_machine;
             _eventManager = event_manager;
@@ -22,7 +23,7 @@ namespace PrograB3Project.States
             _renderManager = render_manager;
             _mainMenuObject = new GameObject("Main Menu", _engine, _eventManager, _renderManager);
             _textualRenderComponent = new TextualRenderComponent(_mainMenuObject, _engine, _eventManager, "Main Menu.Press 1 to play.Press 2 to quit", _renderManager);
-
+            _collisionManager = collision_manager;
         }
         public void Enter()
         {
@@ -47,7 +48,7 @@ namespace PrograB3Project.States
 
                         if (_gameState == null)
                         {
-                            _gameState = new InGameState(_stateMachine,_renderManager);
+                            _gameState = new InGameState(_stateMachine,_renderManager,_collisionManager);
                         }
                         _stateMachine.ChangeState(_gameState);
 

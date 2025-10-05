@@ -12,10 +12,11 @@ namespace PrograB3Project.States
         private StateMachine _stateMachine;
         private Game _game;
         private bool _isGameRunning = false;
-        public InGameState(StateMachine state_machine,RenderManager render_manager) 
+
+        public InGameState(StateMachine state_machine,RenderManager render_manager,CollisionManager collision_manager) 
         {
             _stateMachine = state_machine;
-            _game = new Game(state_machine.GetGameEngine(),state_machine.GetEventManager(), render_manager);
+            _game = new Game(state_machine.GetGameEngine(),state_machine.GetEventManager(), render_manager,collision_manager);
         }
 
         public void Enter()

@@ -24,12 +24,13 @@ namespace PrograB3Project
         private StateMachine _gameMachine;
         private Interfaces.IEventManager _eventManager = new Events.EventManager();
         private RenderManager _renderManager = new RenderManager();
+        private CollisionManager _collisionManager = new CollisionManager();
         
         public void Run()
         {
             _eventManager.RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
             _gameMachine = new StateMachine(this, _eventManager);
-            _gameMachine.SetInitialState(new MainMenuState(_gameMachine, this,_eventManager,_renderManager));
+            _gameMachine.SetInitialState(new MainMenuState(_gameMachine, this,_eventManager,_renderManager,_collisionManager));
             _stopwatch.Start();
 
             while (!_shouldExit)
