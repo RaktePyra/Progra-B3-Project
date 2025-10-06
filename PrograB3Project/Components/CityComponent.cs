@@ -28,20 +28,6 @@ namespace PrograB3Project.Components
             AddLocation(grind_shrine);
         }
 
-        public override void Enter(Interfaces.IGameObject player)
-        {
-            base.Enter(player);
-           
-            Console.Clear();
-            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName() + " City.");
-            Console.WriteLine("Where do you wanna go?");
-
-            for (int location_index = 0; location_index < _locationTable.Count; location_index++)
-            {
-                Console.WriteLine(location_index + 1 + "." + _locationTable[location_index].GetOwnerGameObject().GetName());
-            }
-            Console.WriteLine(_locationTable.Count + 1 + ".Go back to " + _parentLocation.GetOwnerGameObject().GetName());
-        }
 
         public override void ProcessInput(ConsoleKeyInfo key)
         {

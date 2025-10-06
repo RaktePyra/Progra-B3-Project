@@ -15,20 +15,6 @@ namespace PrograB3Project.Components
 
         }
 
-        public override void Enter(Interfaces.IGameObject player) 
-        {
-           base.Enter(player);
-            Console.Clear();
-            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName() + " Region.");
-            Console.WriteLine("Where do you wanna go?");
-
-            for (int city_index = 0; city_index < _childLocationTable.Count; city_index++)
-            {
-                Console.WriteLine(city_index +1 + "." + _childLocationTable[city_index].GetOwnerGameObject().GetName());
-            }
-            Console.WriteLine(_childLocationTable.Count + 1 + ".Quit to " + _parentLocation.GetOwnerGameObject().GetName());
-        }
-
         public override void OnCollisionEnter(CollisionComponent collider)
         {
             Enter(collider.GetOwnerGameObject());

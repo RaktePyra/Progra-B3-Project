@@ -16,20 +16,6 @@ namespace PrograB3Project.Components
             _collisionManager.UnregisterCollisionComponent(_collisionComponent);
         }
 
-        public override void Enter(Interfaces.IGameObject player)
-        {
-            base.Enter(player);
-            Console.WriteLine("Welcome to " + GetOwnerGameObject().GetName());
-            Console.WriteLine("Where do you want to go");
-
-            for( int region_index = 0; region_index < _childLocationTable.Count; region_index ++ )
-            {
-                Console.WriteLine((region_index + 1) + "." + _childLocationTable[region_index].GetOwnerGameObject().GetName());
-            }
-            Console.WriteLine(_childLocationTable.Count+1 + ".Quit the game");
-        }
-
-
         public override void ProcessInput(ConsoleKeyInfo key)
         {
             if (key.Key >= ConsoleKey.NumPad1 && key.Key <= ConsoleKey.NumPad9)
