@@ -116,7 +116,7 @@ namespace PrograB3Project.Components
 
         public virtual void OnCollisionEnter(CollisionComponent collider)
         {
-
+            Enter(collider.GetOwnerGameObject());
         }
 
         public virtual void OnParentLocationEntered()
@@ -143,7 +143,7 @@ namespace PrograB3Project.Components
             return _parentLocation;
         }
 
-        public void EnterChildLocation()
+        public virtual void EnterChildLocation()
         {
             _renderManager.UnregisterRenderComponent(_levelRenderComponent);
             _collisionManager.UnregisterCollisionComponent(_collisionComponent);
