@@ -100,7 +100,6 @@ namespace PrograB3Project.Components
 
             else if (user_choice == _childLocationTable.Count)
             {
-                Console.Clear();
                 _parentLocation.Enter(GetPlayer());
             }
 
