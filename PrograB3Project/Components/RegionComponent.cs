@@ -14,10 +14,5 @@ namespace PrograB3Project.Components
         {
 
         }
-
-        public override void OnCollisionEnter(CollisionComponent collider)
-        {
-            Enter(collider.GetOwnerGameObject());
-        }
     }
 }
