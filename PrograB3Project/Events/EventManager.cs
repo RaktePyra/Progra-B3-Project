@@ -64,7 +64,7 @@ namespace PrograB3Project.Events
             
         }
 
-        public void DequeueEventToUnregister()
+        private void DequeueEventToUnregister()
         {
             foreach(KeyValuePair<Type,List<Action<Event>>> entrie in _eventToDequeueTable)
             {
@@ -75,7 +75,7 @@ namespace PrograB3Project.Events
             }
             _eventToDequeueTable.Clear();
         }
-        public void DequeueEventToRegister()
+        private void DequeueEventToRegister()
         {
             foreach (KeyValuePair<Type, List<Action<Event>>> entrie in _eventToRegisterTable)
             {
