@@ -31,5 +31,10 @@ namespace PrograB3Project.Components
         {
             return _ownerTransformComponent.GetLocationCoordinates();
         }
+
+        public CollisionManager GetCollisionManager()
+        {
+            return _collisionManager;
+        }
     }
 }
