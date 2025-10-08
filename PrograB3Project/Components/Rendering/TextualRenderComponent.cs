@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components.Rendering
 {
-    internal class TextualRenderComponent : RenderComponent
+    public class TextualRenderComponent : RenderComponent
     {
         private string _text = "";
         private string[] _formatedText;
