@@ -1,6 +1,7 @@
 ﻿using PrograB3Project.Components;
 using PrograB3Project.Components.Rendering;
 using PrograB3Project.Data;
+using PrograB3Project.Events;
 //Disables the code suggestion to remove the type after the "new" Operator
 #pragma warning disable IDE0090
 namespace PrograB3Project
@@ -20,6 +21,8 @@ namespace PrograB3Project
             _eventManager = event_manager;
             _renderManager = render_manager;
             _collisionManager = collision_manager;
+            _saveManager = new SaveManager(_eventManager, "../../../Data/SaveFile.sav");
+            _eventManager.RegisterEvent<QuitGameEvent>(OnQuitGameEvent);
         }
 
         public void Run()
@@ -27,6 +30,16 @@ namespace PrograB3Project
             CreateWorlds();
 
             GameObject player = CreatePlayer();
+
+            try
+            {
+                _saveManager.LoadSaveFile();
+            }
+
+            catch (Exception generic_exception)
+            {
+
+            }
             _locationsTable["World_00"].Enter(player);
         }
 
@@ -43,6 +56,7 @@ namespace PrograB3Project
             foreach (KeyValuePair<string, string> world_data in worlds_value_table)
             {
                 string[] split_value = world_data.Value.Split(";");
+
                 switch (split_value[1])
                 {
 
@@ -56,6 +70,7 @@ namespace PrograB3Project
                             _locationsTable.Add(split_value[0], world_comp);
                             break;
                         }
+
                     case "Region":
                         {
                             GameObject region = new GameObject(split_value[2], _engine, _eventManager, _renderManager);
@@ -66,6 +81,7 @@ namespace PrograB3Project
                             CollisionComponent region_coll_comp = new CollisionComponent(region, _engine, _eventManager, _renderManager, _collisionManager, region_transform_comp);
                             RegionComponent region_comp = new RegionComponent(region, _engine, _eventManager, _renderManager, 20, 20, _collisionManager, region_coll_comp, split_value[0]);
                             _locationsTable.Add(split_value[0], region_comp);
+
                             if (_locationsTable.ContainsKey(split_value[3]))
                             {
                                 _locationsTable[split_value[3]].AddLocation(region_comp);
@@ -96,8 +112,10 @@ namespace PrograB3Project
 
                 switch (split_value[1])
                 {
+
                     case "Shop":
                         {
+
                             if (_locationsTable.ContainsKey(split_value[3]))
                             {
                                 GameObject shop = new GameObject(split_value[2], _engine, _eventManager, _renderManager);
@@ -119,6 +137,7 @@ namespace PrograB3Project
 
                     case "Item":
                         {
+
                             if (keylocations_inventory_table.ContainsKey(split_value[3]))
                             {
                                 GameObject item = new GameObject(split_value[0], _engine, _eventManager, _renderManager);
@@ -127,8 +146,10 @@ namespace PrograB3Project
                             }
                             break;
                         }
+
                     case "Job":
                         {
+
                             if (_locationsTable.ContainsKey(split_value[3]))
                             {
                                 GameObject job = new GameObject(split_value[0], _engine, _eventManager, _renderManager);
@@ -166,13 +187,18 @@ namespace PrograB3Project
 
             foreach (KeyValuePair<string, string> item_data in inventory_data)
             {
-                string[]item_values = item_data.Value.Split(';');
+                string[] item_values = item_data.Value.Split(';');
                 GameObject item = new GameObject(item_values[2], _engine, _eventManager, _renderManager);
                 ItemComponent item_comp = new ItemComponent(item, _engine, _eventManager, item_values[2], int.Parse(item_values[3]), int.Parse(item_values[4]), _renderManager);
                 player_inventory.AddItem(item.GetComponent<ItemComponent>());
             }
 
             return player;
+        }
+
+        public void OnQuitGameEvent(Events.Event exit_event)
+        {
+            _saveManager.Save();
         }
     }
 }
