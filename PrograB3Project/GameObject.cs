@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PrograB3Project.Components;
+using PrograB3Project.Events;
 using PrograB3Project.Interfaces;
 namespace PrograB3Project
 {
@@ -37,6 +38,10 @@ namespace PrograB3Project
             if( !_componentsTable.Contains(component))
             {
               _componentsTable.Add(component);
+                if (component is ISavableComponent)
+                {
+                    _eventManager.TriggerEvent(new SavableComponentRegisteredEvent((ISavableComponent)component));
+                }
             }
             return;
         }
