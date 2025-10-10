@@ -40,7 +40,12 @@ namespace PrograB3Project.Events
 
             if (_eventTable.ContainsKey(event_type))
             {
-                foreach (Action<Event> action in _eventTable[event_type])
+                List<Action<Event>> list_copy = new List<Action<Event>>();
+                foreach (Action<Event> action_to_copy in _eventTable[event_type])
+                {
+                    list_copy.Add(action_to_copy);
+                }
+                foreach (Action<Event> action in list_copy)
                 {
                     action(event_object);
                 }
