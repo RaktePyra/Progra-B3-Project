@@ -43,10 +43,6 @@ namespace PrograB3Project.States
         {
             _currentState.ProcessInput(key_info);
         }
-        public void Render()
-        {
-            _currentState.Render();
-        }
 
         public void Refresh()//This method's only purpose is to refresh the render of the state machine upon reentry while staying in the same state
         {

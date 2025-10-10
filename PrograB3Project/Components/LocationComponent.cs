@@ -144,11 +144,6 @@ namespace PrograB3Project.Components
             }
         }
 
-        public LocationComponent GetParentLocation()
-        {
-            return _parentLocation;
-        }
-
         public virtual void EnterChildLocation()
         {
             _renderManager.UnregisterRenderComponent(_levelRenderComponent);
@@ -158,11 +153,6 @@ namespace PrograB3Project.Components
             {
                 wall_component.DisableWall();
             }
-        }
-
-        public string GetID()
-        {
-            return _id;
         }
     }
 }
