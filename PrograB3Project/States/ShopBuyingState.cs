@@ -8,20 +8,16 @@ namespace PrograB3Project.States
         private StateMachine _shopStateMachine;
         private ShopMainState _shopMainState;
         private RenderManager _renderManager;
-        private Interfaces.IGameEngine _engine;
-        private Interfaces.IEventManager _eventManager;
         private Interfaces.IGameObject _player;
         private Interfaces.IGameObject _shop;
         private TradingComponent _shopTradingComponent;
         private ShopBuyingStateRenderComponent _shopBuyingRenderComponent;
 
-        public ShopBuyingState(StateMachine state_machine, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, ShopMainState shop_main_state, Interfaces.IGameObject shop, Interfaces.IGameObject player, ShopBuyingStateRenderComponent shop_buying_render_comp, RenderManager render_manager)
+        public ShopBuyingState(StateMachine state_machine, ShopMainState shop_main_state, Interfaces.IGameObject shop, Interfaces.IGameObject player, ShopBuyingStateRenderComponent shop_buying_render_comp, RenderManager render_manager)
         {
             _shopStateMachine = state_machine;
             _shopBuyingRenderComponent = shop_buying_render_comp;
             _shopMainState = shop_main_state;
-            _engine = engine;
-            _eventManager = event_manager;
             _shopTradingComponent = shop.GetComponent<TradingComponent>();
             _player = player;
             _shop = shop;

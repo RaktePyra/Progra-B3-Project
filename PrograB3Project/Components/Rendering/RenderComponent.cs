@@ -10,7 +10,7 @@ namespace PrograB3Project.Components.Rendering
     public abstract class RenderComponent : Component
     {
         protected RenderManager _renderManager;
-        protected RenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager,render_manager)
+        protected RenderComponent(IGameObject owner, RenderManager render_manager) : base(owner)
         {
             _renderManager = render_manager;
         }

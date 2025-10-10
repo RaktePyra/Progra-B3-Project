@@ -10,25 +10,26 @@ namespace PrograB3ProjectTest
         private InventoryComponent _inventoryToTest;
         private IGameEngine game_engine = new GameEngine();
         private IEventManager event_manager = new EventManager();
+        private RenderManager _renderManager = new RenderManager();
         private IGameObject item;
 
         [SetUp]
 
         public void Setup()
         {
-            item = new GameObject("item", game_engine, event_manager);
-            _inventoryToTest = new InventoryComponent(new GameObject("testObject", game_engine, event_manager), game_engine, event_manager);
+            item = new GameObject("item", event_manager);
+            _inventoryToTest = new InventoryComponent(new GameObject("testObject", event_manager), event_manager);
         }
 
         [Test]
 
         public void GetItemCountTest()
         {
-            _inventoryToTest.AddItem(new ItemComponent(item, game_engine, event_manager, "apple", 10, 50));
+            _inventoryToTest.AddItem(new ItemComponent(item, "apple", 10, 50));
 
             Assert.That(_inventoryToTest.GetNumberOfItems(), Is.EqualTo(1));
-            _inventoryToTest.AddItem(new ItemComponent(item, game_engine, event_manager, "bread", 10, 50));
-            _inventoryToTest.AddItem(new ItemComponent(item, game_engine, event_manager, "water", 10, 50));
+            _inventoryToTest.AddItem(new ItemComponent(item, "bread", 10, 50));
+            _inventoryToTest.AddItem(new ItemComponent(item, "water", 10, 50));
             Assert.That(_inventoryToTest.GetNumberOfItems(), Is.EqualTo(3));
 
         }
@@ -37,11 +38,11 @@ namespace PrograB3ProjectTest
         public void RemoveItemTest()
         {
 
-            _inventoryToTest.AddItem(new ItemComponent(item, game_engine, event_manager, "apple", 10, 50));
+            _inventoryToTest.AddItem(new ItemComponent(item, "apple", 10, 50));
 
             Assert.That(_inventoryToTest.GetNumberOfItems(), Is.EqualTo(1));
-            _inventoryToTest.AddItem(new ItemComponent(item, game_engine, event_manager, "bread", 10, 50));
-            _inventoryToTest.AddItem(new ItemComponent(item, game_engine, event_manager, "water", 10, 50));
+            _inventoryToTest.AddItem(new ItemComponent(item, "bread", 10, 50));
+            _inventoryToTest.AddItem(new ItemComponent(item, "water", 10, 50));
             Assert.That(_inventoryToTest.GetNumberOfItems(), Is.EqualTo(3));
             _inventoryToTest.RemoveItem(_inventoryToTest.GetItem(0));
             Assert.That(_inventoryToTest.GetNumberOfItems(), Is.EqualTo(2));
@@ -49,9 +50,9 @@ namespace PrograB3ProjectTest
         [Test]
         public void GetItemByIndexTest()
         {
-            ItemComponent apple = new ItemComponent(item, game_engine, event_manager, "apple", 10, 50);
-            ItemComponent bread = new ItemComponent(item, game_engine, event_manager, "bread", 10, 50);
-            ItemComponent water = new ItemComponent(item, game_engine, event_manager, "water", 10, 50);
+            ItemComponent apple = new ItemComponent(item, "apple", 10, 50);
+            ItemComponent bread = new ItemComponent(item, "bread", 10, 50);
+            ItemComponent water = new ItemComponent(item, "water", 10, 50);
             _inventoryToTest.AddItem(apple);
             _inventoryToTest.AddItem(bread);
             _inventoryToTest.AddItem(water);

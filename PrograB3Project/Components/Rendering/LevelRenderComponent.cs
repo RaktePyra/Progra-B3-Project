@@ -15,7 +15,7 @@ namespace PrograB3Project.Components.Rendering
         private List<VisualRenderComponent> _visualRenderComponentTable = new List<VisualRenderComponent>();
         private VisualRenderComponent _playerRenderComponent;
         private string _levelName;
-        public LevelRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager,LocationComponent owner_location_component, int sizeX, int sizeY) : base(owner, engine, event_manager, render_manager)
+        public LevelRenderComponent(IGameObject owner, RenderManager render_manager, LocationComponent owner_location_component, int sizeX, int sizeY) : base(owner, render_manager)
         {
             _sizeX = sizeX;
             _sizeY = sizeY;

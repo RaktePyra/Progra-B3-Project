@@ -12,7 +12,7 @@ namespace PrograB3Project.Components.Rendering
         private TransformComponent _ownerTransform;
         private string _character = "  ";
 
-        public VisualRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, TransformComponent transformComponent, string character,RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
+        public VisualRenderComponent(IGameObject owner, TransformComponent transformComponent, string character, RenderManager render_manager) : base(owner, render_manager)
         {
             _ownerTransform = transformComponent;
             _character = character;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrograB3Project.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,11 @@ namespace PrograB3Project.Components
     {
         private Component _componentBeingInteractedWith;
         private MovementComponent _playerMovementComponent;
+        private Interfaces.IEventManager _eventManager;
 
-        public InputComponent(GameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager,MovementComponent player_movement_comp) : base(owner, engine, event_manager,render_manager)
+        public InputComponent(GameObject owner, Interfaces.IEventManager event_manager,MovementComponent player_movement_comp) : base(owner)
         {
+            _eventManager = event_manager;
             event_manager.RegisterEvent<Events.InputEvent>(OnInput);
             _playerMovementComponent = player_movement_comp;
         }

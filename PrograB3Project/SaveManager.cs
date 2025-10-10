@@ -11,11 +11,11 @@ namespace PrograB3Project
 {
     public class SaveManager
     {
-        private EventManager _eventManager;
+        private IEventManager _eventManager;
         private List<ISavableComponent> _componentToSaveTable = new List<ISavableComponent>();
         private string _saveFileRelativePath;
 
-       public SaveManager(EventManager event_manager, string save_file_relative_path) 
+       public SaveManager(IEventManager event_manager, string save_file_relative_path) 
         {
             _eventManager = event_manager;
             _saveFileRelativePath = save_file_relative_path;

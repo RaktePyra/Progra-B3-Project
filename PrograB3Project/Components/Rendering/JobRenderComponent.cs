@@ -9,7 +9,7 @@ namespace PrograB3Project.Components.Rendering
 {
     public class JobRenderComponent : TextualRenderComponent
     {
-        public JobRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, string text, RenderManager render_manager) : base(owner, engine, event_manager, text, render_manager)
+        public JobRenderComponent(IGameObject owner, string text, RenderManager render_manager) : base(owner, text, render_manager)
         {
         }
 

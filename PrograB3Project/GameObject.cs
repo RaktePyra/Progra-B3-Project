@@ -12,16 +12,12 @@ namespace PrograB3Project
     {
         private string _name;
         private List<Interfaces.IComponent> _componentsTable = new List<Interfaces.IComponent>();
-        private Interfaces.IGameEngine _engine;
         private Interfaces.IEventManager _eventManager;
-        private RenderManager _renderManager;
 
-        public GameObject(string name, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager)
+        public GameObject(string name, Interfaces.IEventManager event_manager)
         {
             _name = name;
-            _engine = engine;
             _eventManager = event_manager;
-            _renderManager = render_manager;
         }
 
         
@@ -65,21 +61,6 @@ namespace PrograB3Project
         public string GetName()
         {
             return _name;
-        }
-
-        public Interfaces.IGameEngine GetEngine()
-        {
-            return _engine;
-        }
-
-        public Interfaces.IEventManager GetEventManager()
-        {
-            return _eventManager;
-        }
-
-        public RenderManager GetRenderManager()
-        {
-           return _renderManager;
         }
     }
 }

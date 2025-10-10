@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
         private TransformComponent _playerTransform;
         private CollisionComponent _collisionComponent;
 
-        public MovementComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager,TransformComponent player_transform) : base(owner, engine, event_manager, render_manager)
+        public MovementComponent(IGameObject owner,TransformComponent player_transform) : base(owner)
         {
             _playerTransform = player_transform;
             _collisionComponent = owner.GetComponent<CollisionComponent>();

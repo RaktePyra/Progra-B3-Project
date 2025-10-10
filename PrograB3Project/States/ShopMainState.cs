@@ -1,5 +1,6 @@
 ﻿using PrograB3Project.Components;
 using PrograB3Project.Components.Rendering;
+using PrograB3Project.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace PrograB3Project.States
             _stateMachine = state_machine;
             _player = player;
             _shopGameObject = shop;
-            _renderComponent = new TextualRenderComponent(shop,shop.GetEngine(),shop.GetEventManager(),"Welcome to the shop.What do you wanna do?.1 Buy.2 Sell.3 Quit" ,shop.GetRenderManager());
+            _renderComponent = new TextualRenderComponent(shop,"Welcome to the shop.What do you wanna do?.1 Buy.2 Sell.3 Quit" ,render_manager);
         }
 
         public void Enter()
@@ -45,12 +46,12 @@ namespace PrograB3Project.States
                 {
                     case 1:
                         {
-                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, _shopGameObject.GetEngine(),_shopGameObject.GetEventManager(), this, _shopGameObject,_player,_shopGameObject.GetComponent<ShopBuyingStateRenderComponent>(),_renderManager));
+                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, this, _shopGameObject,_player,_shopGameObject.GetComponent<ShopBuyingStateRenderComponent>(),_renderManager));
                             break;
                         }
                     case 2:
                         {
-                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, _shopGameObject.GetEngine(), _shopGameObject.GetEventManager(), this, _shopGameObject, _player, _shopGameObject.GetComponent<ShopSellingStateRenderComponent>(), _renderManager));
+                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, this, _shopGameObject, _player, _shopGameObject.GetComponent<ShopSellingStateRenderComponent>(), _renderManager));
                             break;
                         }
                     case 3:

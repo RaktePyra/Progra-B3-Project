@@ -21,8 +21,8 @@ namespace PrograB3Project.States
             _eventManager = event_manager;
             _engine = engine;
             _renderManager = render_manager;
-            _mainMenuObject = new GameObject("Main Menu", _engine, _eventManager, _renderManager);
-            _textualRenderComponent = new TextualRenderComponent(_mainMenuObject, _engine, _eventManager, "Main Menu.Press 1 to play.Press 2 to quit", _renderManager);
+            _mainMenuObject = new GameObject("Main Menu", _eventManager);
+            _textualRenderComponent = new TextualRenderComponent(_mainMenuObject, "Main Menu.Press 1 to play.Press 2 to quit", _renderManager);
             _collisionManager = collision_manager;
         }
         public void Enter()

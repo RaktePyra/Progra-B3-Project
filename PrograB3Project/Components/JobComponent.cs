@@ -14,9 +14,9 @@ namespace PrograB3Project.Components
         private JobRenderComponent _renderComponent;
         private Interfaces.IGameObject _playerGameObject;
 
-        public JobComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parentLocation, RenderManager render_manager,CollisionComponent collision_component, TransformComponent owner_transform,JobRenderComponent job_render_comp) : base(owner, engine, event_manager, parentLocation, render_manager,collision_component,owner_transform)
+        public JobComponent(Interfaces.IGameObject owner, Interfaces.IEventManager event_manager, LocationComponent parentLocation, RenderManager render_manager,CollisionComponent collision_component, TransformComponent owner_transform,JobRenderComponent job_render_comp) : base(owner, event_manager, parentLocation, render_manager,collision_component,owner_transform)
         {
-            _renderComponent = new JobRenderComponent(owner, _gameEngine, _eventManager,"", render_manager);
+            _renderComponent = new JobRenderComponent(owner,"", render_manager);
             _renderComponent = job_render_comp;
         }
 

@@ -7,8 +7,9 @@ namespace PrograB3Project.Components
         private List<IItem> _itemTable = new List<IItem>();
         private int _money = 100;
         private string _id;
+        private IEventManager _eventManager;
 
-        public InventoryComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
+        public InventoryComponent(Interfaces.IGameObject owner, Interfaces.IEventManager event_manager) : base(owner)
         {
             _id = owner.GetName() + "_inventory";
         }
@@ -38,16 +39,6 @@ namespace PrograB3Project.Components
                 item_to_return = _itemTable[index];
             }
             return item_to_return;
-        }
-
-        public void Display()
-        {
-            Console.WriteLine("---------------------------------");
-
-            for (int item_index = 0; item_index < _itemTable.Count; item_index++)
-            {
-                Console.WriteLine(item_index + 1 + "." + _itemTable[item_index].GetName() + " |Quantity : " + _itemTable[item_index].GetQuantity() + " |Price : " + _itemTable[item_index].GetPrice());
-            }
         }
 
         public int GetMoney()
@@ -88,8 +79,8 @@ namespace PrograB3Project.Components
             foreach (string item_data in inventory_data)
             {
                 string []item_values = item_data.Split(";");
-                GameObject item = new GameObject(item_values[0],_gameEngine, _eventManager, _renderManager);
-                ItemComponent item_comp = new ItemComponent(item, _gameEngine, _eventManager, item_values[0], int.Parse(item_values[1]), int.Parse(item_values[2]), _renderManager);
+                GameObject item = new GameObject(item_values[0], _eventManager);
+                ItemComponent item_comp = new ItemComponent(item, item_values[0], int.Parse(item_values[1]), int.Parse(item_values[2]));
             }
         }
 

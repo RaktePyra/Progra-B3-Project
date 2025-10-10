@@ -17,11 +17,5 @@ namespace PrograB3Project.Interfaces
         public TYPE GetComponent<TYPE>() where TYPE : IComponent;
 
         public string GetName();
-
-        public IGameEngine GetEngine();
-
-        public IEventManager GetEventManager();
-
-        public RenderManager GetRenderManager();
     }
 }

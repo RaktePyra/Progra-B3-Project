@@ -9,19 +9,12 @@ namespace PrograB3Project.Components
 {
     public class Component : IComponent
     {
-
-        protected Interfaces.IGameEngine _gameEngine;
-        protected Interfaces.IEventManager _eventManager;
-        protected RenderManager _renderManager;
         protected IGameObject _ownerGameObject;
         
-        public Component(IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,RenderManager render_manager)
+        public Component(IGameObject owner)
         {
             _ownerGameObject = owner;
             _ownerGameObject.AddComponent(this);
-            _eventManager = event_manager;
-            _gameEngine = engine;
-            _renderManager = render_manager;
 
         }
 

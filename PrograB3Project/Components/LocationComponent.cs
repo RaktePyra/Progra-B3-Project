@@ -5,6 +5,8 @@ namespace PrograB3Project.Components
 {
     public class LocationComponent : Component
     {
+        protected RenderManager _renderManager;
+        protected Interfaces.IEventManager _eventManager;
         private string _id;
         protected LocationComponent _parentLocation;
         protected LevelRenderComponent _levelRenderComponent;
@@ -17,12 +19,14 @@ namespace PrograB3Project.Components
         protected List<WallComponent> _wallTable = new List<WallComponent>();
         private Interfaces.IGameObject _player;
 
-        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY, CollisionManager collision_manager, CollisionComponent collision_component,string id) : base(owner, game_engine, event_manager, render_manager)
+        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY, CollisionManager collision_manager, CollisionComponent collision_component,string id) : base(owner)
         {
+            _renderManager = render_manager;
+            _eventManager = event_manager;
             _id = id;
             _levelSizeX = levelSizeX;
             _levelSizeY = levelSizeY;
-            _levelRenderComponent = new LevelRenderComponent(owner, game_engine, event_manager, render_manager, this, _levelSizeX, _levelSizeY);
+            _levelRenderComponent = new LevelRenderComponent(owner, render_manager, this, _levelSizeX, _levelSizeY);
             _collisionManager = collision_manager;
             _collisionComponent = collision_component;
             _eventManager.RegisterEvent<CollisionEvent>(OnCollision);
@@ -134,7 +138,7 @@ namespace PrograB3Project.Components
                 {
                     if (x_index == 0 || y_index == 0 || x_index == _levelSizeX - 1 || y_index == _levelSizeY - 1)
                     {
-                        _wallTable.Add(new WallComponent(GetOwnerGameObject(), _gameEngine, _eventManager, _renderManager, _collisionManager, x_index, y_index,this));
+                        _wallTable.Add(new WallComponent(GetOwnerGameObject(), _eventManager, _collisionManager, x_index, y_index,this));
                     }
                 }
             }

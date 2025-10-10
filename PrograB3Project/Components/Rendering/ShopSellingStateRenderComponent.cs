@@ -12,7 +12,7 @@ namespace PrograB3Project.Components.Rendering
         InventoryComponent _shopInventoryComponent;
         InventoryComponent _playerInventory;
         CharacterComponent _playerCharacterComponent;
-        public ShopSellingStateRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager, InventoryComponent shop_inventory_component) : base(owner, engine, event_manager, "Unused Text", render_manager)
+        public ShopSellingStateRenderComponent(IGameObject owner, RenderManager render_manager, InventoryComponent shop_inventory_component) : base(owner, "Unused Text", render_manager)
         {
             _shopInventoryComponent = shop_inventory_component;
         }

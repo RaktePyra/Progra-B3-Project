@@ -10,13 +10,17 @@ namespace PrograB3Project.Components
         protected VisualRenderComponent _visualRenderComponent;
         protected CollisionComponent _collisionComponent;
         protected TransformComponent _transformComponent;
+        protected RenderManager _renderManager;
+        protected Interfaces.IEventManager _eventManager;
 
-        public KeyLocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parent_location, RenderManager render_manager, CollisionComponent collision_component, TransformComponent transformComponent) : base(owner, engine, event_manager, render_manager)
+        public KeyLocationComponent(Interfaces.IGameObject owner, Interfaces.IEventManager event_manager, LocationComponent parent_location, RenderManager render_manager, CollisionComponent collision_component, TransformComponent transformComponent) : base(owner)
         {
             _parentLocation = parent_location;
             owner.AddComponent(this);
             _collisionComponent = collision_component;
             _transformComponent = transformComponent;
+            _renderManager = render_manager;
+            _eventManager = event_manager;
         }
 
         public virtual void Enter(Interfaces.IGameObject player)

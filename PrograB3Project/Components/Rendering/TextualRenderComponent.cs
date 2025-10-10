@@ -11,7 +11,7 @@ namespace PrograB3Project.Components.Rendering
     {
         private string _text = "";
         private string[] _formatedText;
-        public TextualRenderComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, string text, RenderManager render_manager) : base(owner, engine, event_manager, render_manager)
+        public TextualRenderComponent(IGameObject owner, string text, RenderManager render_manager) : base(owner, render_manager)
         {
             _text = text;
             try

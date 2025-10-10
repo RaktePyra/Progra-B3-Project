@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
         private int _quantity;
         private int _price;
 
-        public ItemComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,string name, int quantity, int price, RenderManager render_manager) : base(owner,engine,event_manager,render_manager)
+        public ItemComponent(Interfaces.IGameObject owner,string name, int quantity, int price) : base(owner)
         {
             _name = name;
             _quantity = quantity;

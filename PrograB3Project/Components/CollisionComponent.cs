@@ -4,14 +4,16 @@ namespace PrograB3Project.Components
 {
     public class CollisionComponent : Component
     {
-#warning Replace implicit dependency when got time;
+        #warning Replace implicit dependency when got time;
         private TransformComponent _ownerTransformComponent;
         private CollisionManager _collisionManager;
+        private IEventManager _eventManager;
 
-        public CollisionComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager, TransformComponent owner_transform) : base(owner, engine, event_manager, render_manager)
+        public CollisionComponent(IGameObject owner, IEventManager event_manager, CollisionManager collision_manager, TransformComponent owner_transform) : base(owner)
         {
             _collisionManager = collision_manager;
             _ownerTransformComponent = owner_transform;
+            _eventManager = event_manager;
         }
 
         public bool CanMove(LocationCoordinates location)
