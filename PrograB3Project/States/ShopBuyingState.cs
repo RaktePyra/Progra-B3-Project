@@ -1,10 +1,5 @@
 ﻿using PrograB3Project.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+using PrograB3Project.Components.Rendering;
 
 namespace PrograB3Project.States
 {
@@ -12,46 +7,37 @@ namespace PrograB3Project.States
     {
         private StateMachine _shopStateMachine;
         private ShopMainState _shopMainState;
+        private RenderManager _renderManager;
         private Interfaces.IGameEngine _engine;
         private Interfaces.IEventManager _eventManager;
         private Interfaces.IGameObject _player;
         private Interfaces.IGameObject _shop;
         private TradingComponent _shopTradingComponent;
+        private ShopBuyingStateRenderComponent _shopBuyingRenderComponent;
 
-        public ShopBuyingState(StateMachine state_machine, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, ShopMainState shop_main_state, Interfaces.IGameObject shop, Interfaces.IGameObject player) 
+        public ShopBuyingState(StateMachine state_machine, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, ShopMainState shop_main_state, Interfaces.IGameObject shop, Interfaces.IGameObject player, ShopBuyingStateRenderComponent shop_buying_render_comp, RenderManager render_manager)
         {
             _shopStateMachine = state_machine;
-            
+            _shopBuyingRenderComponent = shop_buying_render_comp;
             _shopMainState = shop_main_state;
             _engine = engine;
             _eventManager = event_manager;
             _shopTradingComponent = shop.GetComponent<TradingComponent>();
             _player = player;
             _shop = shop;
+            _renderManager = render_manager;
         }
 
         public void Enter()
         {
             InventoryComponent shop_inventory = _shop.GetComponent<InventoryComponent>();
-            Console.Clear();
-            Console.WriteLine("Press 0 to quit");
-            Console.WriteLine();
-            Console.WriteLine("Your Gold : " + _player.GetComponent<InventoryComponent>().GetMoney());
-            Console.WriteLine();
-            Console.WriteLine("The shop's Inventory");
-            Console.WriteLine();
-            int number_of_items_inside_shop = shop_inventory.GetNumberOfItems();
-            for (int item_index = 0; item_index < number_of_items_inside_shop; item_index++)
-            {
-                Console.WriteLine(item_index + 1 + "." + shop_inventory.GetItem(item_index).GetName() + " |Quantity : " + shop_inventory.GetItem(item_index).GetQuantity() + " |Price : " + shop_inventory.GetItem(item_index).GetPrice()/(_player.GetComponent<CharacterComponent>().GetBargainingStat()));
-            }
-            
-
+            _renderManager.RegisterRenderComponent(_shopBuyingRenderComponent);
+            _shopBuyingRenderComponent.OnPlayerEnterShopBuyingState(_player);
         }
 
         public void Exit()
         {
-        
+            _renderManager.UnregisterRenderComponent(_shopBuyingRenderComponent);
         }
 
         public void ProcessInput(ConsoleKeyInfo key_info)
@@ -73,12 +59,12 @@ namespace PrograB3Project.States
 
         public void Render()
         {
-          
+
         }
 
         public void Update(float delta_time)
         {
-           
+
         }
     }
 }

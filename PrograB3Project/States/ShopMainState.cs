@@ -15,8 +15,10 @@ namespace PrograB3Project.States
         private Interfaces.IGameObject _player;
         private Interfaces.IGameObject _shopGameObject;
         private TextualRenderComponent _renderComponent;
-        public ShopMainState(StateMachine state_machine, Interfaces.IGameObject player, Interfaces.IGameObject shop) 
+        private RenderManager _renderManager;
+        public ShopMainState(StateMachine state_machine, Interfaces.IGameObject player, Interfaces.IGameObject shop,RenderManager render_manager) 
         {
+            _renderManager = render_manager;    
             _stateMachine = state_machine;
             _player = player;
             _shopGameObject = shop;
@@ -25,12 +27,12 @@ namespace PrograB3Project.States
 
         public void Enter()
         {
-            _shopGameObject.GetRenderManager().RegisterRenderComponent(_renderComponent);
+          _renderManager.RegisterRenderComponent(_renderComponent);
         }
 
         public void Exit()
         {
-            _shopGameObject.GetRenderManager().UnregisterRenderComponent(_renderComponent);
+            _renderManager.UnregisterRenderComponent(_renderComponent);
         }
 
         public void ProcessInput(ConsoleKeyInfo key_info)
@@ -43,16 +45,17 @@ namespace PrograB3Project.States
                 {
                     case 1:
                         {
-                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, _shopGameObject.GetEngine(),_shopGameObject.GetEventManager(), this, _shopGameObject,_player));
+                            _stateMachine.ChangeState(new ShopBuyingState(_stateMachine, _shopGameObject.GetEngine(),_shopGameObject.GetEventManager(), this, _shopGameObject,_player,_shopGameObject.GetComponent<ShopBuyingStateRenderComponent>(),_renderManager));
                             break;
                         }
                     case 2:
                         {
-                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, _shopGameObject.GetEngine(), _shopGameObject.GetEventManager(), this, _shopGameObject, _player));
+                            _stateMachine.ChangeState(new ShopSellingState(_stateMachine, _shopGameObject.GetEngine(), _shopGameObject.GetEventManager(), this, _shopGameObject, _player, _shopGameObject.GetComponent<ShopSellingStateRenderComponent>(), _renderManager));
                             break;
                         }
                     case 3:
                         {
+                            Exit();
                             _shopGameObject.GetComponent<ShopComponent>().Exit(_player);
                             break;
                         }
