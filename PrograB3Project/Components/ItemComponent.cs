@@ -6,16 +6,6 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Components
 {
-    //Can i use a non predetermined type if i create it myself?
-    //Ressource : https://stackoverflow.com/questions/48926915/whats-the-point-of-having-methods-in-structs
-    //After research it seems a struct is a value type instead of a reference type like the class
-    //For Inventory purposes, ItemStruct should not be immutable but it seems this is a recommendation 
-    //internal struct ItemStruct
-    //{
-    //    public readonly string _name;
-    //    public readonly int _quantity;
-    //    public readonly int _maxStackAmount;
-    //}
     public class ItemComponent : Component,Interfaces.IItem
     {
         private string _name;

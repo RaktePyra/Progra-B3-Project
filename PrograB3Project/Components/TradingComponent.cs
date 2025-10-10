@@ -20,7 +20,6 @@ namespace PrograB3Project.Components
             {
                 int item_price = _vendorInventory.GetItem(item_index).GetPrice();
                 int item_price_bargained = item_price + (int)(item_price * 0.7) - (buyer_character_stats.GetBargainingStat() / 100)*item_price;
-                Console.WriteLine("You bought " + _vendorInventory.GetItem(item_index).GetName() + " for " + _vendorInventory.GetItem(item_index).GetPrice() / buyer_character_stats.GetBargainingStat() + " gold");
                 _vendorInventory.AddMoney(item_price);
                 buyer_inventory.RemoveMoney(item_price);
                 buyer_inventory.AddItem(_vendorInventory.GetItem(item_index));

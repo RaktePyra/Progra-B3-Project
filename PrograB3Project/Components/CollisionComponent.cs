@@ -8,11 +8,10 @@ namespace PrograB3Project.Components
         private TransformComponent _ownerTransformComponent;
         private CollisionManager _collisionManager;
 
-        public CollisionComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager) : base(owner, engine, event_manager, render_manager)
+        public CollisionComponent(IGameObject owner, IGameEngine engine, IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager, TransformComponent owner_transform) : base(owner, engine, event_manager, render_manager)
         {
-            _ownerTransformComponent = owner.GetComponent<TransformComponent>();
             _collisionManager = collision_manager;
-            
+            _ownerTransformComponent = owner_transform;
         }
 
         public bool CanMove(LocationCoordinates location)

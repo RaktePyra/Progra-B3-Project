@@ -12,7 +12,7 @@ namespace PrograB3Project.Components
         {
 
             _transformComponent = new TransformComponent(owner, engine, event_manager, render_manager);
-            _collisionComponent = new CollisionComponent(owner, engine, event_manager, render_manager, collision_manager);
+            _collisionComponent = new CollisionComponent(owner, engine, event_manager, render_manager, collision_manager,_transformComponent);
             _transformComponent.SetPosition(x_coordinate, y_coordinate);
             _collisionManager = collision_manager;
             _eventManager.RegisterEvent<Events.CollisionEvent>(OnCollisionEnter);

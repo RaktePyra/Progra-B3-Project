@@ -1,4 +1,6 @@
-﻿using PrograB3Project.States;
+﻿using PrograB3Project.Components.Rendering;
+using PrograB3Project.Interfaces;
+using PrograB3Project.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +15,15 @@ namespace PrograB3Project.Components
         private TradingComponent _shopTradingComponent;
         private InventoryComponent _shopInventoryComponent;
         private StateMachine _shopStateMachine;
+        private RenderManager _renderManager;
 
-        public ShopComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp, RenderManager render_manager,CollisionComponent collision_component) : base(owner,engine, event_manager,owner_location,render_manager, collision_component)
+        public ShopComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager,LocationComponent owner_location,TradingComponent trading_comp, InventoryComponent shop_inventory_comp, RenderManager render_manager,CollisionComponent collision_component,TransformComponent owner_transform) : base(owner,engine, event_manager,owner_location,render_manager, collision_component, owner_transform)
         {
             
             _shopTradingComponent = trading_comp;
             _shopInventoryComponent = shop_inventory_comp;
             _shopStateMachine = new StateMachine(engine,event_manager);
+            _renderManager = render_manager;
         }
 
         public override void Enter(Interfaces.IGameObject player)
@@ -35,7 +39,7 @@ namespace PrograB3Project.Components
                     }
                 case false:
                     {
-                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player,_shopInventoryComponent.GetOwnerGameObject()));
+                        _shopStateMachine.SetInitialState(new ShopMainState(_shopStateMachine, player,_shopInventoryComponent.GetOwnerGameObject(),_renderManager));
                         break;
                     }
             }
@@ -46,6 +50,5 @@ namespace PrograB3Project.Components
             _shopStateMachine.ProcessInput(key);
         }
 
-       
     }
 }

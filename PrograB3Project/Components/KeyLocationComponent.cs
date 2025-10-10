@@ -9,14 +9,14 @@ namespace PrograB3Project.Components
         protected TextualRenderComponent _textualRenderComponent;
         protected VisualRenderComponent _visualRenderComponent;
         protected CollisionComponent _collisionComponent;
+        protected TransformComponent _transformComponent;
 
-
-        public KeyLocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parent_location, RenderManager render_manager, CollisionComponent collision_component) : base(owner, engine, event_manager, render_manager)
+        public KeyLocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, LocationComponent parent_location, RenderManager render_manager, CollisionComponent collision_component, TransformComponent transformComponent) : base(owner, engine, event_manager, render_manager)
         {
             _parentLocation = parent_location;
             owner.AddComponent(this);
-            _textualRenderComponent = new TextualRenderComponent(owner, engine, event_manager, "Basic Textual Render Component", render_manager);
             _collisionComponent = collision_component;
+            _transformComponent = transformComponent;
         }
 
         public virtual void Enter(Interfaces.IGameObject player)
@@ -32,6 +32,7 @@ namespace PrograB3Project.Components
         public virtual void Exit(Interfaces.IGameObject player)
         {
             _parentLocation.Enter(player);
+            _renderManager.UnregisterRenderComponent(_textualRenderComponent);
 
         }
 

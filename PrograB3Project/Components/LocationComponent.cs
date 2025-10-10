@@ -5,6 +5,7 @@ namespace PrograB3Project.Components
 {
     public class LocationComponent : Component
     {
+        private string _id;
         protected LocationComponent _parentLocation;
         protected LevelRenderComponent _levelRenderComponent;
         protected TransformComponent _inWorldTransformComponent;
@@ -16,8 +17,9 @@ namespace PrograB3Project.Components
         protected List<WallComponent> _wallTable = new List<WallComponent>();
         private Interfaces.IGameObject _player;
 
-        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY, CollisionManager collision_manager, CollisionComponent collision_component) : base(owner, game_engine, event_manager, render_manager)
+        public LocationComponent(Interfaces.IGameObject owner, Interfaces.IGameEngine game_engine, Interfaces.IEventManager event_manager, RenderManager render_manager, int levelSizeX, int levelSizeY, CollisionManager collision_manager, CollisionComponent collision_component,string id) : base(owner, game_engine, event_manager, render_manager)
         {
+            _id = id;
             _levelSizeX = levelSizeX;
             _levelSizeY = levelSizeY;
             _levelRenderComponent = new LevelRenderComponent(owner, game_engine, event_manager, render_manager, this, _levelSizeX, _levelSizeY);
@@ -152,6 +154,11 @@ namespace PrograB3Project.Components
             {
                 wall_component.DisableWall();
             }
+        }
+
+        public string GetID()
+        {
+            return _id;
         }
     }
 }
