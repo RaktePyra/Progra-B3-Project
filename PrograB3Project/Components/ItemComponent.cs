@@ -38,5 +38,10 @@ namespace PrograB3Project.Components
         {
             return _name;
         }
+
+        public override string Serialize()
+        {
+            return _name + ";" + _quantity + ";" + _price; 
+        }
     }
 }
