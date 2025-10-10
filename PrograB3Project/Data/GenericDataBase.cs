@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Data
 {
-    internal class GenericDataBase
+    public class GenericDataBase
     {
         private Dictionary<string, string> _dataTable = new Dictionary<string, string>();
 
