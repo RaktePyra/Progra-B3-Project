@@ -1,0 +1,8 @@
+ID;TYPE;NAME;PARENT_LOCATION_ID;RENDER_CHARACTER
+World_00;World;Tamriel;;
+Region_01;Region;Skyrim;World_00;SK
+City_01_01;City;Windhelm;Region_01;WI
+City_01_02;City;Whiterun;Region_01;WH
+Region_02;Region;Cyrodiil;World_00;C 
+City_02_01;City;Imperial City;Region_02;IC
+City_02_02;City;Kvatch;Region_02;K 
