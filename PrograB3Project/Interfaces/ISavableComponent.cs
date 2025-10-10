@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Interfaces
 {
-    public interface ISavableComponents
+    public interface ISavableComponent
     {
         public string Save();
-        public string RestoreDataFromFile(string data);
+        public void RestoreDataFromFile(string data);
+
+        public string GetID();
     }
 }
