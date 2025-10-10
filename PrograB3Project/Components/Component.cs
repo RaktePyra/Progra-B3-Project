@@ -39,5 +39,10 @@ namespace PrograB3Project.Components
         {
 
         }
+
+        public virtual string Serialize()
+        {
+            return ToString();
+        }
     }
 }
