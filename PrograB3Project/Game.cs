@@ -11,6 +11,7 @@ namespace PrograB3Project
         private Interfaces.IEventManager _eventManager;
         private RenderManager _renderManager;
         private CollisionManager _collisionManager;
+        private SaveManager _saveManager;
         private Dictionary<string, LocationComponent> _locationsTable = new Dictionary<string, LocationComponent>();
 
         public Game(Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager)
