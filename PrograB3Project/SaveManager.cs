@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PrograB3Project.Data;
+using PrograB3Project.Events;
+using PrograB3Project.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +11,54 @@ namespace PrograB3Project
 {
     public class SaveManager
     {
-       
+        private EventManager _eventManager;
+        private List<ISavableComponent> _componentToSaveTable = new List<ISavableComponent>();
+        private string _saveFileRelativePath;
+
+       public SaveManager(EventManager event_manager, string save_file_relative_path) 
+        {
+            _eventManager = event_manager;
+            _saveFileRelativePath = save_file_relative_path;
+            _eventManager.RegisterEvent<SavableComponentRegisteredEvent>(OnSavableComponentRegistered);
+        }
+
+        public void OnSavableComponentRegistered(Event action)
+        {
+            SavableComponentRegisteredEvent true_event = (SavableComponentRegisteredEvent)action;
+            _componentToSaveTable.Add(true_event.GetComponent());
+        }
+
+        public void Save()
+        {
+            List<string> data_to_save_table = new List<string>();
+
+            foreach (ISavableComponent component in _componentToSaveTable)
+            {
+                data_to_save_table.Add(component.Save());
+            }
+
+            File.WriteAllLines(_saveFileRelativePath, data_to_save_table);
+        }
+
+        public void LoadSaveFile()
+        {
+            Dictionary<string,string> data = new Dictionary<string,string>();
+            GenericDataBase save_data_base = new GenericDataBase();
+            save_data_base.LoadDataFromCSV(_saveFileRelativePath);
+            List<KeyValuePair<string, string>> data_table = save_data_base.GetData();
+            foreach(KeyValuePair<string,string> data_key_value in data_table)
+            {
+                data.Append(data_key_value);
+            }
+
+            foreach(ISavableComponent component_to_restore_data_to in _componentToSaveTable)
+            {
+                string component_id = component_to_restore_data_to.GetID();
+                if(data.ContainsKey(component_id))
+                {
+                    component_to_restore_data_to.RestoreDataFromFile(data[component_id]);
+                }
+            }
+        }
     }
 }
