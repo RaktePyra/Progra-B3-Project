@@ -17,5 +17,7 @@ namespace PrograB3Project.Interfaces
         public TYPE GetComponent<TYPE>() where TYPE : IComponent;
 
         public string GetName();
+
+        public int GetComponentCount();
     }
 }

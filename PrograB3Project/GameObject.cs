@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PrograB3Project.Components;
-using PrograB3Project.Events;
+﻿using PrograB3Project.Events;
 using PrograB3Project.Interfaces;
 namespace PrograB3Project
 {
@@ -20,7 +14,7 @@ namespace PrograB3Project
             _eventManager = event_manager;
         }
 
-        
+
         public void Update(float delta_time)
         {
             foreach (Interfaces.IComponent component in _componentsTable)
@@ -29,11 +23,11 @@ namespace PrograB3Project
             }
         }
 
-        public void AddComponent(Interfaces.IComponent component) 
+        public void AddComponent(Interfaces.IComponent component)
         {
-            if( !_componentsTable.Contains(component))
+            if (!_componentsTable.Contains(component))
             {
-              _componentsTable.Add(component);
+                _componentsTable.Add(component);
                 if (component is ISavableComponent)
                 {
                     _eventManager.TriggerEvent(new SavableComponentRegisteredEvent((ISavableComponent)component));
@@ -48,19 +42,24 @@ namespace PrograB3Project
 
             foreach (Interfaces.IComponent component in _componentsTable)
             {
-                if(component.GetType() == typeof(TYPE))
+                if (component.GetType() == typeof(TYPE))
                 {
                     component_to_return = (TYPE)component;
-                    
+
                 }
             }
             return component_to_return;
-            
+
         }
 
         public string GetName()
         {
             return _name;
+        }
+
+        public int GetComponentCount()
+        {
+            return _componentsTable.Count;
         }
     }
 }
