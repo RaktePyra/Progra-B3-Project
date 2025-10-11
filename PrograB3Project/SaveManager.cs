@@ -31,7 +31,7 @@ namespace PrograB3Project
         public void Save()
         {
             List<string> data_to_save_table = new List<string>();
-
+            data_to_save_table.Add("First Line for fomatting");
             foreach (ISavableComponent component in _componentToSaveTable)
             {
                 data_to_save_table.Add(component.Save());
@@ -48,7 +48,7 @@ namespace PrograB3Project
             List<KeyValuePair<string, string>> data_table = save_data_base.GetData();
             foreach(KeyValuePair<string,string> data_key_value in data_table)
             {
-                data.Append(data_key_value);
+                data.Add(data_key_value.Key,data_key_value.Value);
             }
 
             foreach(ISavableComponent component_to_restore_data_to in _componentToSaveTable)

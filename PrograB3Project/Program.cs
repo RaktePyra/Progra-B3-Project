@@ -1,4 +1,5 @@
-﻿namespace PrograB3Project
+﻿
+namespace PrograB3Project
 {
     internal class Program
     {

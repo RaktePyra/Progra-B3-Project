@@ -1,4 +1,5 @@
-﻿using PrograB3Project.Interfaces;
+﻿using PrograB3Project.Events;
+using PrograB3Project.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +11,17 @@ namespace PrograB3ProjectTest.TestData
 {
     internal class MockSavableComponent : PrograB3Project.Interfaces.IComponent, ISavableComponent
     {
-        public static int _saveCount;
-
+        private string _id;
+        private EventManager _eventManager;
+        public MockSavableComponent(string id, EventManager event_manager) 
+        {
+            _id = id;
+            _eventManager = event_manager;
+        }
+        
         public string GetID()
         {
-            return _saveCount.ToString();
+            return _id;
         }
 
         public IGameObject GetOwnerGameObject()
@@ -29,13 +36,15 @@ namespace PrograB3ProjectTest.TestData
 
         public void RestoreDataFromFile(string data)
         {
-            _saveCount--;
+            if (data == _id)
+            {
+                _eventManager.TriggerEvent(new Events.MockEvent());
+            }
         }
 
         public string Save()
         {
-            return _saveCount.ToString();
-           _saveCount++;
+            return _id;
         }
 
         public void Update(float delta_time)
