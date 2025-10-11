@@ -29,6 +29,8 @@ namespace PrograB3ProjectTest.TestData
         public void RetrievalOfDataTest()
         {
             _dataBase = new GenericDataBase();
+            _dataBase.LoadDataFromCSV("../../../TestData/TestData.csv");
+            Assert.That(_dataBase.GetData().Count, Is.EqualTo(1));
         }
     }
 }
