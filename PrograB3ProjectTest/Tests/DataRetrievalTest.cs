@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using PrograB3Project;
 using PrograB3Project.Components;
 using PrograB3Project.Data;
-namespace PrograB3ProjectTest.TestData
+namespace PrograB3ProjectTest.Tests.Tests
 {
     public class DataRetrievalTest
     {

@@ -2,7 +2,7 @@
 using PrograB3Project.Components;
 using PrograB3Project.Events;
 using PrograB3Project.Interfaces;
-namespace PrograB3ProjectTest
+namespace PrograB3ProjectTest.Tests.Tests
 {
 
     public class InventoryTests

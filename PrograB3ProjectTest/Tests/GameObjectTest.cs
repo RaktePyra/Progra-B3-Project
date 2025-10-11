@@ -3,7 +3,7 @@ using PrograB3Project.Components;
 using PrograB3Project.Events;
 using PrograB3ProjectTest.TestData;
 
-namespace PrograB3ProjectTest
+namespace PrograB3ProjectTest.Tests.Tests
 {
     internal class GameObjectTest
     {

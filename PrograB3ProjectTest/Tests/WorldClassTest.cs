@@ -1,7 +1,7 @@
 using PrograB3Project;
 using PrograB3Project.Components;
 
-namespace PrograB3ProjectTest
+namespace PrograB3ProjectTest.Tests
 {
     public class Tests
     {
