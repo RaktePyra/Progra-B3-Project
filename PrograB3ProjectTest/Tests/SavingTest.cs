@@ -1,8 +1,9 @@
 ﻿using PrograB3Project;
 using PrograB3Project.Events;
 using PrograB3ProjectTest.Events;
+using PrograB3ProjectTest.TestData;
 
-namespace PrograB3ProjectTest.TestData
+namespace PrograB3ProjectTest.Tests.Tests
 {
     internal class SavingTest
     {
