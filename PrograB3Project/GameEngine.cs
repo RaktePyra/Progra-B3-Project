@@ -1,12 +1,6 @@
-﻿using PrograB3Project.Components;
-using PrograB3Project.Events;
+﻿using PrograB3Project.Events;
 using PrograB3Project.States;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrograB3Project
 {
@@ -25,12 +19,12 @@ namespace PrograB3Project
         private Interfaces.IEventManager _eventManager = new Events.EventManager();
         private RenderManager _renderManager = new RenderManager();
         private CollisionManager _collisionManager = new CollisionManager();
-        
+
         public void Run()
         {
             _eventManager.RegisterEvent<Events.QuitGameEvent>(OnQuitGame);
             _gameMachine = new StateMachine(this, _eventManager);
-            _gameMachine.SetInitialState(new MainMenuState(_gameMachine, this,_eventManager,_renderManager,_collisionManager));
+            _gameMachine.SetInitialState(new MainMenuState(_gameMachine, this, _eventManager, _renderManager, _collisionManager));
             _stopwatch.Start();
 
             while (!_shouldExit)
@@ -41,13 +35,14 @@ namespace PrograB3Project
                 while (_lag >= MS_PER_FIXED_UPFATE)
                 {
                     FixedUpdate(MS_PER_FIXED_UPFATE);
-                    _lag-=MS_PER_FIXED_UPFATE;
+                    _lag -= MS_PER_FIXED_UPFATE;
                 }
                 Update(_elapsedTime);
                 Render();
                 DequeueGameObjects();
-                _elapsedTime = _stopwatch.ElapsedMilliseconds-_loopStartTime;
-                if( _elapsedTime < MS_PER_FRAME )
+                _elapsedTime = _stopwatch.ElapsedMilliseconds - _loopStartTime;
+
+                if (_elapsedTime < MS_PER_FRAME)
                 {
                     Thread.Sleep((int)(MS_PER_FRAME - _elapsedTime));
                     _elapsedTime = MS_PER_FRAME;
@@ -76,7 +71,7 @@ namespace PrograB3Project
 
         private void ProcessInput()
         {
-            if(Console.KeyAvailable)
+            if (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
@@ -93,7 +88,7 @@ namespace PrograB3Project
 
         public void RegisterGameObject(GameObject game_object)
         {
-           if(!_gameObjectTable.Contains(game_object))
+            if (!_gameObjectTable.Contains(game_object))
             {
                 _gameObjectRegisterTable.Enqueue(game_object);
             }

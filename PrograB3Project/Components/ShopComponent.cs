@@ -46,6 +46,5 @@ namespace PrograB3Project.Components
         {
             _shopStateMachine.ProcessInput(key);
         }
-
     }
 }

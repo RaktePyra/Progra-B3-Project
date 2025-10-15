@@ -33,7 +33,9 @@ namespace PrograB3Project.Components.Rendering
             int number_of_items_inside_shop = _shopInventoryComponent.GetNumberOfItems();
             for (int item_index = 0; item_index < number_of_items_inside_shop; item_index++)
             {
-                Console.WriteLine(item_index + 1 + "." + _shopInventoryComponent.GetItem(item_index).GetName() + " |Quantity : " + _shopInventoryComponent.GetItem(item_index).GetQuantity() + " |Price : " + _shopInventoryComponent.GetItem(item_index).GetPrice() / (_playerCharacterComponent.GetBargainingStat()));
+                int item_price = _shopInventoryComponent.GetItem(item_index).GetPrice();
+                int item_price_bargained = item_price + (int)(item_price * 0.7) - (_playerCharacterComponent.GetBargainingStat() / 100) * item_price;
+                Console.WriteLine(item_index + 1 + "." + _shopInventoryComponent.GetItem(item_index).GetName() + " |Quantity : " + _shopInventoryComponent.GetItem(item_index).GetQuantity() + " |Price : " + item_price_bargained);
             }
         }
 

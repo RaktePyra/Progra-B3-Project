@@ -31,7 +31,7 @@ namespace PrograB3Project.Components
 
         public int GetPrice()
         {
-            return _price;
+            return _price*_quantity;
         }
 
         public string GetName()
