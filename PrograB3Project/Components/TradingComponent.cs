@@ -20,8 +20,8 @@ namespace PrograB3Project.Components
             {
                 int item_price = _vendorInventory.GetItem(item_index).GetPrice();
                 int item_price_bargained = item_price + (int)(item_price * 0.7) - (buyer_character_stats.GetBargainingStat() / 100)*item_price;
-                _vendorInventory.AddMoney(item_price);
-                buyer_inventory.RemoveMoney(item_price);
+                _vendorInventory.AddMoney(item_price_bargained);
+                buyer_inventory.RemoveMoney(item_price_bargained);
                 buyer_inventory.AddItem(_vendorInventory.GetItem(item_index));
                 _vendorInventory.RemoveItem(_vendorInventory.GetItem(item_index));
             }
@@ -32,7 +32,7 @@ namespace PrograB3Project.Components
             if (seller_inventory.GetItem(item_index) != null && _vendorInventory.GetMoney() >= seller_inventory.GetItem(item_index).GetPrice() * buyer_character_stats.GetBargainingStat())
             {
                 int item_price = seller_inventory.GetItem(item_index).GetPrice();
-                int item_price_bargained = item_price * (buyer_character_stats.GetBargainingStat() / 80)+(item_price/2);
+                int item_price_bargained = item_price * (buyer_character_stats.GetBargainingStat() / 70);
                 Console.WriteLine("You sold " + seller_inventory.GetItem(item_index).GetName() + " for " + item_price_bargained + " gold");
                 _vendorInventory.RemoveMoney(item_price_bargained);
                 seller_inventory.AddMoney(item_price_bargained);
