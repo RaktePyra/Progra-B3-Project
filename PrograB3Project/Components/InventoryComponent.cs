@@ -78,9 +78,17 @@ namespace PrograB3Project.Components
 
             foreach (string item_data in inventory_data)
             {
-                string []item_values = item_data.Split(";");
-                GameObject item = new GameObject(item_values[0], _eventManager);
-                ItemComponent item_comp = new ItemComponent(item, item_values[0], int.Parse(item_values[1]), int.Parse(item_values[2]));
+                try
+                {
+                    string[] item_values = item_data.Split(";");
+                    GameObject item = new GameObject(item_values[0], _eventManager);
+                    ItemComponent item_comp = new ItemComponent(item, item_values[0], int.Parse(item_values[1]), int.Parse(item_values[2]));
+                    _itemTable.Add(item_comp);
+                }
+                catch
+                {
+                    continue;
+                }
             }
         }
 
