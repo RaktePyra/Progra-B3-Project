@@ -14,6 +14,10 @@ namespace PrograB3Project
         private CollisionManager _collisionManager;
         private SaveManager _saveManager;
         private Dictionary<string, LocationComponent> _locationsTable = new Dictionary<string, LocationComponent>();
+        private string _saveFileRelativePath = "../../../Data/SaveFile.sav";
+        private string _worldDataFileRelativePath = "../../../Data/WorldDataBase.csv";
+        private string _keylocationDataFileRelativePath = "../../../Data/KeyLocationsDataBase.csv";
+        private string _playerInventoryDataFileRelativePath = "../../../Data/PlayerInventoryDataBase.csv";
 
         public Game(Interfaces.IGameEngine engine, Interfaces.IEventManager event_manager, RenderManager render_manager, CollisionManager collision_manager)
         {
@@ -21,7 +25,7 @@ namespace PrograB3Project
             _eventManager = event_manager;
             _renderManager = render_manager;
             _collisionManager = collision_manager;
-            _saveManager = new SaveManager(_eventManager, "../../../Data/SaveFile.sav");
+            _saveManager = new SaveManager(_eventManager, _saveFileRelativePath);
             _eventManager.RegisterEvent<QuitGameEvent>(OnQuitGameEvent);
         }
 
@@ -47,9 +51,9 @@ namespace PrograB3Project
         private void CreateWorlds()
         {
             GenericDataBase world_data_base = new GenericDataBase();
-            world_data_base.LoadDataFromCSV("../../../Data/WorldDataBase.csv");
+            world_data_base.LoadDataFromCSV(_worldDataFileRelativePath);
             GenericDataBase keylocations_data_base = new GenericDataBase();
-            keylocations_data_base.LoadDataFromCSV("../../../Data/KeyLocationsDataBase.csv");
+            keylocations_data_base.LoadDataFromCSV(_keylocationDataFileRelativePath);
             List<KeyValuePair<string, string>> worlds_value_table = world_data_base.GetData();
             List<KeyValuePair<string, string>> keylocations_value_table = keylocations_data_base.GetData();
 
@@ -182,7 +186,7 @@ namespace PrograB3Project
             _collisionManager.RegisterCollisionComponent(player_collision_comp);
             InventoryComponent player_inventory = new InventoryComponent(player, _eventManager);
             GenericDataBase player_inventory_data_base = new GenericDataBase();
-            player_inventory_data_base.LoadDataFromCSV("../../../Data/PlayerInventoryDataBase.csv");
+            player_inventory_data_base.LoadDataFromCSV(_playerInventoryDataFileRelativePath);
             List<KeyValuePair<string, string>> inventory_data = player_inventory_data_base.GetData();
 
             foreach (KeyValuePair<string, string> item_data in inventory_data)
