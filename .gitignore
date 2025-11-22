@@ -62,7 +62,7 @@ dkms.conf
 # User files
 .user
 .suo
-.sav
+*.sav
 
 # Logging,Cache files
 .log
