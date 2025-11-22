@@ -48,7 +48,7 @@ namespace PrograB3Project
             List<KeyValuePair<string, string>> data_table = save_data_base.GetData();
             foreach(KeyValuePair<string,string> data_key_value in data_table)
             {
-                data.Add(data_key_value.Key,data_key_value.Value);
+                data.Add(data_key_value.Key.Split("/")[0],data_key_value.Value); //data_key_value.Key.Split("/")[0] because of inventory formatting 
             }
 
             foreach(ISavableComponent component_to_restore_data_to in _componentToSaveTable)
