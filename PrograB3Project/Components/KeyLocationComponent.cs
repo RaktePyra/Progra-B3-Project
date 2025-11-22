@@ -16,7 +16,6 @@ namespace PrograB3Project.Components
         public KeyLocationComponent(Interfaces.IGameObject owner, Interfaces.IEventManager event_manager, LocationComponent parent_location, RenderManager render_manager, CollisionComponent collision_component, TransformComponent transformComponent) : base(owner)
         {
             _parentLocation = parent_location;
-            owner.AddComponent(this);
             _collisionComponent = collision_component;
             _transformComponent = transformComponent;
             _renderManager = render_manager;
