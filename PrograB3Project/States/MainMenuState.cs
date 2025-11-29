@@ -7,7 +7,7 @@ namespace PrograB3Project.States
     internal class MainMenuState : IState
     {
         private StateMachine _stateMachine;
-        private InGameState _gameState;
+        private InGameState? _gameState;
         private RenderManager _renderManager;
         private IEventManager _eventManager;
         private GameEngine _engine;

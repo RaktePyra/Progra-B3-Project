@@ -15,7 +15,7 @@ namespace PrograB3Project
         private const float MS_PER_FRAME = 100;
         private List<GameObject> _gameObjectTable = new List<GameObject>();
         private Queue<GameObject> _gameObjectRegisterTable = new Queue<GameObject>();
-        private StateMachine _gameMachine;
+        private StateMachine? _gameMachine;
         private Interfaces.IEventManager _eventManager = new Events.EventManager();
         private RenderManager _renderManager = new RenderManager();
         private CollisionManager _collisionManager = new CollisionManager();

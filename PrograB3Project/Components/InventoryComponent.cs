@@ -7,7 +7,7 @@ namespace PrograB3Project.Components
         private List<IItem> _itemTable = new List<IItem>();
         private int _money = 100;
         private string _id;
-        private IEventManager _eventManager;
+        private IEventManager? _eventManager;
 
         public InventoryComponent(Interfaces.IGameObject owner, Interfaces.IEventManager event_manager) : base(owner)
         {
@@ -32,7 +32,7 @@ namespace PrograB3Project.Components
 
         public IItem GetItem(int index)
         {
-            IItem item_to_return = null;
+            IItem? item_to_return = default;
 
             if (index < _itemTable.Count && index >= 0)
             {
