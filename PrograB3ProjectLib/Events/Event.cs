@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PrograB3Project.Events
+{
+    public class Event 
+    {
+        public readonly string _name;
+
+        public Event() { }
+        public Event(string name) 
+        {
+            _name = name;
+        }
+    }
+}
