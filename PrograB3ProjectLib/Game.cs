@@ -72,6 +72,7 @@ namespace PrograB3Project
                             CollisionComponent world_coll_comp = new CollisionComponent(world, _eventManager, _collisionManager, world_transform);
                             WorldComponent world_comp = new WorldComponent(world, _eventManager, 20, 20, _collisionManager, world_coll_comp, split_value[0]);
                             _locationsTable.Add(split_value[0], world_comp);
+                            _eventManager.TriggerEvent(new LocationCreatedEvent(split_value[0], split_value[2], new System.Numerics.Vector2(0, 0)));
                             break;
                         }
 
@@ -84,7 +85,7 @@ namespace PrograB3Project
                             CollisionComponent region_coll_comp = new CollisionComponent(region, _eventManager, _collisionManager, region_transform_comp);
                             RegionComponent region_comp = new RegionComponent(region, _eventManager, 20, 20, _collisionManager, region_coll_comp, split_value[0]);
                             _locationsTable.Add(split_value[0], region_comp);
-
+                            _eventManager.TriggerEvent(new LocationCreatedEvent(split_value[0], split_value[2], new System.Numerics.Vector2(region_transform_comp.GetLocationCoordinates()._xCoordinate, region_transform_comp.GetLocationCoordinates()._yCoordinate)));
                             if (_locationsTable.ContainsKey(split_value[3]))
                             {
                                 _locationsTable[split_value[3]].AddLocation(region_comp);
@@ -103,6 +104,7 @@ namespace PrograB3Project
                             CityComponent city_comp = new CityComponent(city, _eventManager, 20, 20, _collisionManager, city_coll_comp, split_value[0]);
                             _locationsTable.Add(split_value[0], city_comp);
                             _locationsTable[split_value[3]].AddLocation(city_comp);
+                            _eventManager.TriggerEvent(new LocationCreatedEvent(split_value[0], split_value[2], new System.Numerics.Vector2(city_transform_comp.GetLocationCoordinates()._xCoordinate, city_transform_comp.GetLocationCoordinates()._yCoordinate)));
                             break;
                         }
                 }
@@ -131,6 +133,7 @@ namespace PrograB3Project
                                 CityComponent parent_city = (CityComponent)_locationsTable[split_value[3]];
                                 parent_city.AddLocation(shop_component);
                                 keylocations_inventory_table.Add(split_value[0], shop_inventory);
+                                _eventManager.TriggerEvent(new LocationCreatedEvent(split_value[0], split_value[2], new System.Numerics.Vector2(shop_transform_comp.GetLocationCoordinates()._xCoordinate, shop_transform_comp.GetLocationCoordinates()._yCoordinate)));
                             }
                             break;
                         }
@@ -159,6 +162,7 @@ namespace PrograB3Project
                                 JobComponent job_comp = new JobComponent(job, _eventManager, _locationsTable[split_value[3]], job_collision_comp, job_transform);
                                 CityComponent parent_city = (CityComponent)_locationsTable[split_value[3]];
                                 parent_city.AddLocation(job_comp);
+                                _eventManager.TriggerEvent(new LocationCreatedEvent(split_value[0], split_value[2], new System.Numerics.Vector2(job_transform.GetLocationCoordinates()._xCoordinate, job_transform.GetLocationCoordinates()._yCoordinate)));
                             }
                             break;
                         }

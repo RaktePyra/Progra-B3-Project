@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    internal class LocationCreatedEvent
+    internal class LocationCreatedEvent : Event
     {
         public readonly string LocationID;
         public readonly string LocationName;
-        public readonly Vector2 Location;
-        public LocationCreatedEvent()
+        public readonly Vector2 LocationPosition;
+        public LocationCreatedEvent(string id,string name, Vector2 position)
         { 
-
+            LocationID = id;
+            LocationName = name;
+            LocationPosition = position;
         }
     }
 }
