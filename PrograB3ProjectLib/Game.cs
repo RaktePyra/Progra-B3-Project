@@ -3,6 +3,8 @@ using PrograB3Project.Data;
 using PrograB3Project.Events;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
+using Random = System.Random;
 //Disables the code suggestion to remove the type after the "new" Operator
 #pragma warning disable IDE0090
 namespace PrograB3Project
@@ -30,7 +32,14 @@ namespace PrograB3Project
 
         public void Run()
         {
-            _eventManager.TriggerEvent(new Event("Game has Started"));
+            InitializeGameEvent initializeGameEvent = new InitializeGameEvent(new InitializeGameEvent.FilePaths());
+            _eventManager.TriggerEvent(initializeGameEvent);
+            string dataFolderPath = initializeGameEvent.filePaths.dataFilesFolderRelativePath;
+            _saveFileRelativePath = dataFolderPath + "SaveFile.sav";
+            _worldDataFileRelativePath = dataFolderPath + "WorldDataBase.csv";
+            _playerInventoryDataFileRelativePath = dataFolderPath + "PlayerInventoryDataBase.csv";
+            _keylocationDataFileRelativePath = dataFolderPath + "KeyLocationsDataBase.csv";
+
             CreateWorlds();
 
             GameObject player = CreatePlayer();
@@ -42,7 +51,7 @@ namespace PrograB3Project
 
             catch (Exception generic_exception)
             {
-
+                
             }
             _locationsTable["World_00"].Enter(player);
         }
@@ -51,6 +60,7 @@ namespace PrograB3Project
         private void CreateWorlds()
         {
             GenericDataBase world_data_base = new GenericDataBase();
+
             world_data_base.LoadDataFromCSV(_worldDataFileRelativePath);
             GenericDataBase keylocations_data_base = new GenericDataBase();
             keylocations_data_base.LoadDataFromCSV(_keylocationDataFileRelativePath);
@@ -99,7 +109,7 @@ namespace PrograB3Project
                             _engine.RegisterGameObject(city);
                             TransformComponent city_transform_comp = new TransformComponent(city);
                             city_transform_comp.SetPosition((new Random().Next() % 17) + 2, (new Random().Next() % 17) + 2);
-                           
+
                             CollisionComponent city_coll_comp = new CollisionComponent(city, _eventManager, _collisionManager, city_transform_comp);
                             CityComponent city_comp = new CityComponent(city, _eventManager, 20, 20, _collisionManager, city_coll_comp, split_value[0]);
                             _locationsTable.Add(split_value[0], city_comp);
@@ -129,7 +139,7 @@ namespace PrograB3Project
                                 InventoryComponent shop_inventory = new InventoryComponent(shop, _eventManager);
                                 CollisionComponent shop_collision_comp = new CollisionComponent(shop, _eventManager, _collisionManager, shop_transform_comp);
                                 TradingComponent shop_trading_comp = new TradingComponent(shop);
-                                ShopComponent shop_component = new ShopComponent(shop,_engine, _eventManager, _locationsTable[split_value[3]], shop_trading_comp, shop_inventory, shop_collision_comp, shop_transform_comp);
+                                ShopComponent shop_component = new ShopComponent(shop, _engine, _eventManager, _locationsTable[split_value[3]], shop_trading_comp, shop_inventory, shop_collision_comp, shop_transform_comp);
                                 CityComponent parent_city = (CityComponent)_locationsTable[split_value[3]];
                                 parent_city.AddLocation(shop_component);
                                 keylocations_inventory_table.Add(split_value[0], shop_inventory);
@@ -193,7 +203,7 @@ namespace PrograB3Project
                 ItemComponent item_comp = new ItemComponent(item, item_values[2], int.Parse(item_values[3]), int.Parse(item_values[4]));
                 player_inventory.AddItem(item.GetComponent<ItemComponent>());
             }
-
+            _eventManager.TriggerEvent(new PlayerCreatedEvent("player_00", "Player", new System.Numerics.Vector2(player_transform.GetLocationCoordinates()._xCoordinate, player_transform.GetLocationCoordinates()._yCoordinate)));
             return player;
         }
 

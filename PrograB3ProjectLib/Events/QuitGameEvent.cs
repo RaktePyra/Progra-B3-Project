@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    internal class QuitGameEvent : Event
+    public class QuitGameEvent : Event
     {
     }
 }

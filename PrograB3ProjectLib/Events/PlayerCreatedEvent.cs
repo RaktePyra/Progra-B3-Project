@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    internal class PlayerCreatedEvent : Event
+    public class PlayerCreatedEvent : Event
     {
         public readonly Vector2 _position;
         public readonly string _name;

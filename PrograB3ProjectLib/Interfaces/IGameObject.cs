@@ -19,5 +19,7 @@ namespace PrograB3Project.Interfaces
         public string GetName();
 
         public int GetComponentCount();
+
+        public IEventManager GetEventManager();
     }
 }

@@ -62,5 +62,10 @@ namespace PrograB3Project
         {
             return _componentsTable.Count;
         }
+
+        public IEventManager GetEventManager()
+        {
+            return _eventManager;
+        }
     }
 }

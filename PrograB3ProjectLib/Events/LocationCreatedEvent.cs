@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PrograB3Project.Events
 {
-    internal class LocationCreatedEvent : Event
+    public class LocationCreatedEvent : Event
     {
         public readonly string LocationID;
         public readonly string LocationName;
